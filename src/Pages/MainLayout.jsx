@@ -13,9 +13,7 @@ function MainLayout() {
       <div className="main-content">
         <div className="sidebar">{isDesktopOrTablet && <SideBar />}</div>
         <div className="dashboard-container">
-          {/*<div className="header">*/}
             <NavBar />
-          {/*</div>*/}
           <div className="dashboard-content">
             <Outlet />
           </div>
