@@ -87,12 +87,13 @@ body {
   background-color: #635fc7;
 }
 
-.tasks-table-container {
+.tasks-table-container  {
   display: flex;
   gap: 1.5em;
   padding: 0.9em;
   min-height: 100vh;
   width: 100%;
+  border: 1px solid pink;
 }
 
 .column-title {
@@ -145,12 +146,23 @@ body {
   cursor: pointer;
 }
 
+.create-column-btn {
+  width: 100vw;
+  text-align: center;
+}
+
 .create-new-column:hover {
   color: #635fc7;
 }
 
-.tasks-table-container {
+/*.tasks-table-container {
+  border: 1px solid pink;
+}
+*/
+.tasks-table {
   border: 1px solid lightblue;
+  
+  max-width: 100vw;
 }
 
 @media (min-width: 766px) {
