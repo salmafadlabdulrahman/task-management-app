@@ -17,7 +17,7 @@ function NavBar() {
       <div className="main-nav">
           <div className="logo-board-container">
             {isMobile && <img src={logoImgMobile} />}
-            <h2>Coding</h2>
+            <h2>Platform Launch</h2>
             {isMobile && (
               <img src={showBoardsImg} width={12} className="showBoard-img" />
             )}
