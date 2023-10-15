@@ -1,4 +1,4 @@
-import "./App2.css";
+import "./App.css";
 import DashBoard /*dashboardLoader*/ from "./Pages/DashBoard";
 import MainLayout from "./Pages/MainLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";

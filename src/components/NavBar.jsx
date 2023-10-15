@@ -35,9 +35,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-/*{isMobile && (
-          <div className="board-name-container">
-            <img src={showBoardsImg} width={15} />
-          </div>
-        )} */
