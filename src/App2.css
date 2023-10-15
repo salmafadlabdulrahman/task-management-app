@@ -20,7 +20,6 @@ body {
   background-color: #2b2c37;
   border: 1px solid #3e3f4e;
   position: fixed;
-  /*min-width: 100vw;*/
   z-index: 1;
   min-width: 100%;
 }
@@ -46,7 +45,7 @@ body {
 .task-menu-container {
   position: fixed;
   top: 0%;
-  right: 470px;
+  right: 50px;
 }
 
 .btn-add-task {
@@ -68,14 +67,11 @@ body {
 
 .dashboard-content {
   border: 1px solid blue;
-  /*max-width: 100vw;*/
-  /*min-width: 100vw;*/
   position: absolute;
   top: 100px;
-  /*z-index: -1;*/
   width: 100vw;
+  min-height: 100vh;
 }
-
 
 
 .boards-list-container a:hover,
