@@ -58,6 +58,10 @@ body {
   color: white;
 }
 
+.dashboard {
+  overflow-x: scroll;
+}
+
 .dashboard-container {
   position: relative;
 }
@@ -65,11 +69,14 @@ body {
 .dashboard-content {
   border: 1px solid blue;
   /*max-width: 100vw;*/
-  min-width: 100vw;
+  /*min-width: 100vw;*/
   position: absolute;
-  top: 150px;
-  z-index: -1;
+  top: 100px;
+  /*z-index: -1;*/
+  width: 100vw;
 }
+
+
 
 .boards-list-container a:hover,
 .create-board-btn:hover {
