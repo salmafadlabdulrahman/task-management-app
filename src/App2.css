@@ -21,9 +21,11 @@ body {
   border: 1px solid #3e3f4e;
   position: fixed;
   z-index: 1;
-  min-width: 100%;
+  width: 100%;
+  top: 0%;
+  left: 0%;
+  border: 1px solid pink;
 }
-
 .nav-container,
 .logo-board-container,
 .task-menu-container {
@@ -40,12 +42,7 @@ body {
 .task-menu-container {
   gap: 1em;
   padding: 1em;
-}
-
-.task-menu-container {
-  position: fixed;
-  top: 0%;
-  right: 50px;
+  border: 1px solid purple;
 }
 
 .btn-add-task {
@@ -59,6 +56,19 @@ body {
 
 .dashboard {
   overflow-x: scroll;
+  /*overflow: scroll;
+  overflow-x: hidden;*/
+}
+
+.dashboard::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+
+.tasks-table-container {
+  border: 1px solid purple;
+  /*overflow-x: scroll;*/
 }
 
 .dashboard-container {
@@ -73,7 +83,6 @@ body {
   min-height: 100vh;
 }
 
-
 .boards-list-container a:hover,
 .create-board-btn:hover {
   background-color: white;
@@ -87,10 +96,12 @@ body {
 }
 
 .tasks-table-container {
-  border: 1px solid lightblue;
+  /*border: 1px solid lightblue;*/
   display: flex;
   gap: 1.5em;
   padding: 0.9em;
+  min-height: 100vh;
+  width: 100%;
 }
 
 .column-title {
@@ -147,6 +158,12 @@ body {
   }
 
   /*Dashboard styling*/
+  .dashboard {
+    /*overflow-x: scroll;*/
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
   .dashboard-container {
     position: relative;
   }
