@@ -10,7 +10,7 @@ body::-webkit-scrollbar {
 
 body {
   min-height: 100vh;
-  background-color: rgb(32, 33, 44);
+  background-color: #f4f7fd;
   color: white;
   font-family: "Plus Jakarta Sans", sans-serif;
 }
@@ -24,7 +24,13 @@ body {
   width: 100%;
   top: 0%;
   left: 0%;
-  border: 1px solid pink;
+  /*border: 1px solid pink;*/
+}
+
+.lightMode-navbar {
+  background-color: #fff;
+  color: #000;
+  border: none;
 }
 .nav-container,
 .logo-board-container,
@@ -67,7 +73,7 @@ body {
 }
 
 .dashboard-content {
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
   position: absolute;
   top: 100px;
   width: 100vw;
@@ -83,10 +89,15 @@ body {
   transition: all 0.3s ease;
 }
 
+.lightMode-links a:hover, .lightMode-btn:hover {
+  background-color: rgb(228, 228, 228);
+}
+
 .boards-list-container a:active {
   background-color: #635fc7;
 }
 
+/*Task Styling*/
 .tasks-table-container  {
   display: flex;
   gap: 1.5em;
@@ -106,7 +117,7 @@ body {
 }
 
 .task-card {
-  background-color: #2b2c37;
+  background-color: white;
   width: 260px;
   padding: 1em 2em 1em 1em;
   margin-top: 1em;
@@ -133,7 +144,7 @@ body {
 }
 
 .create-new-column {
-  background: linear-gradient(rgba(43, 44, 55, 0.25), rgba(43, 44, 55, 0.125));
+  background: rgb(238, 239, 255); 
   margin-top: 1.2em;
   width: 300px; 
   display: flex;
@@ -143,6 +154,14 @@ body {
   font-size: 1.7em;
   font-weight: 600;
   cursor: pointer;
+}
+
+.lightMode {
+  background: rgb(238, 239, 255);
+}
+
+.darkMode {
+  background: linear-gradient(rgba(43, 44, 55, 0.25), rgba(43, 44, 55, 0.125));
 }
 
 .create-column-btn {
@@ -193,7 +212,7 @@ body {
   }
 
   .dashboard-content {
-    border: 1px solid blue;
+    /*border: 1px solid blue;*/
     position: absolute;
     top: 100px;
     left: 250px;
@@ -211,7 +230,7 @@ body {
     top: 0;
     left: 0;
     background-color: #2b2c37;
-    border: 1px solid #3e3f4e;
+    /*border: 1px solid #3e3f4e;*/
     min-height: 100vh;
   }
 
@@ -274,6 +293,10 @@ body {
     margin: 7em 1em;
     border-radius: 8px;
     background-color: #20212c;
+  }
+
+  .boards-control-lightMode {
+    background-color: rgb(241, 243, 255);
   }
 
   /*Toggle Switch*/

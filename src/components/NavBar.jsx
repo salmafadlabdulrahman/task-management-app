@@ -9,15 +9,15 @@ import menuImg from "../assets/icon-vertical-ellipsis.svg";
 //Hero Icons
 import { PlusSmallIcon } from "@heroicons/react/24/solid";
 
-function NavBar() {
+function NavBar({theme, changeTheme}) {
   const isMobile = useMediaQuery({ query: "(max-width: 766px)" });
 
   return (
-    <div className="navbar-container">
+    <div className={`navbar-container ${theme ? "lightMode-navbar" : ""}`}>
       <div className="main-nav">
           <div className="logo-board-container">
             {isMobile && <img src={logoImgMobile} />}
-            <h2>Platform Launch</h2>
+            <h2>Coding</h2>
             {isMobile && (
               <img src={showBoardsImg} width={12} className="showBoard-img" />
             )}
