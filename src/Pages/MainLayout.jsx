@@ -11,31 +11,30 @@ export const ThemeContext = createContext();
 
 function MainLayout() {
   //Light / dark Mode
-  const [lightMode, setLightMode] = useState(true);
-  
-
+  const [lightMode, setLightMode] = useState(false);
   const changeTheme = () => {
     setLightMode(!lightMode);
-  };
-
-  const lightTheme = {
-    backgroundColor: lightMode && "white",
-    border: !lightMode && "1px solid #3e3f4e",
   };
 
   //Using the media query for responsive layout
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
 
-  
+  if (!lightMode) {
+    document.body.style.backgroundColor = "rgb(32, 33, 44)";
+    document.body.style.color = "white"
+  } else {
+    document.body.style.backgroundColor = "#f4f7fd";
+    document.body.style.color = "black"
+  }
 
   return (
     <div className="main-layout">
       <div className="main-content">
-        <div className="sidebar" style={lightTheme}>
+        {/*<div className="sidebar" style={lightTheme}>*/}
           {isDesktopOrTablet && (
             <SideBar theme={lightMode} changeTheme={changeTheme} />
           )}
-        </div>
+        {/*</div>*/}
         <div className="dashboard-container">
           <NavBar theme={lightMode} />
           <div className="dashboard-content">
