@@ -13,10 +13,13 @@ import { PlusSmallIcon } from "@heroicons/react/24/solid";
 
 function NavBar() {
   const isMobile = useMediaQuery({ query: "(max-width: 766px)" });
-  const {lightMode, hidesidebarState} = useContext(AppContext)
+  const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
+
+  const {lightMode, hidesidebarState } = useContext(AppContext)
+  
 
   const style = {
-    left: hidesidebarState ? "0px" : "250px"
+    left: isDesktopOrTablet ? (hidesidebarState ? "0px" : "250px") : "0px",
   }
 
   return (

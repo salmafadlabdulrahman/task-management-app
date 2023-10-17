@@ -20,7 +20,7 @@ function MainLayout() {
   };
 
   function hideSidebar() {
-    setHidesidebar(!hidesidebarState);
+    setHidesidebar(true);
   }
 
   //Using the media query for responsive layout
@@ -35,17 +35,17 @@ function MainLayout() {
   }
 
   const style = {
-    left: hidesidebarState ? "0px" : "250px"
+    left: isDesktopOrTablet ? (hidesidebarState ? "0px" : "250px") : "0px",
   }
 
   return (
     <div className="main-layout">
       <div className="main-content">
         <AppContext.Provider
-          value={{ lightMode, changeTheme, hidesidebarState, hideSidebar }}
+          value={{ lightMode, changeTheme, hidesidebarState, hideSidebar, setHidesidebar }}
         >
           {isDesktopOrTablet && <SideBar />}
-          <div className="dashboard-container">
+          <div className="dashboard-container" >
             <NavBar />
             <div className="dashboard-content" style={style}>
               <Outlet />

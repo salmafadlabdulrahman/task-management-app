@@ -1,14 +1,18 @@
 import { fetchData } from "../../helper";
 import { useLoaderData } from "react-router-dom";
+import { AppContext } from "./MainLayout";
+import { useContext } from "react";
+import showSideBar from "../assets/icon-show-sidebar.svg";
 
 export async function dashboardLoader() {
-  const boards = await fetchData("boards") || [];
-  return {boards}
+  const boards = (await fetchData("boards")) || [];
+  return { boards };
 }
 
 function DashBoard() {
-  const {boards} = useLoaderData()
-  
+  const { boards } = useLoaderData();
+  const { hidesidebarState, setHidesidebar } = useContext(AppContext);
+
   return (
     <div className="dashboard">
       <div className="tasks-table-container">
@@ -18,18 +22,33 @@ function DashBoard() {
           <div className="intro">
             <h3>Create a board</h3>
           </div>
-          
         )}
-
       </div>
+      {hidesidebarState && (
+        <button
+          className="showsidebar-btn"
+          onClick={() => setHidesidebar(false)}
+        >
+          <img src={showSideBar} className="showsidebar-img" />
+        </button>
+      )}
     </div>
   );
 }
 
 export default DashBoard;
 
+/*{hidesidebarState && (
+        <button
+          className="showsidebar-btn"
+          onClick={() => setHidesidebar(false)}
+        >
+          <img src={showSideBar} className="showsidebar-img" />
+        </button>
+      )} */
 
-{/*<div className="column">
+{
+  /*<div className="column">
           <h3 className="column-title">Todo (4)</h3>
 
           <div className={`task-card`} style={style}>
@@ -58,4 +77,5 @@ export default DashBoard;
 
         <div className={`create-new-column ${!lightMode && "darkMode"}`}>
           <div className="create-column-btn">+ New Column</div>
-        </div> */}
+        </div> */
+}

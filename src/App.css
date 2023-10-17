@@ -24,7 +24,6 @@ body {
   width: 100%;
   top: 0%;
   left: 0%;
-  border: 1px solid lightblue;
 }
 
 .lightMode-navbar {
@@ -61,7 +60,6 @@ body {
 
 .dashboard {
   overflow-x: scroll;
-  border: 1px solid blue;
 }
 
 .dashboard::-webkit-scrollbar {
@@ -234,7 +232,6 @@ body {
     background-color: #2b2c37;
     min-height: 100vh;
     border: 1px solid #3e3f4e;
-    border: 1px solid lightblue;
   }
 
   .lightMode-sidebar {
@@ -386,4 +383,20 @@ body {
   .btn-hide-sidebar img {
     padding-right: 0.5em;
   }
+
+  .showsidebar-btn {
+    border: none;
+    background: #635fc7;
+    padding: 1.2em 1.8em;
+    border-radius: 0px 50px 50px 0px;
+    z-index: 5555;
+    position: fixed;
+    bottom: 70px;
+    cursor: pointer;
+   }
+   .showsidebar-btn:hover {
+     background-color: rgb(200, 133, 255);
+     transition: all 0.4s ease;
+   }
+
 }
