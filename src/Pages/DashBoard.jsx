@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { ThemeContext } from "./MainLayout";
 import { fetchData } from "../../helper";
 import { useLoaderData } from "react-router-dom";
 
@@ -8,15 +6,9 @@ export async function dashboardLoader() {
   return {boards}
 }
 
-function DashBoard({ theme }) {
-  const { lightMode } = useContext(ThemeContext);
+function DashBoard() {
   const {boards} = useLoaderData()
-  console.log(boards)
-  const style = {
-    backgroundColor: lightMode ? "white" : "#2b2c37",
-    color: lightMode ? "black" : "white",
-  };
-
+  
   return (
     <div className="dashboard">
       <div className="tasks-table-container">

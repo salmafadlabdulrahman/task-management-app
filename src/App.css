@@ -24,6 +24,7 @@ body {
   width: 100%;
   top: 0%;
   left: 0%;
+  border: 1px solid lightblue;
 }
 
 .lightMode-navbar {
@@ -60,6 +61,7 @@ body {
 
 .dashboard {
   overflow-x: scroll;
+  border: 1px solid blue;
 }
 
 .dashboard::-webkit-scrollbar {
@@ -231,6 +233,8 @@ body {
     left: 0;
     background-color: #2b2c37;
     min-height: 100vh;
+    border: 1px solid #3e3f4e;
+    border: 1px solid lightblue;
   }
 
   .lightMode-sidebar {
@@ -378,11 +382,8 @@ body {
     color: #828fa3;
     font-weight: 600;
     cursor: pointer;
-    border: 1px solid pink;
-    width: 120%;
   }
   .btn-hide-sidebar img {
     padding-right: 0.5em;
   }
-
 }

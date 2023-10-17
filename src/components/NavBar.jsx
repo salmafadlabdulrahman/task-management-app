@@ -1,5 +1,6 @@
-//rs imports
 import { useMediaQuery } from "react-responsive";
+import { AppContext } from "../Pages/MainLayout";
+import { useContext } from "react";
 
 //Images
 import logoImgMobile from "../assets/logo-mobile.svg";
@@ -9,11 +10,17 @@ import menuImg from "../assets/icon-vertical-ellipsis.svg";
 //Hero Icons
 import { PlusSmallIcon } from "@heroicons/react/24/solid";
 
-function NavBar({theme, changeTheme}) {
+
+function NavBar() {
   const isMobile = useMediaQuery({ query: "(max-width: 766px)" });
+  const {lightMode, hidesidebarState} = useContext(AppContext)
+
+  const style = {
+    left: hidesidebarState ? "0px" : "250px"
+  }
 
   return (
-    <div className={`navbar-container ${theme ? "lightMode-navbar" : ""}`}>
+    <div className={`navbar-container ${lightMode ? "lightMode-navbar" : ""}`} style={style}>
       <div className="main-nav">
           <div className="logo-board-container">
             {isMobile && <img src={logoImgMobile} />}

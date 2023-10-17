@@ -8,41 +8,50 @@ import NavBar from "../components/NavBar";
 import { createContext, useState } from "react";
 
 export const ThemeContext = createContext();
+export const AppContext = createContext();
 
 function MainLayout() {
   //Light / dark Mode
   const [lightMode, setLightMode] = useState(false);
+  const [hidesidebarState, setHidesidebar] = useState(false);
+
   const changeTheme = () => {
     setLightMode(!lightMode);
   };
+
+  function hideSidebar() {
+    setHidesidebar(!hidesidebarState);
+  }
 
   //Using the media query for responsive layout
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
 
   if (!lightMode) {
     document.body.style.backgroundColor = "rgb(32, 33, 44)";
-    document.body.style.color = "white"
+    document.body.style.color = "white";
   } else {
     document.body.style.backgroundColor = "#f4f7fd";
-    document.body.style.color = "black"
+    document.body.style.color = "black";
+  }
+
+  const style = {
+    left: hidesidebarState ? "0px" : "250px"
   }
 
   return (
     <div className="main-layout">
       <div className="main-content">
-        {/*<div className="sidebar" style={lightTheme}>*/}
-          {isDesktopOrTablet && (
-            <SideBar theme={lightMode} changeTheme={changeTheme} />
-          )}
-        {/*</div>*/}
-        <div className="dashboard-container">
-          <NavBar theme={lightMode} />
-          <div className="dashboard-content">
-            <ThemeContext.Provider value={{lightMode, setLightMode}}>
-              <Outlet  />
-            </ThemeContext.Provider>
+        <AppContext.Provider
+          value={{ lightMode, changeTheme, hidesidebarState, hideSidebar }}
+        >
+          {isDesktopOrTablet && <SideBar />}
+          <div className="dashboard-container">
+            <NavBar />
+            <div className="dashboard-content" style={style}>
+              <Outlet />
+            </div>
           </div>
-        </div>
+        </AppContext.Provider>
       </div>
     </div>
   );
