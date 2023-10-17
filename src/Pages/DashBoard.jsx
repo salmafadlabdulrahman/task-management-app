@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { AppContext } from "./MainLayout";
 import { useContext } from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
+import AddBoardForm from "../components/AddBoardForm";
 
 export async function dashboardLoader() {
   const boards = (await fetchData("boards")) || [];
@@ -11,7 +12,8 @@ export async function dashboardLoader() {
 
 function DashBoard() {
   const { boards } = useLoaderData();
-  const { hidesidebarState, setHidesidebar } = useContext(AppContext);
+  const { hidesidebarState, setHidesidebar, newBoardComponent } =
+    useContext(AppContext);
 
   return (
     <div className="dashboard">
@@ -23,7 +25,10 @@ function DashBoard() {
             <h3>Create a board</h3>
           </div>
         )}
+
+        {newBoardComponent && <AddBoardForm />}
       </div>
+
       {hidesidebarState && (
         <button
           className="showsidebar-btn"

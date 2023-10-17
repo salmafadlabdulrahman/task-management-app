@@ -10,10 +10,12 @@ import hideSideBar from "../assets/icon-hide-sidebar.svg";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../Pages/MainLayout";
+//import AddBoardForm from "./AddBoardForm";
+//import { createNewBoard } from "../../helper";
 
 function SideBar() {
-  const { lightMode, changeTheme, hidesidebarState, hideSidebar } =
-    useContext(AppContext);
+  const { lightMode, changeTheme, hidesidebarState, hideSidebar, displayNewBoardForm } = useContext(AppContext);
+  //const [newBoardComponent, setNewBoardComponent] = useState(false)
 
   return (
     <div className="bigger-container">
@@ -50,6 +52,7 @@ function SideBar() {
                 className={`btn create-board-btn ${
                   lightMode ? "lightMode-btn" : ""
                 }`}
+                onClick={() => displayNewBoardForm()}
               >
                 <img src={boardImg} className="boardIcon" />+ Create New Board
               </button>
@@ -84,8 +87,12 @@ function SideBar() {
         </div>
       )}
 
+      
+
     </div>
   );
 }
 
 export default SideBar;
+
+/*newBoardComponent ? console.log("You opened the form to create a new board") : console.log("it's not working!")*/
