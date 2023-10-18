@@ -14,7 +14,16 @@ function MainLayout() {
   //Light / dark Mode
   const [lightMode, setLightMode] = useState(false);
   const [hidesidebarState, setHidesidebar] = useState(false);
-  const [newBoardComponent, setNewBoardComponent] = useState(false)
+  const [newBoardComponent, setNewBoardComponent] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const changeTheme = () => {
     setLightMode(!lightMode);
@@ -24,9 +33,9 @@ function MainLayout() {
     setHidesidebar(true);
   }
 
-  function displayNewBoardForm() {
-    setNewBoardComponent(true)
-  }
+  /*function displayNewBoardForm() {
+    setNewBoardComponent(true);
+  }*/
 
   //Using the media query for responsive layout
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
@@ -41,16 +50,26 @@ function MainLayout() {
 
   const style = {
     left: isDesktopOrTablet ? (hidesidebarState ? "0px" : "250px") : "0px",
-  }
+  };
 
   return (
     <div className="main-layout">
       <div className="main-content">
         <AppContext.Provider
-          value={{ lightMode, changeTheme, hidesidebarState, hideSidebar, setHidesidebar, newBoardComponent, displayNewBoardForm }}
+          value={{
+            lightMode,
+            changeTheme,
+            hidesidebarState,
+            hideSidebar,
+            setHidesidebar,
+            newBoardComponent,
+            isModalOpen,
+            openModal,
+            closeModal
+          }}
         >
           {isDesktopOrTablet && <SideBar />}
-          <div className="dashboard-container" >
+          <div className="dashboard-container">
             <NavBar />
             <div className="dashboard-content" style={style}>
               <Outlet />

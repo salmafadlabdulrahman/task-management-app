@@ -173,10 +173,25 @@ body {
   color: #635fc7;
 }
 
+.modal {
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.form-container {
+  width: 80%;
+}
+
 .form-wrapper {
   background-color: #2b2c37;
-  width: 35%;
-  height: 35%;
   border-radius: 10px;
 }
 
@@ -268,6 +283,7 @@ body {
   margin-top: 1em;
 }
 
+
 @media (min-width: 766px) {
   .main-nav {
     display: grid;
@@ -314,6 +330,9 @@ body {
     /*z-index: -1;*/
     width: 100%;
     min-height: 100vh;
+  }
+  .form-container {
+    width: 40%;
   }
 
   /*Sidebar styling*/

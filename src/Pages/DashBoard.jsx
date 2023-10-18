@@ -10,13 +10,26 @@ export async function dashboardLoader() {
   return { boards };
 }
 
+
 function DashBoard() {
   const { boards } = useLoaderData();
-  const { hidesidebarState, setHidesidebar, newBoardComponent } =
+  const { hidesidebarState, setHidesidebar, isModalOpen, closeModal } =
     useContext(AppContext);
+
+    const handleOutsideClick = (event) => {
+      if (event.target === event.currentTarget) {
+        closeModal();
+      }
+    }
+
+   
+  
 
   return (
     <div className="dashboard">
+      <div className={`${isModalOpen ? "modal" : ""}`} onClick={handleOutsideClick}>
+        {isModalOpen && <AddBoardForm />}
+      </div>
       <div className="tasks-table-container">
         {boards && boards.length > 0 ? (
           <h4>We have boards</h4>
@@ -25,8 +38,6 @@ function DashBoard() {
             <h3>Create a board</h3>
           </div>
         )}
-
-        {newBoardComponent && <AddBoardForm />}
       </div>
 
       {hidesidebarState && (

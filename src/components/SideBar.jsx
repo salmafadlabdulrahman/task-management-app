@@ -14,7 +14,7 @@ import { AppContext } from "../Pages/MainLayout";
 //import { createNewBoard } from "../../helper";
 
 function SideBar() {
-  const { lightMode, changeTheme, hidesidebarState, hideSidebar, displayNewBoardForm } = useContext(AppContext);
+  const { lightMode, changeTheme, hidesidebarState, hideSidebar, openModal } = useContext(AppContext);
   //const [newBoardComponent, setNewBoardComponent] = useState(false)
 
   return (
@@ -52,7 +52,7 @@ function SideBar() {
                 className={`btn create-board-btn ${
                   lightMode ? "lightMode-btn" : ""
                 }`}
-                onClick={() => displayNewBoardForm()}
+                onClick={() => openModal()}
               >
                 <img src={boardImg} className="boardIcon" />+ Create New Board
               </button>
