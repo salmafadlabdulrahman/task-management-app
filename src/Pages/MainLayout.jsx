@@ -15,6 +15,7 @@ function MainLayout() {
   const [lightMode, setLightMode] = useState(false);
   const [hidesidebarState, setHidesidebar] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sidebarModal, setSidebarModal] = useState(false)
   //Using the media query for responsive layout
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
 
@@ -24,6 +25,14 @@ function MainLayout() {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const openSidebarModal = () => {
+    setSidebarModal(true);
+  };
+
+  const closeSidebarModal = () => {
+    setSidebarModal(false);
   };
 
   const changeTheme = () => {
@@ -59,7 +68,10 @@ function MainLayout() {
             setHidesidebar,
             isModalOpen,
             openModal,
-            closeModal
+            closeModal,
+            sidebarModal,
+            openSidebarModal,
+            closeSidebarModal
           }}
         >
           {isDesktopOrTablet && <SideBar />}

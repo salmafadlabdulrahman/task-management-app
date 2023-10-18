@@ -4,6 +4,8 @@ import { AppContext } from "./MainLayout";
 import { useContext } from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
 import AddBoardForm from "../components/AddBoardForm";
+import SideBarNav from "../components/SideBarNav";
+import { useMediaQuery } from "react-responsive";
 
 export async function dashboardLoader() {
   const boards = (await fetchData("boards")) || [];
@@ -12,21 +14,24 @@ export async function dashboardLoader() {
 
 function DashBoard() {
   const { boards } = useLoaderData();
-  const { hidesidebarState, setHidesidebar, isModalOpen, closeModal } =
+  const { hidesidebarState, setHidesidebar, isModalOpen, closeModal, closeSidebarModal, sidebarModal } =
     useContext(AppContext);
 
   const handleOutsideClick = (event) => {
     if (event.target === event.currentTarget) {
       closeModal();
+      closeSidebarModal();
     }
   };
+
 
   return (
     <div className="dashboard">
       <div
-        className={`${isModalOpen ? "modal" : ""}`}
+        className={`${isModalOpen || sidebarModal ? "modal" : ""}`}
         onClick={handleOutsideClick}
       >
+        {sidebarModal && <SideBarNav />}
         {isModalOpen && <AddBoardForm />}
       </div>
       <div className="tasks-table-container">
