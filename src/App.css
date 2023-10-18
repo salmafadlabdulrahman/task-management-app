@@ -187,11 +187,10 @@ body {
 }
 
 .form-container {
-  width: 80%;
+  width: 75%;
 }
 
 .form-wrapper {
-  background-color: #2b2c37;
   border-radius: 10px;
 }
 
@@ -219,8 +218,8 @@ body {
   color: #ea5555;
 }
 
-#title,
-#column {
+.title,
+.column {
   background: none;
   border: 1px solid #3e3f4e;
   padding: 1em;
@@ -230,10 +229,19 @@ body {
   color: white;
 }
 
-#title::placeholder,
-#column::placeholder {
-  font-weight: 600;
+.title::placeholder,
+.column::placeholder {
+  font-weight: 500;
   font-size: 1.1em;
+}
+
+.lightMode-input {
+  border: 1px solid rgba(130,143,163,.25);
+  color: black
+}
+
+.lightMode-label {
+  color: #828fa3
 }
 
 .subtask-columns {
@@ -242,7 +250,7 @@ body {
   margin-top: 2em;
 }
 
-#column {
+.column {
   width: 90%;
 }
 
@@ -275,6 +283,10 @@ body {
 .add-new-column {
   background-color: white;
   color: #635fc7;
+}
+
+.lightMode-btn {
+  background-color: rgb(226, 227, 255);
 }
 
 .submit-board-btn {

@@ -14,8 +14,9 @@ function MainLayout() {
   //Light / dark Mode
   const [lightMode, setLightMode] = useState(false);
   const [hidesidebarState, setHidesidebar] = useState(false);
-  const [newBoardComponent, setNewBoardComponent] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  //Using the media query for responsive layout
+  const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -33,12 +34,6 @@ function MainLayout() {
     setHidesidebar(true);
   }
 
-  /*function displayNewBoardForm() {
-    setNewBoardComponent(true);
-  }*/
-
-  //Using the media query for responsive layout
-  const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
 
   if (!lightMode) {
     document.body.style.backgroundColor = "rgb(32, 33, 44)";
@@ -62,7 +57,6 @@ function MainLayout() {
             hidesidebarState,
             hideSidebar,
             setHidesidebar,
-            newBoardComponent,
             isModalOpen,
             openModal,
             closeModal

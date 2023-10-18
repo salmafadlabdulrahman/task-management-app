@@ -10,24 +10,23 @@ export async function dashboardLoader() {
   return { boards };
 }
 
-
 function DashBoard() {
   const { boards } = useLoaderData();
   const { hidesidebarState, setHidesidebar, isModalOpen, closeModal } =
     useContext(AppContext);
 
-    const handleOutsideClick = (event) => {
-      if (event.target === event.currentTarget) {
-        closeModal();
-      }
+  const handleOutsideClick = (event) => {
+    if (event.target === event.currentTarget) {
+      closeModal();
     }
-
-   
-  
+  };
 
   return (
     <div className="dashboard">
-      <div className={`${isModalOpen ? "modal" : ""}`} onClick={handleOutsideClick}>
+      <div
+        className={`${isModalOpen ? "modal" : ""}`}
+        onClick={handleOutsideClick}
+      >
         {isModalOpen && <AddBoardForm />}
       </div>
       <div className="tasks-table-container">
@@ -54,14 +53,6 @@ function DashBoard() {
 
 export default DashBoard;
 
-/*{hidesidebarState && (
-        <button
-          className="showsidebar-btn"
-          onClick={() => setHidesidebar(false)}
-        >
-          <img src={showSideBar} className="showsidebar-img" />
-        </button>
-      )} */
 
 {
   /*<div className="column">
