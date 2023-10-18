@@ -304,8 +304,6 @@ body {
   background-color: #2b2c37;
   border: 1px solid #3e3f4e;
   padding: 1em;
-  /*max-width: 400px;
-  width: 95%;*/
   max-width: 400px;
   width: 95%;
   border-radius: 7px;
@@ -432,15 +430,11 @@ input:checked + .slider:before {
 }
 
 .form-container {
-  /*width: 400px;*/
   z-index: 1111;
   position: fixed;
-
   max-width: 400px;
   width: 95%;
-  
 }
-
 
 @media (min-width: 766px) {
   .main-nav {
@@ -481,25 +475,18 @@ input:checked + .slider:before {
   }
 
   .dashboard-content {
-    /*border: 1px solid blue;*/
     position: absolute;
     top: 100px;
     left: 250px;
-    /*z-index: -1;*/
     width: 100%;
     min-height: 100vh;
   }
   .form-container {
-    /*width: 40%;*/
     width: 500px;
-    /*width: 90%;
-    border: 1px solid lightblue;*/
-    /*z-index: 1111;*/
-
+    max-width: 90%;
   }
 
   /*Sidebar styling*/
-
   .sidebar {
     height: 100%;
     width: 250px;
@@ -530,47 +517,20 @@ input:checked + .slider:before {
 
   .sidebar-nav h6 {
     margin-top: 4em;
-    text-transform: uppercase;
     letter-spacing: 3px;
-    color: #828fa3;
-    font-size: 0.8em;
-  }
-
-  .boards-list-container {
-    width: 90%;
-    margin-top: 2em;
   }
 
   .boards-list-container a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
-    font-size: 1em;
     padding: 1em 0.8em;
-    color: #828fa3;
   }
-
-  
-  /*.sidebar-nav {
-    border: 1px solid blueviolet;
-    
-  }*/
 
   .boardIcon {
     padding: 0 1em;
   }
 
   .create-board-btn {
-    border: none;
-    background: none;
-    color: #635fc7;
-    font-weight: 600;
-    font-size: 1em;
-    margin-top: 1em;
     padding: 1em;
     padding-left: 0.8em;
-    cursor: pointer;
   }
 
   .boards-control-items {
@@ -587,66 +547,6 @@ input:checked + .slider:before {
 
   .boards-control-lightMode {
     background-color: rgb(241, 243, 255);
-  }
-
-  /*Toggle Switch*/
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 55px;
-    height: 28px;
-  }
-
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-  }
-
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-  }
-
-  input:checked + .slider {
-    background-color: #635fc7;
-  }
-
-  input:focus + .slider {
-    box-shadow: 0 0 1px #635fc7;
-  }
-
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-
-  .slider.round {
-    border-radius: 34px;
-  }
-
-  .slider.round:before {
-    border-radius: 50%;
   }
 
   .btn-hide-sidebar {

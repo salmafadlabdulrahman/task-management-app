@@ -5,7 +5,6 @@ import { useContext } from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
 import AddBoardForm from "../components/AddBoardForm";
 import SideBarNav from "../components/SideBarNav";
-import { useMediaQuery } from "react-responsive";
 
 export async function dashboardLoader() {
   const boards = (await fetchData("boards")) || [];
@@ -23,7 +22,6 @@ function DashBoard() {
       closeSidebarModal();
     }
   };
-
 
   return (
     <div className="dashboard">

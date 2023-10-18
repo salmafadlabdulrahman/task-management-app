@@ -12,10 +12,12 @@ import { useContext } from "react";
 import { AppContext } from "../Pages/MainLayout";
 
 function SideBar() {
-  const { lightMode, changeTheme, hidesidebarState, hideSidebar, openModal } = useContext(AppContext);
+  const { lightMode, changeTheme, hidesidebarState, hideSidebar, openModal } =
+    useContext(AppContext);
 
   return (
-    <div className="sidebar-wrapper"> {/*bigger-container */}
+    <div className="sidebar-wrapper">
+      {/*bigger-container */}
       {!hidesidebarState && (
         <div className={`sidebar ${lightMode ? "lightMode-sidebar" : ""}`}>
           <div className="sidebar-container">
@@ -83,12 +85,8 @@ function SideBar() {
           </div>
         </div>
       )}
-
-      
-
     </div>
   );
 }
 
 export default SideBar;
-
