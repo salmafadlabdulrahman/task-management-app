@@ -1,5 +1,5 @@
 import "./App.css";
-import DashBoard, { dashboardLoader } from "./Pages/DashBoard";
+import DashBoard, { dashboardAction, dashboardLoader } from "./Pages/DashBoard";
 import MainLayout from "./Pages/MainLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -11,7 +11,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <DashBoard />,
-        loader: dashboardLoader
+        loader: dashboardLoader,
+        action: dashboardAction
       },
       {
         path: "/about",

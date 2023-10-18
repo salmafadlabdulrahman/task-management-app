@@ -300,6 +300,11 @@ body {
   margin-top: 1em;
 }
 
+.submit-board-btn:disabled {
+  opacity: .5!important;
+  cursor: not-allowed;
+}
+
 .sidebar-container-component {
   background-color: #2b2c37;
   border: 1px solid #3e3f4e;

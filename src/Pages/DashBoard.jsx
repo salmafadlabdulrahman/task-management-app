@@ -11,6 +11,13 @@ export async function dashboardLoader() {
   return { boards };
 }
 
+export async function dashboardAction({request}) {
+  const data = await request.formData()
+  const {_action, ...values} = Object.fromEntries(data)
+  console.log(_action, values);
+  return data
+}
+
 function DashBoard() {
   const { boards } = useLoaderData();
   const { hidesidebarState, setHidesidebar, isModalOpen, closeModal, closeSidebarModal, sidebarModal } =
