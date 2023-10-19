@@ -1,4 +1,4 @@
-import { useContext, useEffect/*, useRef*/, useState } from "react";
+import { useContext, useEffect /*, useRef*/, useState } from "react";
 import crossImg from "../assets/icon-cross.svg";
 import { AppContext } from "../Pages/MainLayout";
 
@@ -21,12 +21,14 @@ function AddBoardForm() {
 
   useEffect(() => {
     if (isSubmitting) {
-      if (boardTitle === "") {
+      /*if (boardTitle === "") {
         alert("Can't be empty");
       } else {
         setFormOpen(false);
         closeModal();
-      }
+      }*/
+      setFormOpen(false);
+      closeModal();
     }
   }, [isSubmitting, closeModal]);
 
@@ -35,7 +37,7 @@ function AddBoardForm() {
   };
 
   function addNewColumn(event) {
-    event.preventDefault()
+    event.preventDefault();
     const column = `New Column`;
     setColumnsField([...columnsField, column]);
     console.log(columnsField);
@@ -47,7 +49,9 @@ function AddBoardForm() {
           <div className="form-wrapper" style={style}>
             <div className="form">
               <h2>Add New Board</h2>
-              <fetcher.Form method="post" > {/*ref={formRef} */}
+              <fetcher.Form method="post">
+                {" "}
+                {/*ref={formRef} */}
                 <div className="form-fields">
                   <label
                     htmlFor="title"
@@ -82,7 +86,7 @@ function AddBoardForm() {
                             lightMode ? `lightMode-input` : ""
                           }`}
                           type="text"
-                          name={`columns ${index+1}`}
+                          name={`columns ${index + 1}`}
                           placeholder={`e.g. ${column}`}
                         />
                         <span className="cross-img">
@@ -121,8 +125,6 @@ function AddBoardForm() {
 }
 
 export default AddBoardForm;
-
-
 
 /*<div className="column-field">
                       <input
