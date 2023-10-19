@@ -83,6 +83,7 @@ function AddBoardForm() {
                           lightMode ? `lightMode-input` : ""
                         }`}
                         type="text"
+                        id="columns"
                         name={`columns 1`}
                         placeholder={`e.g. Todo`}
                       />
@@ -96,6 +97,7 @@ function AddBoardForm() {
                         className={`column ${
                           lightMode ? `lightMode-input` : ""
                         }`}
+                        id="columns"
                         type="text"
                         name={`columns 2`}
                         placeholder={`e.g. Doing`}
