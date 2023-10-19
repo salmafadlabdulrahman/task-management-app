@@ -50,7 +50,6 @@ function AddBoardForm() {
             <div className="form">
               <h2>Add New Board</h2>
               <fetcher.Form method="post">
-                {" "}
                 {/*ref={formRef} */}
                 <div className="form-fields">
                   <label
@@ -78,22 +77,33 @@ function AddBoardForm() {
                     >
                       Columns
                     </label>
+                    <div className="column-field">
+                      <input
+                        className={`column ${
+                          lightMode ? `lightMode-input` : ""
+                        }`}
+                        type="text"
+                        name={`columns 1`}
+                        placeholder={`e.g. Todo`}
+                      />
+                      <span className="cross-img">
+                        <img src={crossImg} />
+                      </span>
+                    </div>
 
-                    {columnsField.map((column, index) => (
-                      <div className="column-field" key={index}>
-                        <input
-                          className={`column ${
-                            lightMode ? `lightMode-input` : ""
-                          }`}
-                          type="text"
-                          name={`columns ${index + 1}`}
-                          placeholder={`e.g. ${column}`}
-                        />
-                        <span className="cross-img">
-                          <img src={crossImg} />
-                        </span>
-                      </div>
-                    ))}
+                    <div className="column-field">
+                      <input
+                        className={`column ${
+                          lightMode ? `lightMode-input` : ""
+                        }`}
+                        type="text"
+                        name={`columns 2`}
+                        placeholder={`e.g. Doing`}
+                      />
+                      <span className="cross-img">
+                        <img src={crossImg} />
+                      </span>
+                    </div>
                   </div>
 
                   <div className="form-btns">
@@ -108,6 +118,7 @@ function AddBoardForm() {
                     <input type="hidden" name="_action" value="createBoard" />
                     <button
                       type="submit"
+                      value={`submit`}
                       className="submit-board-btn"
                       disabled={!boardTitle ? true : false}
                     >
@@ -125,6 +136,24 @@ function AddBoardForm() {
 }
 
 export default AddBoardForm;
+
+{
+  /*columnsField.map((column, index) => (
+  <div className="column-field" key={index}>
+    <input
+      className={`column ${
+        lightMode ? `lightMode-input` : ""
+      }`}
+      type="text"
+      name={`columns ${index + 1}`}
+      placeholder={`e.g. ${column}`}
+    />
+    <span className="cross-img">
+      <img src={crossImg} />
+    </span>
+  </div>
+    ))*/
+}
 
 /*<div className="column-field">
                       <input
