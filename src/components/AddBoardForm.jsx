@@ -35,9 +35,9 @@ function AddBoardForm() {
   };
 
   function addNewColumn() {
-    const column = `New Column`
-    setColumnsField([...columnsField, column])
-    console.log(columnsField)
+    const column = `New Column`;
+    setColumnsField([...columnsField, column]);
+    console.log(columnsField);
   }
   return (
     <>
@@ -97,7 +97,6 @@ function AddBoardForm() {
                         lightMode ? "lightMode-btn" : ""
                       }`}
                       onClick={(e) => {
-                        
                         e.preventDefault();
                         addNewColumn();
                       }}
