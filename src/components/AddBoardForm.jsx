@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect/*, useRef*/, useState } from "react";
 import crossImg from "../assets/icon-cross.svg";
 import { AppContext } from "../Pages/MainLayout";
 
@@ -17,7 +17,7 @@ function AddBoardForm() {
   const fetcher = useFetcher();
   const isSubmitting = fetcher.state === "submitting";
 
-  const formRef = useRef();
+  //const formRef = useRef();
 
   useEffect(() => {
     if (isSubmitting) {
@@ -46,7 +46,7 @@ function AddBoardForm() {
           <div className="form-wrapper" style={style}>
             <div className="form">
               <h2>Add New Board</h2>
-              <fetcher.Form method="post" ref={formRef}>
+              <fetcher.Form method="post" > {/*ref={formRef} */}
                 <div className="form-fields">
                   <label
                     htmlFor="title"
@@ -98,6 +98,7 @@ function AddBoardForm() {
                       }`}
                       onClick={(e) => {
                         e.preventDefault();
+                        addNewColumn();
                         console.log("you created a new column")
                       }}
                     >
