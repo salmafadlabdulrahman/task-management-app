@@ -50,7 +50,6 @@ function AddBoardForm() {
             <div className="form">
               <h2>Add New Board</h2>
               <fetcher.Form method="post">
-                {/*ref={formRef} */}
                 <div className="form-fields">
                   <label
                     htmlFor="title"
@@ -120,7 +119,6 @@ function AddBoardForm() {
                     <input type="hidden" name="_action" value="createBoard" />
                     <button
                       type="submit"
-                      
                       className="submit-board-btn"
                       disabled={!boardTitle ? true : false}
                     >
