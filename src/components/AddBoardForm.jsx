@@ -97,6 +97,7 @@ function AddBoardForm() {
                         lightMode ? "lightMode-btn" : ""
                       }`}
                       onClick={(e) => {
+                        
                         e.preventDefault();
                         addNewColumn();
                       }}
