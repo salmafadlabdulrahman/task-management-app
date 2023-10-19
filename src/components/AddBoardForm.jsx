@@ -34,7 +34,8 @@ function AddBoardForm() {
     backgroundColor: lightMode ? "rgb(238, 239, 255)" : "#2b2c37",
   };
 
-  function addNewColumn() {
+  function addNewColumn(event) {
+    event.preventDefault()
     const column = `New Column`;
     setColumnsField([...columnsField, column]);
     console.log(columnsField);
@@ -81,7 +82,7 @@ function AddBoardForm() {
                             lightMode ? `lightMode-input` : ""
                           }`}
                           type="text"
-                          name={`columns`}
+                          name={`columns ${index+1}`}
                           placeholder={`e.g. ${column}`}
                         />
                         <span className="cross-img">
@@ -96,11 +97,7 @@ function AddBoardForm() {
                       className={`add-new-column ${
                         lightMode ? "lightMode-btn" : ""
                       }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        addNewColumn();
-                        console.log("you created a new column")
-                      }}
+                      onClick={addNewColumn}
                     >
                       + Add New Column
                     </button>
@@ -124,6 +121,8 @@ function AddBoardForm() {
 }
 
 export default AddBoardForm;
+
+
 
 /*<div className="column-field">
                       <input
