@@ -98,7 +98,7 @@ function AddBoardForm() {
                       }`}
                       onClick={(e) => {
                         e.preventDefault();
-                        addNewColumn();
+                        console.log("you created a new column")
                       }}
                     >
                       + Add New Column
