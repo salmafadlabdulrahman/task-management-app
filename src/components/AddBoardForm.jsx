@@ -81,7 +81,7 @@ function AddBoardForm() {
                             lightMode ? `lightMode-input` : ""
                           }`}
                           type="text"
-                          name={`column-${index}`}
+                          name={`columns ${index}`}
                           placeholder={`e.g. ${column}`}
                         />
                         <span className="cross-img">
