@@ -28,7 +28,7 @@ export async function dashboardAction({request}) {
       }
     }
   //console.log(values.title);
-  return data
+  //return data
 
 }
 

@@ -118,7 +118,7 @@ function AddBoardForm() {
                     <input type="hidden" name="_action" value="createBoard" />
                     <button
                       type="submit"
-                      value={`submit`}
+                      
                       className="submit-board-btn"
                       disabled={!boardTitle ? true : false}
                     >
