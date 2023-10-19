@@ -4,11 +4,7 @@ export const fetchData = (key) => {
     return JSON.parse(localStorage.getItem(key))
 }
 
-/*export const createNewBoard = () => {
-    //first I need to check if there's already a boards array in the local storage
-    //if there's then I grab that array, destructure it, and add the newly created board to it
-    //if there's not then I create a new boards array with my new board as the first element
-    const existingBoards = fetchData("boards");
-    return existingBoards 
-
-}*/
+export const createNewBoard = (values) => {
+    const existingBoards = fetchData("boards") || [];
+    return localStorage.setItem("boards", JSON.stringify([...existingBoards, {...values}]))
+}

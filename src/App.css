@@ -65,6 +65,7 @@ body {
 
 .dashboard {
   overflow-x: scroll;
+  /*overflow-y: scroll;*/
 }
 
 .dashboard::-webkit-scrollbar {
@@ -74,6 +75,7 @@ body {
 
 .dashboard-container {
   position: relative;
+  /*overflow-y: scroll;*/
 }
 
 .dashboard-content {
@@ -189,10 +191,19 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+  
 }
 
+
 .form-container {
-  width: 75%;
+  /*width: 75%;*/
+  max-height: 80vh;
+  overflow-y: auto;
+  width: 400px;
+}
+
+.form-container::-webkit-scrollbar {
+  display: none;
 }
 
 .form-wrapper {

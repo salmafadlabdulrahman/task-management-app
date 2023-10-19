@@ -56,16 +56,17 @@ function MainLayout() {
     left: isDesktopOrTablet ? (hidesidebarState ? "0px" : "250px") : "0px",
   };
 
+
   return (
-    <div className="main-layout">
-      <div className="main-content">
+    <div className="main-layout" >
+      <div className={`main-content`}>
         <AppContext.Provider
           value={{
             lightMode,
             changeTheme,
             hidesidebarState,
             hideSidebar,
-            setHidesidebar,
+            setHidesidebar, 
             isModalOpen,
             openModal,
             closeModal,

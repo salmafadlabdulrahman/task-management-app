@@ -1,10 +1,11 @@
-import { fetchData } from "../../helper";
+import { createNewBoard, fetchData } from "../../helper";
 import { useLoaderData } from "react-router-dom";
 import { AppContext } from "./MainLayout";
-import { useContext } from "react";
+import { useContext} from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
 import AddBoardForm from "../components/AddBoardForm";
 import SideBarNav from "../components/SideBarNav";
+import { toast } from "react-toastify";
 
 export async function dashboardLoader() {
   const boards = (await fetchData("boards")) || [];
@@ -12,10 +13,23 @@ export async function dashboardLoader() {
 }
 
 export async function dashboardAction({request}) {
-  const data = await request.formData()
-  const {_action, ...values} = Object.fromEntries(data)
-  console.log(_action, values);
+  const data = await request.formData();
+  const {_action, ...values} = Object.fromEntries(data);
+  
+
+    //Creating a new board
+    if (_action === "createBoard") {
+      try {
+        createNewBoard(values);
+        return toast.success(`You created a new board`);
+      } catch (err) {
+        //throw new Error("There was a problem creating your board")
+        throw new Error(err)
+      }
+    }
+  //console.log(values.title);
   return data
+
 }
 
 function DashBoard() {
