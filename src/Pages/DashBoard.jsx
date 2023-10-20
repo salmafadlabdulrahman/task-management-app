@@ -5,7 +5,7 @@ import { useContext} from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
 import AddBoardForm from "../components/AddBoardForm";
 import SideBarNav from "../components/SideBarNav";
-import { toast } from "react-toastify";
+/*import { toast } from "react-toastify";*/
 
 export async function dashboardLoader() {
   const boards = (await fetchData("boards")) || [];
@@ -20,8 +20,8 @@ export async function dashboardAction({request}) {
     //Creating a new board
     if (_action === "createBoard") {
       try {
-        createNewBoard(values);
-        return toast.success(`You created a new board`);
+        return createNewBoard(values);
+        /*return toast.success(`You created a new board`);*/
       } catch (err) {
         //throw new Error("There was a problem creating your board")
         throw new Error(err)
