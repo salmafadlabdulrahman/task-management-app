@@ -12,25 +12,15 @@ function AddBoardForm() {
   const [formOpen, setFormOpen] = useState(true);
   const [columnsField, setColumnsField] = useState(["Todo", "Doing"]);
 
-  console.log(columnsField);
-
   const fetcher = useFetcher();
   const isSubmitting = fetcher.state === "submitting";
 
-  //const formRef = useRef();
-
   useEffect(() => {
     if (isSubmitting) {
-      /*if (boardTitle === "") {
-        alert("Can't be empty");
-      } else {
-        setFormOpen(false);
-        closeModal();
-      }*/
       setFormOpen(false);
       closeModal();
     }
-  }, [isSubmitting]);
+  }, [isSubmitting, closeModal]);
 
   const style = {
     backgroundColor: lightMode ? "rgb(238, 239, 255)" : "#2b2c37",
@@ -40,7 +30,6 @@ function AddBoardForm() {
     event.preventDefault();
     const column = `New Column`;
     setColumnsField([...columnsField, column]);
-    console.log(columnsField);
   }
   return (
     <>
@@ -63,6 +52,7 @@ function AddBoardForm() {
                     className={`title ${lightMode ? `lightMode-input` : ""}`}
                     type="text"
                     name="title"
+                    id="title"
                     placeholder="e.g. Take coffee break"
                     onChange={(e) => setBoardTitle(e.target.value)}
                   />
@@ -75,45 +65,27 @@ function AddBoardForm() {
                     >
                       Columns
                     </h4>
-                    <div className="column-field">
-                      <input
-                        className={`column ${
-                          lightMode ? `lightMode-input` : ""
-                        }`}
-                        type="text"
-                        name={`columns 1`}
-                        placeholder={`e.g. Todo`}
-                      />
-                      <span className="cross-img">
-                        <img src={crossImg} />
-                      </span>
-                    </div>
 
-                    <div className="column-field">
-                      <input
-                        className={`column ${
-                          lightMode ? `lightMode-input` : ""
-                        }`}
-                        type="text"
-                        name={`columns 2`}
-                        placeholder={`e.g. Doing`}
-                      />
-                      <span className="cross-img">
-                        <img src={crossImg} />
-                      </span>
-                    </div>
+                    {columnsField.map((column, index) => (
+                      <div className="column-field" key={index}>
+                        <input
+                          className={`column ${
+                            lightMode ? `lightMode-input` : ""
+                          }`}
+                          type="text"
+                          name={`columns ${index + 1}`}
+                          placeholder={`e.g. ${column}`}
+                        />
+                        <span className="cross-img">
+                          <img src={crossImg} />
+                        </span>
+                      </div>
+                    ))}
                   </div>
 
                   <div className="form-btns">
-                    <button
-                      className={`add-new-column ${
-                        lightMode ? "lightMode-btn" : ""
-                      }`}
-                      onClick={addNewColumn}
-                    >
-                      + Add New Column
-                    </button>
-                    <input type="hidden" name="_action" value="createBoard" />
+                    
+
                     <button
                       type="submit"
                       className="submit-board-btn"
@@ -121,6 +93,7 @@ function AddBoardForm() {
                     >
                       Create New Board
                     </button>
+                    <input type="hidden" name="_action" value="createBoard" />
                   </div>
                 </div>
               </fetcher.Form>
