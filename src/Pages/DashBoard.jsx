@@ -20,7 +20,8 @@ export async function dashboardAction({request}) {
     //Creating a new board
     if (_action === "createBoard") {
       try {
-        return createNewBoard(values);
+        createNewBoard(values);
+        return alert("You created a board")
         /*return toast.success(`You created a new board`);*/
       } catch (err) {
         //throw new Error("There was a problem creating your board")
