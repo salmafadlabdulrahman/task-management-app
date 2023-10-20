@@ -6,6 +6,7 @@ import showSideBar from "../assets/icon-show-sidebar.svg";
 import AddBoardForm from "../components/AddBoardForm";
 import SideBarNav from "../components/SideBarNav";
 import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export async function dashboardLoader() {
   const boards = (await fetchData("boards")) || [];
