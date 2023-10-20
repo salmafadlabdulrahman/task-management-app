@@ -83,14 +83,14 @@ function AddBoardForm() {
                   </div>
 
                   <div className="form-btns">
-                    <button
+                    {/*<button
                       className={`add-new-column ${
                         lightMode ? "lightMode-btn" : ""
                       }`}
                       onClick={addNewColumn}
                     >
                       + Add New Column
-                    </button>
+                    </button>*/}
 
                     <button
                       type="submit"
