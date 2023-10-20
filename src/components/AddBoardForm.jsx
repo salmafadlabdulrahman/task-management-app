@@ -26,11 +26,11 @@ function AddBoardForm() {
     backgroundColor: lightMode ? "rgb(238, 239, 255)" : "#2b2c37",
   };
 
-  /*function addNewColumn(event) {
+  function addNewColumn(event) {
     event.preventDefault();
     const column = `New Column`;
     setColumnsField([...columnsField, column]);
-  }*/
+  }
   return (
     <>
       {formOpen && (
@@ -84,7 +84,14 @@ function AddBoardForm() {
                   </div>
 
                   <div className="form-btns">
-                    
+                    <button
+                      className={`add-new-column ${
+                        lightMode ? "lightMode-btn" : ""
+                      }`}
+                      onClick={addNewColumn}
+                    >
+                      + Add New Column
+                    </button>
 
                     <button
                       type="submit"
