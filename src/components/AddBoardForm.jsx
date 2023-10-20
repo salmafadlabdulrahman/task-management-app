@@ -30,7 +30,7 @@ function AddBoardForm() {
       setFormOpen(false);
       closeModal();
     }
-  }, [isSubmitting, closeModal]);
+  }, [isSubmitting]);
 
   const style = {
     backgroundColor: lightMode ? "rgb(238, 239, 255)" : "#2b2c37",
