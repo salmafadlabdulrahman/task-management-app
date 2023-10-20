@@ -1,42 +1,43 @@
 import { createNewBoard, fetchData } from "../../helper";
 import { useLoaderData } from "react-router-dom";
 import { AppContext } from "./MainLayout";
-import { useContext} from "react";
+import { useContext } from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
 import AddBoardForm from "../components/AddBoardForm";
 import SideBarNav from "../components/SideBarNav";
-/*import { toast } from "react-toastify";*/
+import { toast } from "react-toastify";
 
 export async function dashboardLoader() {
   const boards = (await fetchData("boards")) || [];
   return { boards };
 }
 
-export async function dashboardAction({request}) {
+
+export async function dashboardAction({ request }) {
   const data = await request.formData();
-  const {_action, ...values} = Object.fromEntries(data);
-  
+  const { _action, ...values } = Object.fromEntries(data);
 
-    //Creating a new board
-    if (_action === "createBoard") {
-      try {
-        createNewBoard(values);
-        return <h1>You created a board</h1>
-        /*return toast.success(`You created a new board`);*/
-      } catch (err) {
-        //throw new Error("There was a problem creating your board")
-        throw new Error(err)
-      }
+  //Creating a new board
+  if (_action === "createBoard") {
+    try {
+      createNewBoard(values);
+      return toast.dark(`You created a new board`)
+    } catch (err) {
+      throw new Error("There was a problem creating your board");
     }
-  //console.log(values.title);
-  //return data
-
+  }
 }
 
 function DashBoard() {
   const { boards } = useLoaderData();
-  const { hidesidebarState, setHidesidebar, isModalOpen, closeModal, closeSidebarModal, sidebarModal } =
-    useContext(AppContext);
+  const {
+    hidesidebarState,
+    setHidesidebar,
+    isModalOpen,
+    closeModal,
+    closeSidebarModal,
+    sidebarModal,
+  } = useContext(AppContext);
 
   const handleOutsideClick = (event) => {
     if (event.target === event.currentTarget) {
@@ -77,7 +78,6 @@ function DashBoard() {
 }
 
 export default DashBoard;
-
 
 {
   /*<div className="column">

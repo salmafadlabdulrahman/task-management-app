@@ -4,7 +4,6 @@ import { AppContext } from "../Pages/MainLayout";
 
 import { useFetcher } from "react-router-dom";
 
-/*no-symbol */
 
 function AddBoardForm() {
   const { lightMode, closeModal } = useContext(AppContext);
@@ -113,26 +112,6 @@ function AddBoardForm() {
 }
 
 export default AddBoardForm;
-
-{
-  /*<button
-                      className={`add-new-column ${
-                        lightMode ? "lightMode-btn" : ""
-                      }`}
-                      onClick={addNewColumn}
-                    >
-                      + Add New Column
-                    </button>*/
-}
-
-/*<label
-                      htmlFor="columns"
-                      className={`columns-field ${
-                        lightMode ? "lightMode-label" : ""
-                      }`}
-                    >
-                      Columns
-                    </label> */
 
 /*<div className="column-field">
                       <input
