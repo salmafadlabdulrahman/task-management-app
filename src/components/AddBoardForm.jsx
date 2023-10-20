@@ -68,21 +68,19 @@ function AddBoardForm() {
                   />
 
                   <div className="subtask-columns">
-                    <label
-                      htmlFor="columns"
+                    <h4
                       className={`columns-field ${
                         lightMode ? "lightMode-label" : ""
                       }`}
                     >
                       Columns
-                    </label>
+                    </h4>
                     <div className="column-field">
                       <input
                         className={`column ${
                           lightMode ? `lightMode-input` : ""
                         }`}
                         type="text"
-                        id="columns"
                         name={`columns 1`}
                         placeholder={`e.g. Todo`}
                       />
@@ -96,7 +94,6 @@ function AddBoardForm() {
                         className={`column ${
                           lightMode ? `lightMode-input` : ""
                         }`}
-                        id="columns"
                         type="text"
                         name={`columns 2`}
                         placeholder={`e.g. Doing`}
@@ -154,6 +151,15 @@ export default AddBoardForm;
   </div>
     ))*/
 }
+
+/*<label
+                      htmlFor="columns"
+                      className={`columns-field ${
+                        lightMode ? "lightMode-label" : ""
+                      }`}
+                    >
+                      Columns
+                    </label> */
 
 /*<div className="column-field">
                       <input
