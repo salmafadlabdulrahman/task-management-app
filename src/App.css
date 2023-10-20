@@ -15,6 +15,10 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+.toastMessage {
+  margin: 1em 1em 0 1em;
+}
+
 /*Navbar styling*/
 .navbar-container {
   background-color: #2b2c37;

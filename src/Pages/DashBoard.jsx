@@ -17,11 +17,16 @@ export async function dashboardAction({ request }) {
   const data = await request.formData();
   const { _action, ...values } = Object.fromEntries(data);
 
+
   //Creating a new board
   if (_action === "createBoard") {
     try {
       createNewBoard(values);
-      return toast.dark(`You created a new board`)
+      //return toast.dark(`You created a new board`)
+      return toast.dark("You created a new board !", {
+        className: 'toastMessage',
+        position: toast.POSITION.TOP_CENTER
+      });
     } catch (err) {
       throw new Error("There was a problem creating your board");
     }
