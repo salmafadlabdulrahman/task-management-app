@@ -76,12 +76,12 @@ function MainLayout() {
           }}
         >
           {isDesktopOrTablet && <SideBar />}
-          <div className="dashboard-container">
+          {/*<div className="dashboard-container">*/}
             <NavBar />
             <div className="dashboard-content" style={style}>
               <Outlet />
             </div>
-          </div>
+          {/*</div>*/}
         </AppContext.Provider>
       </div>
     </div>

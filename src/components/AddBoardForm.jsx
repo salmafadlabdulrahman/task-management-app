@@ -73,7 +73,7 @@ function AddBoardForm() {
                           }`}
                           type="text"
                           name={`columns ${index + 1}`}
-                          placeholder={`e.g. ${column}`}
+                          placeholder={`e.g. ${index % 2 === 0 ? "Todo" : "Doing"}`}
                         />
                         <span className="cross-img">
                           <img src={crossImg} />
