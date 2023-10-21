@@ -1,21 +1,31 @@
 //rrd imports
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 import SideBar from "../components/SideBar";
 //rs imports
 import { useMediaQuery } from "react-responsive";
 import NavBar from "../components/NavBar";
 //r imports
 import { createContext, useState } from "react";
+import { fetchData } from "../../helper";
 
-export const ThemeContext = createContext();
+//export const ThemeContext = createContext();
 export const AppContext = createContext();
+
+
+export async function mainLoader() {
+  const boards = await fetchData("boards");
+  return { boards };
+}
 
 function MainLayout() {
   //Light / dark Mode
   const [lightMode, setLightMode] = useState(false);
   const [hidesidebarState, setHidesidebar] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [sidebarModal, setSidebarModal] = useState(false)
+  const [sidebarModal, setSidebarModal] = useState(false);
+
+  const {boards} = useLoaderData()
+
   //Using the media query for responsive layout
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
 
@@ -43,7 +53,6 @@ function MainLayout() {
     setHidesidebar(true);
   }
 
-
   if (!lightMode) {
     document.body.style.backgroundColor = "rgb(32, 33, 44)";
     document.body.style.color = "white";
@@ -56,9 +65,8 @@ function MainLayout() {
     left: isDesktopOrTablet ? (hidesidebarState ? "0px" : "250px") : "0px",
   };
 
-
   return (
-    <div className="main-layout" >
+    <div className="main-layout">
       <div className={`main-content`}>
         <AppContext.Provider
           value={{
@@ -66,22 +74,21 @@ function MainLayout() {
             changeTheme,
             hidesidebarState,
             hideSidebar,
-            setHidesidebar, 
+            setHidesidebar,
             isModalOpen,
             openModal,
             closeModal,
             sidebarModal,
             openSidebarModal,
-            closeSidebarModal
+            closeSidebarModal,
+            boards,
           }}
         >
           {isDesktopOrTablet && <SideBar />}
-          {/*<div className="dashboard-container">*/}
-            <NavBar />
-            <div className="dashboard-content" style={style}>
-              <Outlet />
-            </div>
-          {/*</div>*/}
+          <NavBar />
+          <div className="dashboard-content" style={style}>
+            <Outlet />
+          </div>
         </AppContext.Provider>
       </div>
     </div>

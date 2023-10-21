@@ -12,12 +12,11 @@ import { useContext } from "react";
 import { AppContext } from "../Pages/MainLayout";
 
 function SideBar() {
-  const { lightMode, changeTheme, hidesidebarState, hideSidebar, openModal } =
+  const { lightMode, changeTheme, hidesidebarState, hideSidebar, openModal, boards } =
     useContext(AppContext);
 
   return (
     <div className="sidebar-wrapper">
-      {/*bigger-container */}
       {!hidesidebarState && (
         <div className={`sidebar ${lightMode ? "lightMode-sidebar" : ""}`}>
           <div className="sidebar-container">
@@ -33,19 +32,13 @@ function SideBar() {
                   lightMode ? "lightMode-links" : ""
                 }`}
               >
-                <NavLink>
+                {boards.map((board, index) => (
+                  <NavLink key={index} to={`/dashboard/${board.id}`}>
                   <img src={boardImg} className="boardIcon" />
-                  Platform Launch
+                  {board.title}
                 </NavLink>
-                <NavLink>
-                  <img src={boardImg} className="boardIcon" />
-                  Marketing Plan
-                </NavLink>
-                <NavLink>
-                  <img src={boardImg} className="boardIcon" />
-                  Roadmap
-                </NavLink>
-              </div>
+                ))}
+              </div> 
 
               <button
                 className={`btn create-board-btn ${

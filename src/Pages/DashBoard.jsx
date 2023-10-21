@@ -1,5 +1,4 @@
-import { createNewBoard, fetchData } from "../../helper";
-import { useLoaderData } from "react-router-dom";
+import { createNewBoard } from "../../helper";
 import { AppContext } from "./MainLayout";
 import { useContext } from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
@@ -7,15 +6,15 @@ import AddBoardForm from "../components/AddBoardForm";
 import SideBarNav from "../components/SideBarNav";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-export async function dashboardLoader() {
-  const boards = (await fetchData("boards")) || [];
-  return { boards };
-}
+import { useMediaQuery } from "react-responsive";
+import Board from "./Board";
+import { useParams } from "react-router-dom";
 
 export async function dashboardAction({ request }) {
   const data = await request.formData();
   const { _action, ...values } = Object.fromEntries(data);
+
+  console.log(values)
 
   //Creating a new board
   if (_action === "createBoard") {
@@ -32,9 +31,6 @@ export async function dashboardAction({ request }) {
 }
 
 function DashBoard() {
-  const { boards } = useLoaderData();
-
-  console.log(boards);
   const {
     hidesidebarState,
     setHidesidebar,
@@ -43,7 +39,11 @@ function DashBoard() {
     closeSidebarModal,
     sidebarModal,
     lightMode,
+    boards,
   } = useContext(AppContext);
+  const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
+
+  const params = useParams();
 
   const handleOutsideClick = (event) => {
     if (event.target === event.currentTarget) {
@@ -52,12 +52,19 @@ function DashBoard() {
     }
   };
 
-  const style = {
-    backgroundColor: lightMode ? "rgb(238, 239, 255)" : "#2b2c37",
+  const dashbaordStyle = {
+    paddingLeft: isDesktopOrTablet
+      ? hidesidebarState
+        ? "0px"
+        : "250px"
+      : "0px",
   };
 
+  const filteredBoard = boards.filter(board => board.id === params.id)[0]
+
+
   return (
-    <div className="dashboard">
+    <div className="dashboard" style={dashbaordStyle}>
       <div
         className={`${isModalOpen || sidebarModal ? "modal" : ""}`}
         onClick={handleOutsideClick}
@@ -65,8 +72,26 @@ function DashBoard() {
         {sidebarModal && <SideBarNav />}
         {isModalOpen && <AddBoardForm />}
       </div>
-      <div className="tasks-table-container">
-        {boards && boards.length > 0 ? (
+      
+      {boards && boards.length > 0 ? <Board board={filteredBoard} /> : <h1>Create a board</h1>}
+
+      {hidesidebarState && (
+        <button
+          className="showsidebar-btn"
+          onClick={() => setHidesidebar(false)}
+        >
+          <img src={showSideBar} className="showsidebar-img" />
+        </button>
+      )}
+    </div>
+  );
+}
+
+export default DashBoard;
+
+
+
+/*{boards && boards.length > 0 ? (
           boards.map((board, index) => (
             <div className="task-column" key={index}>
               <h3 className="column-title">
@@ -86,33 +111,21 @@ function DashBoard() {
             </div>
           ))
         ) : (
+          <h1>Create a board</h1>
+        )} */
+
+{
+  /*<div className={`create-new-column ${!lightMode && "darkMode"}`}>
+            <div className="create-column-btn">+ New Column</div>
+        </div>*/
+}
+
+{
+  /* : (
           <div className="intro">
             <h3>Create a board</h3>
           </div>
-        )}
-        <div className={`create-new-column ${!lightMode && "darkMode"}`}>
-          <div className="create-column-btn">+ New Column</div>
-        </div>
-      </div>
-
-      {hidesidebarState && (
-        <button
-          className="showsidebar-btn"
-          onClick={() => setHidesidebar(false)}
-        >
-          <img src={showSideBar} className="showsidebar-img" />
-        </button>
-      )}
-    </div>
-  );
-}
-
-export default DashBoard;
-
-{
-  /*<div key={index}>
-              <h2>{board.title}</h2>
-            </div> */
+        ) */
 }
 {
   /*<div className="column">

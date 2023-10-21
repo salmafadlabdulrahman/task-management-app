@@ -11,6 +11,8 @@ function AddBoardForm() {
   const [formOpen, setFormOpen] = useState(true);
   const [columnsField, setColumnsField] = useState(["Todo", "Doing"]);
 
+  
+
   const fetcher = useFetcher();
   const isSubmitting = fetcher.state === "submitting";
 
@@ -19,6 +21,7 @@ function AddBoardForm() {
       setFormOpen(false);
       closeModal();
     }
+    
   }, [isSubmitting, closeModal]);
 
   const style = {
@@ -29,6 +32,7 @@ function AddBoardForm() {
     event.preventDefault();
     const column = `New Column`;
     setColumnsField([...columnsField, column]);
+    
   }
   return (
     <>
@@ -37,7 +41,7 @@ function AddBoardForm() {
           <div className="form-wrapper" style={style}>
             <div className="form">
               <h2>Add New Board</h2>
-              <fetcher.Form method="post">
+              <fetcher.Form method="post" name="boardForm">
                 <div className="form-fields">
                   <label
                     htmlFor="title"
@@ -112,30 +116,3 @@ function AddBoardForm() {
 }
 
 export default AddBoardForm;
-
-/*<div className="column-field">
-                      <input
-                        className={`column ${
-                          lightMode ? `lightMode-input` : ""
-                        }`}
-                        type="text"
-                        name={`column-${crypto.randomUUID()}`}
-                        placeholder="e.g. Todo"
-                      />
-                      <span className="cross-img">
-                        <img src={crossImg} />
-                      </span>
-                    </div>
-                    <div className="column-field">
-                      <input
-                        className={`column ${
-                          lightMode ? `lightMode-input` : ""
-                        }`}
-                        type="text"
-                        name={`column-${crypto.randomUUID()}`}
-                        placeholder="e.g. Doing"
-                      />
-                      <span className="cross-img">
-                        <img src={crossImg} />
-                      </span>
-                    </div> */

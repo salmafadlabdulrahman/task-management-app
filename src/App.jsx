@@ -1,6 +1,7 @@
 import "./App.css";
-import DashBoard, { dashboardAction, dashboardLoader } from "./Pages/DashBoard";
-import MainLayout from "./Pages/MainLayout";
+import Board from "./Pages/Board";
+import DashBoard, { dashboardAction } from "./Pages/DashBoard";
+import MainLayout, { mainLoader } from "./Pages/MainLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
@@ -10,21 +11,18 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    loader: mainLoader,
     children: [
       {
-        index: true,
-        element: <DashBoard />,
-        loader: dashboardLoader,
+        path: "/dashboard/:id",
+        element: <DashBoard />, 
         action: dashboardAction
       },
-      {
-        path: "/about",
-        element: <h1>This is the about page</h1>,
-      },
-      {
-        path: "/contact",
-        element: <h1>This is the contact page</h1>,
-      },
+      /*{
+        path: "/dashboard/:id",
+        element: <Board />,
+      }*/
+      
     ],
   },
 ]);
@@ -39,3 +37,13 @@ function App() {
 }
 
 export default App;
+
+
+/*{
+        path: "/about",
+        element: <h1>This is the about page</h1>,
+      },
+      {
+        path: "/contact",
+        element: <h1>This is the contact page</h1>,
+      }, */
