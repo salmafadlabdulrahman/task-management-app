@@ -1,4 +1,4 @@
-import { useContext, useEffect /*, useRef*/, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import crossImg from "../assets/icon-cross.svg";
 import { AppContext } from "../Pages/MainLayout";
 
@@ -12,7 +12,6 @@ function AddBoardForm() {
   const [columnsField, setColumnsField] = useState(["Todo", "Doing"]);
 
   
-
   const fetcher = useFetcher();
   const isSubmitting = fetcher.state === "submitting";
 
@@ -32,8 +31,8 @@ function AddBoardForm() {
     event.preventDefault();
     const column = `New Column`;
     setColumnsField([...columnsField, column]);
-    
   }
+  
   return (
     <>
       {formOpen && (

@@ -112,11 +112,14 @@ body {
   color: #828fa3;
 }
 
+
+
 .task-card {
   background-color: white;
   width: 280px;
   padding: 1em 2em 1em 1em;
   margin-top: 1em;
+  border: 1px solid lightblue;
 }
 
 .task-card,
@@ -217,7 +220,7 @@ body {
 }
 
 .title-field,
-.columns-field {
+.columns-field, .task-name-field, .description, .status {
   font-size: 0.9em;
   font-weight: 600;
 }
@@ -226,9 +229,19 @@ body {
   color: #ea5555;
 }
 
+.select-menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.description {
+  margin-top: 2em;
+}
+
 .title,
 .column,
-.task-column {
+.task-column, .description-field, .status-field{
   background: none;
   border: 1px solid #3e3f4e;
   padding: 1em;
@@ -237,8 +250,37 @@ body {
   color: white;
 }
 
+.description-field {
+  margin-top: 1em;
+  padding-bottom: 4em;
+}
+
+.status-field {
+  margin-top: 1em;
+}
+
+.status-field:hover {
+  border: 1px solid #635fc7;
+  cursor: pointer;
+}
+
+.option {
+  background-color: #2b2c37;
+  border: none;
+  outline: none;
+  color: #828fa3;
+  font-weight: 500;
+  
+}
+
+
+.description-field::placeholder {
+  white-space: wrap;
+  font-weight: 600;
+}
+
 .task-column {
-  width: 300px;
+  min-width: 300px;
   margin-top: 0em;
   padding-left: 0;
   border: none;
@@ -246,7 +288,7 @@ body {
 
 .title::placeholder,
 .column::placeholder {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.1em;
 }
 
@@ -288,7 +330,7 @@ body {
   margin-top: 1em;
 }
 
-.form-btns button {
+.form-btns button, .submit-task-btn {
   border: 0;
   border-radius: 50px;
   padding: 0.9em;
@@ -306,10 +348,19 @@ body {
   background-color: rgb(226, 227, 255);
 }
 
-.submit-board-btn {
+.submit-board-btn, .submit-task-btn {
   background-color: #635fc7;
   color: white;
   margin-top: 1em;
+}
+
+.submit-task-btn {
+  margin-top: 1.5em;
+}
+
+.submit-task-btn:hover {
+  opacity: .7;
+  transition: all 0.3s ease-in-out;
 }
 
 .submit-board-btn:disabled {
@@ -453,6 +504,11 @@ input:checked + .slider:before {
   width: 95%;
 }
 
+/*.task-column{
+  border: 1px solid blue;
+  min-width: 300px;
+}*/
+
 @media (min-width: 766px) {
   /*Navbar styling*/
   .main-nav {
@@ -489,7 +545,7 @@ input:checked + .slider:before {
     height: 100%;
     width: 250px;
     position: fixed;
-    z-index: 2;
+    z-index: 1;
     top: 0;
     left: 0;
     background-color: #2b2c37;
