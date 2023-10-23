@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "./MainLayout";
 import { getAllMatchingTasks } from "../../helper";
 import { useParams } from "react-router-dom";
+import TaskCard from "../components/TaskCard";
 
 function Board({ board }) {
   const { lightMode } = useContext(AppContext);
+  const [taskCard, setTaskCard] = useState(false);
   const params = useParams();
   const allColumns = [];
   const boardKeys = Object.keys(board ? board : []);
@@ -20,7 +22,6 @@ function Board({ board }) {
   };
 
   const tasks = getAllMatchingTasks(params.id);
-  
 
   return (
     <>
@@ -56,3 +57,14 @@ function Board({ board }) {
 }
 
 export default Board;
+
+/*<div
+                className={`task-card`}
+                style={style}
+                key={index}
+                onClick={() => setTaskCard(true)}
+              > */
+
+/*{taskCard && (
+            <TaskCard taskCard={taskCard} setTaskCard={setTaskCard} />
+          )} */

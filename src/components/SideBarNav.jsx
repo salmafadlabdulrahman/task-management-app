@@ -2,24 +2,26 @@ import { useContext } from "react";
 import { AppContext } from "../Pages/MainLayout";
 import { NavLink } from "react-router-dom";
 
-
 import boardImg from "../assets/icon-board.svg";
 import sunImg from "../assets/icon-light-theme.svg";
 import moonImg from "../assets/icon-dark-theme.svg";
 
 function SideBarNav() {
-  const { lightMode, changeTheme, openModal } = useContext(AppContext);
+  const { lightMode, changeTheme, openModal, boards } = useContext(AppContext);
   return (
-    <div  className={`sidebar-container-component ${lightMode ? "lightMode-sidebar" : ""}`}>
+    <div
+      className={`sidebar-container-component ${
+        lightMode ? "lightMode-sidebar" : ""
+      }`}
+    >
       <div className="sidebar-nav">
-
         <h6>All boards (3)</h6>
         <div
           className={`boards-list-container ${
             lightMode ? "lightMode-links" : ""
           }`}
         >
-          <NavLink>
+          {/*<NavLink>
             <img src={boardImg} className="boardIcon" />
             Platform Launch
           </NavLink>
@@ -30,7 +32,13 @@ function SideBarNav() {
           <NavLink>
             <img src={boardImg} className="boardIcon" />
             Roadmap
-          </NavLink>
+        </NavLink>*/}
+          {boards.map((board, index) => (
+            <NavLink key={index} to={`/dashboard/${board.id}`}>
+              <img src={boardImg} className="boardIcon" />
+              {board.title}
+            </NavLink>
+          ))}
         </div>
 
         <button

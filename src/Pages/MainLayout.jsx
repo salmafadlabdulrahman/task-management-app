@@ -37,7 +37,6 @@ export async function mainAction({ request }) {
 }
 
 function MainLayout() {
-  //Light / dark Mode
   const [lightMode, setLightMode] = useState(false);
   const [hidesidebarState, setHidesidebar] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
