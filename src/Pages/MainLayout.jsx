@@ -1,12 +1,13 @@
 //rrd imports
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData, useParams } from "react-router-dom";
 import SideBar from "../components/SideBar";
 //rs imports
 import { useMediaQuery } from "react-responsive";
 import NavBar from "../components/NavBar";
 //r imports
 import { createContext, useState } from "react";
-import { fetchData } from "../../helper";
+import { createTasks, fetchData } from "../../helper";
+import { toast } from "react-toastify";
 
 //export const ThemeContext = createContext();
 export const AppContext = createContext();
@@ -15,6 +16,24 @@ export const AppContext = createContext();
 export async function mainLoader() {
   const boards = await fetchData("boards");
   return { boards };
+}
+
+export async function mainAction({ request }) {
+  const data = await request.formData();
+  const {_action, ...values } = Object.fromEntries(data);
+
+  if (_action === "addTask") {
+    try {
+      createTasks({values, boardId: values.boardId})
+      return toast.dark("You added a task!", {
+        className: "toastMessage",
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } catch (err) {
+      throw new Error("There was a problem adding your task")
+    }
+  }
+  return values
 }
 
 function MainLayout() {

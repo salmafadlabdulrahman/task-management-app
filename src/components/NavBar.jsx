@@ -12,15 +12,12 @@ import { PlusSmallIcon } from "@heroicons/react/24/solid";
 import { useParams } from "react-router-dom";
 import AddTaskForm from "./AddTaskForm";
 
-function addTask() {
-  console.log("You added a new task")
-}
 
 function NavBar() {
   const isMobile = useMediaQuery({ query: "(max-width: 766px)" });
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
   const params = useParams()
-  const { lightMode, hidesidebarState, openSidebarModal, boards, isModalOpen, closeModal, openModal } =
+  const { lightMode, hidesidebarState, openSidebarModal, boards, openModal, isModalOpen } =
     useContext(AppContext);
   const [addtaskForm, setAddTaskForm] = useState(false)
 
@@ -31,11 +28,11 @@ function NavBar() {
 
   const currentBoard = boards.filter(board => board.id === params.id)[0]
 
-  const handleOutsideClick = (event) => {
+  /*const handleOutsideClick = (event) => {
     if (event.target === event.currentTarget) {
       setAddTaskForm(false)
     }
-  };
+  };*/
 
   return (
     <div
@@ -45,7 +42,7 @@ function NavBar() {
       <div className="main-nav">
         <div className="logo-board-container">
           {isMobile && <img src={logoImgMobile} />}
-          <h2>{currentBoard?.title}</h2>
+          <h2>{currentBoard ? currentBoard.title : boards[0].title}</h2>
           {isMobile && (
             <button
               className="showBoards-btn"
@@ -63,15 +60,19 @@ function NavBar() {
           <img src={menuImg} />
         </div>
 
-        {addtaskForm && (
-          <div className="modal" onClick={handleOutsideClick}>
-            <AddTaskForm />
-          </div>
-        )}
+        {
+          addtaskForm && <AddTaskForm addTaskForm={addtaskForm} setTaskFunction={setAddTaskForm} />
+        }
       </div>
     </div>
   );
 }
 
+
+/*<button className="btn btn-add-task" onClick={() => setAddTaskForm(true)}> */
+/*{addtaskForm && (
+          <div className="modal" onClick={handleOutsideClick}>
+            <AddTaskForm />
+          </div>
+        )} */
 export default NavBar;
-/*onClick={() => addTask()} */

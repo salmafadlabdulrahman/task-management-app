@@ -1,7 +1,8 @@
 const defaultBoard = {
   title: "Platform Launch",
-  "columns 1": "dishes",
-  "columns 2": "laundry",
+  "columns 1": "Todo",
+  "columns 2": "Doing",
+  "columns 3": "Done",
   id: crypto.randomUUID()
 };
 
@@ -16,3 +17,16 @@ export const createNewBoard = (values) => {
     JSON.stringify([...existingBoards, { ...values, id: crypto.randomUUID() }])
   );
 };
+
+export const createTasks = ({values, boardId}) => {
+  const existingTasks = fetchData("tasks");
+  return localStorage.setItem("tasks", JSON.stringify([...existingTasks, {...values, boardId: boardId}]))
+}
+
+export const getAllMatchingTasks = (boardId) => {
+  const existingTasks = fetchData("tasks");
+  const foundedTasks = existingTasks ? existingTasks.filter(task => task.boardId === boardId) : "";
+  console.log(foundedTasks)
+  return foundedTasks;
+
+}

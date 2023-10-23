@@ -4,14 +4,12 @@ import { AppContext } from "../Pages/MainLayout";
 
 import { useFetcher } from "react-router-dom";
 
-
 function AddBoardForm() {
   const { lightMode, closeModal } = useContext(AppContext);
   const [boardTitle, setBoardTitle] = useState("");
   const [formOpen, setFormOpen] = useState(true);
   const [columnsField, setColumnsField] = useState(["Todo", "Doing"]);
 
-  
   const fetcher = useFetcher();
   const isSubmitting = fetcher.state === "submitting";
 
@@ -20,7 +18,6 @@ function AddBoardForm() {
       setFormOpen(false);
       closeModal();
     }
-    
   }, [isSubmitting, closeModal]);
 
   const style = {
@@ -32,7 +29,14 @@ function AddBoardForm() {
     const column = `New Column`;
     setColumnsField([...columnsField, column]);
   }
-  
+
+  function deleteColumn(event, index) {
+    event.preventDefault();
+    const newColumns = [...columnsField];
+    newColumns.splice(index, 1);
+    setColumnsField(newColumns);
+  }
+
   return (
     <>
       {formOpen && (
@@ -76,11 +80,29 @@ function AddBoardForm() {
                           }`}
                           type="text"
                           name={`columns ${index + 1}`}
-                          placeholder={`e.g. ${index % 2 === 0 ? "Todo" : "Doing"}`}
+                          placeholder={`e.g. ${
+                            index % 2 === 0 ? "Todo" : "Doing"
+                          }`}
+                          style={{
+                            border:
+                              columnsField.length === 1
+                                ? "1px solid #ea5555"
+                                : "1px solid #3e3f4e",
+                          }}
                         />
-                        <span className="cross-img">
-                          <img src={crossImg} />
-                        </span>
+                        <button
+                          className="cross-img"
+                          onClick={(event) => deleteColumn(event, index)}
+                          disabled={columnsField.length === 1}
+                          style={{
+                            cursor:
+                              columnsField.length === 1
+                                ? "not-allowed"
+                                : "pointer",
+                          }}
+                        >
+                          <img src={crossImg} style={{ cursor: columnsField.length === 1 ? "not-allowed" : "pointer"}}/>
+                        </button>
                       </div>
                     ))}
                   </div>

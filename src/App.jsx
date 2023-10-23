@@ -1,7 +1,7 @@
 import "./App.css";
 import Board from "./Pages/Board";
 import DashBoard, { dashboardAction } from "./Pages/DashBoard";
-import MainLayout, { mainLoader } from "./Pages/MainLayout";
+import MainLayout, { mainAction, mainLoader } from "./Pages/MainLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
@@ -12,6 +12,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <MainLayout />,
     loader: mainLoader,
+    action: mainAction,
     children: [
       {
         path: "/dashboard/:id",

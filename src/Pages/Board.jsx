@@ -1,21 +1,26 @@
 import { useContext } from "react";
 import { AppContext } from "./MainLayout";
+import { getAllMatchingTasks } from "../../helper";
+import { useParams } from "react-router-dom";
 
 function Board({ board }) {
   const { lightMode } = useContext(AppContext);
+  const params = useParams();
   const allColumns = [];
-  const boardKeys = Object.keys(board);
+  const boardKeys = Object.keys(board ? board : []);
   boardKeys.forEach((key) => {
     if (key.startsWith("column")) {
       allColumns.push(board[key]);
     }
   });
-  //console.log(allColumns);
 
   const style = {
     backgroundColor: lightMode ? "white" : "#2b2c37", //rgb(238, 239, 255)
     color: lightMode ? "black" : "white",
   };
+
+  const tasks = getAllMatchingTasks(params.id);
+  
 
   return (
     <>
@@ -31,18 +36,23 @@ function Board({ board }) {
             {column} (4)
           </h3>
 
-          {/*<div className={`task-card`} style={style}>
-              <h3 className="task-title">{board?.title}</h3>
-              <h5 className="task-count">1 of 3 subtasks</h5>
-            </div>*/}
+          {tasks.map((task, index) =>
+            column === task.tasks ? (
+              <div className={`task-card`} style={style} key={index}>
+                <h3 className="task-title">{task.taskName}</h3>
+                <h5 className="task-count">1 of 3 subtasks</h5>
+              </div>
+            ) : (
+              ""
+            )
+          )}
         </div>
       ))}
+      <div className={`create-new-column ${!lightMode && "darkMode"}`}>
+        <div className="create-column-btn">+ New Column</div>
+      </div>
     </>
   );
 }
 
 export default Board;
-/*
-        <div className={`create-new-column ${!lightMode && "darkMode"}`}>
-          <div className="create-column-btn">+ New Column</div>
-        </div> */

@@ -1,4 +1,4 @@
-import { createNewBoard } from "../../helper";
+import { createNewBoard, createTasks } from "../../helper";
 import { AppContext } from "./MainLayout";
 import { useContext } from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
@@ -14,8 +14,6 @@ export async function dashboardAction({ request }) {
   const data = await request.formData();
   const { _action, ...values } = Object.fromEntries(data);
 
-  console.log(values);
-
   //Creating a new board
   if (_action === "createBoard") {
     try {
@@ -29,6 +27,7 @@ export async function dashboardAction({ request }) {
     }
   }
 }
+
 
 function DashBoard() {
   const {
@@ -77,20 +76,8 @@ function DashBoard() {
       </div>
 
       <div className="tasks-table-container">
-        <Board board={filteredBoard}/>
-
-
-
-        {/*{boards && boards.length > 0 ? (
-          boards.map((board, index) => (
-            <Board />
-          ))
-        ) : (
-          <h1>Create a board</h1>
-        )} */}
-        <div className={`create-new-column ${!lightMode && "darkMode"}`}>
-          <div className="create-column-btn">+ New Column</div>
-        </div>
+        {boards && boards.length > 0 && <Board board={filteredBoard ? filteredBoard : boards[0]}/>}
+        
       </div>
 
       {hidesidebarState && (

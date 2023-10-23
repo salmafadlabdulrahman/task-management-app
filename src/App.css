@@ -112,14 +112,11 @@ body {
   color: #828fa3;
 }
 
-
-
 .task-card {
   background-color: white;
   width: 280px;
   padding: 1em 2em 1em 1em;
   margin-top: 1em;
-  border: 1px solid lightblue;
 }
 
 .task-card,
@@ -317,6 +314,11 @@ body {
   display: flex;
   align-items: center;
   gap: 1.2em;
+}
+
+.cross-img {
+  background: none;
+  border: none;
 }
 
 .cross-img img {
