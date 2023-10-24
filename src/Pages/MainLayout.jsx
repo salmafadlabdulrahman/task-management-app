@@ -33,7 +33,10 @@ export async function mainAction({ request }) {
       throw new Error("There was a problem adding your task")
     }
   }
-  return values
+
+  
+
+
 }
 
 function MainLayout() {

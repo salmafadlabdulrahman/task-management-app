@@ -26,6 +26,18 @@ export async function dashboardAction({ request }) {
       throw new Error("There was a problem creating your board");
     }
   }
+
+  if (_action === "updateTaskCard") {
+    try {
+      console.log(values)
+      return toast.dark("You updated a task!", {
+        className: "toastMessage",
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } catch (err) {
+      throw new Error("There was a problem adding your task")
+    }
+  }
 }
 
 
