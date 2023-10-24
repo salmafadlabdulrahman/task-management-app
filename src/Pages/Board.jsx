@@ -6,7 +6,7 @@ import TaskCard from "../components/TaskCard";
 
 function Board({ board }) {
   const { lightMode } = useContext(AppContext);
-  const [taskCard, setTaskCard] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
   const params = useParams();
   const allColumns = [];
   const boardKeys = Object.keys(board ? board : []);
@@ -17,7 +17,7 @@ function Board({ board }) {
   });
 
   const style = {
-    backgroundColor: lightMode ? "white" : "#2b2c37", //rgb(238, 239, 255)
+    backgroundColor: lightMode ? "white" : "#2b2c37",
     color: lightMode ? "black" : "white",
   };
 
@@ -25,6 +25,7 @@ function Board({ board }) {
 
   return (
     <>
+    {selectedTask && <TaskCard task={selectedTask} setSelectedTask={setSelectedTask} allColumns={allColumns} />}
       {allColumns.map((column, index) => (
         <div className="task-column" key={index}>
           <h3 className="column-title">
@@ -39,7 +40,7 @@ function Board({ board }) {
 
           {tasks.map((task, index) =>
             column === task.tasks ? (
-              <div className={`task-card`} style={style} key={index}>
+              <div className={`task-card`} style={style} key={index} onClick={() => {setSelectedTask(task)}}>
                 <h3 className="task-title">{task.taskName}</h3>
                 <h5 className="task-count">1 of 3 subtasks</h5>
               </div>
@@ -57,14 +58,3 @@ function Board({ board }) {
 }
 
 export default Board;
-
-/*<div
-                className={`task-card`}
-                style={style}
-                key={index}
-                onClick={() => setTaskCard(true)}
-              > */
-
-/*{taskCard && (
-            <TaskCard taskCard={taskCard} setTaskCard={setTaskCard} />
-          )} */

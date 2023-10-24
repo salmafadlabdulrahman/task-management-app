@@ -217,7 +217,10 @@ body {
 }
 
 .title-field,
-.columns-field, .task-name-field, .description, .status {
+.columns-field,
+.task-name-field,
+.description,
+.status {
   font-size: 0.9em;
   font-weight: 600;
 }
@@ -238,7 +241,9 @@ body {
 
 .title,
 .column,
-.task-column, .description-field, .status-field{
+.task-column,
+.description-field,
+.status-field {
   background: none;
   border: 1px solid #3e3f4e;
   padding: 1em;
@@ -246,7 +251,6 @@ body {
   outline: none;
   color: white;
 }
-
 
 .description-field {
   margin-top: 1em;
@@ -268,9 +272,7 @@ body {
   outline: none;
   color: #828fa3;
   font-weight: 500;
-  
 }
-
 
 .description-field::placeholder {
   white-space: wrap;
@@ -333,7 +335,8 @@ body {
   margin-top: 1em;
 }
 
-.form-btns button, .submit-task-btn {
+.form-btns button,
+.submit-task-btn {
   border: 0;
   border-radius: 50px;
   padding: 0.9em;
@@ -351,7 +354,8 @@ body {
   background-color: rgb(226, 227, 255);
 }
 
-.submit-board-btn, .submit-task-btn {
+.submit-board-btn,
+.submit-task-btn {
   background-color: #635fc7;
   color: white;
   margin-top: 1em;
@@ -362,7 +366,7 @@ body {
 }
 
 .submit-task-btn:hover {
-  opacity: .7;
+  opacity: 0.7;
   transition: all 0.3s ease-in-out;
 }
 
@@ -507,10 +511,55 @@ input:checked + .slider:before {
   width: 95%;
 }
 
-/*.task-column{
-  border: 1px solid blue;
-  min-width: 300px;
-}*/
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subtasks-num {
+  color: #828fa3;
+  letter-spacing: 2.5px;
+  margin-top: 2em;
+  font-size: 0.8em;
+}
+
+.check-subtasks {
+  margin-top: 1em;
+}
+
+.check-field {
+  background-color: #20212c;
+  margin-top: 0.5em;
+  padding: 0.9em 0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.task-field {
+  margin-left: 1em;
+  width: 17px;
+  height: 17px;
+}
+
+.subtask {
+  margin-left: 0.7em;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.select-menu {
+  margin-top: 1.5em;
+}
+
+.status {
+  font-size: 0.8em;
+}
+
+.menu-img {
+  cursor: pointer;
+}
 
 @media (min-width: 766px) {
   /*Navbar styling*/

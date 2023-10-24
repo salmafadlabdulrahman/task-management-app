@@ -61,7 +61,7 @@ function DashBoard() {
   const filteredBoard = boards.filter((board) => board.id === params.id)[0];
 
   const style = {
-    backgroundColor: lightMode ? "white" : "#2b2c37", //rgb(238, 239, 255)
+    backgroundColor: lightMode ? "white" : "#2b2c37",
     color: lightMode ? "black" : "white",
   };
 
