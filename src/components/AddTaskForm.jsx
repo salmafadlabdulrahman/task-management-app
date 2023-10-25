@@ -21,9 +21,9 @@ function AddTaskForm({addTaskForm, setTaskFunction}) {
   useEffect(() => {
     if (isSubmitting) {
       setFormOpen(false);
-
+      setTaskFunction(false)
     }
-  }, [isSubmitting]);
+  }, [isSubmitting, setTaskFunction]);
 
   const filteredBoard = boards.filter((board) => board.id === params.id)[0];
 

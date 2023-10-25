@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import NavBar from "../components/NavBar";
 //r imports
 import { createContext, useState } from "react";
-import { createTasks, fetchData } from "../../helper";
+import { createTasks, fetchData, updateTask } from "../../helper";
 import { toast } from "react-toastify";
 
 //export const ThemeContext = createContext();
@@ -33,8 +33,6 @@ export async function mainAction({ request }) {
       throw new Error("There was a problem adding your task")
     }
   }
-
-  
 
 
 }

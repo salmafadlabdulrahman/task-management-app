@@ -28,11 +28,6 @@ function NavBar() {
 
   const currentBoard = boards.filter(board => board.id === params.id)[0]
 
-  /*const handleOutsideClick = (event) => {
-    if (event.target === event.currentTarget) {
-      setAddTaskForm(false)
-    }
-  };*/
 
   return (
     <div
@@ -69,10 +64,4 @@ function NavBar() {
 }
 
 
-/*<button className="btn btn-add-task" onClick={() => setAddTaskForm(true)}> */
-/*{addtaskForm && (
-          <div className="modal" onClick={handleOutsideClick}>
-            <AddTaskForm />
-          </div>
-        )} */
 export default NavBar;

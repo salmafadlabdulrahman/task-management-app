@@ -23,7 +23,6 @@ function Board({ board }) {
   };
 
   const tasks = getAllMatchingTasks(params.id);
-  console.log(tasks);
 
   useEffect(() => {
     const divElement = document.querySelector(".task-column");

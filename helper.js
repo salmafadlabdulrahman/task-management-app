@@ -20,13 +20,17 @@ export const createNewBoard = (values) => {
 
 export const createTasks = ({values, boardId}) => {
   const existingTasks = fetchData("tasks");
-  return localStorage.setItem("tasks", JSON.stringify([...existingTasks, {...values, boardId: boardId}]))
+  return localStorage.setItem("tasks", JSON.stringify([...existingTasks, {...values, boardId: boardId, id: crypto.randomUUID()}]))
 }
 
 export const getAllMatchingTasks = (boardId) => {
   const existingTasks = fetchData("tasks");
   const foundedTasks = existingTasks ? existingTasks.filter(task => task.boardId === boardId) : "";
-  console.log(foundedTasks)
   return foundedTasks;
-
 }
+
+export const updateTask = (taskId, columns) => {
+  const existingTasks = fetchData("tasks");
+  const updatedTasks = existingTasks.map(task => task.id === taskId ? {...task, tasks: columns} : task)
+  localStorage.setItem("tasks", JSON.stringify(updatedTasks))
+} 

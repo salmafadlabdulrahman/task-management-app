@@ -1,4 +1,4 @@
-import { createNewBoard, createTasks } from "../../helper";
+import { createNewBoard, createTasks, updateTask } from "../../helper";
 import { AppContext } from "./MainLayout";
 import { useContext } from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
@@ -30,6 +30,7 @@ export async function dashboardAction({ request }) {
   if (_action === "updateTaskCard") {
     try {
       console.log(values)
+      updateTask(values.taskId, values.columns)
       return toast.dark("You updated a task!", {
         className: "toastMessage",
         position: toast.POSITION.TOP_CENTER,
@@ -105,105 +106,3 @@ function DashBoard() {
 }
 
 export default DashBoard;
-
-
-/*<div className="task-column" key={index}>
-              <h3 className="column-title">
-                <span
-                  className="circle"
-                  style={{
-                    backgroundColor: index % 2 === 0 ? "#49c4e5" : "#635fc7",
-                  }}
-                ></span>
-                Todo (4)
-              </h3>
-
-              {/*<div className={`task-card`} style={style}>
-                <h3 className="task-title">{board.title}</h3>
-                <h5 className="task-count">1 of 3 subtasks</h5>
-              </div> 
-              </div> */
-
-/*<div className="task-column" key={index}>
-              <h3 className="column-title">
-                <span
-                  className="circle"
-                  style={{
-                    backgroundColor: index % 2 === 0 ? "#49c4e5" : "#635fc7",
-                  }}
-                ></span>
-                Todo (4)
-              </h3>
-
-              <div className={`task-card`} style={style}>
-                <h3 className="task-title">{board.title}</h3>
-                <h5 className="task-count">1 of 3 subtasks</h5>
-              </div>
-            </div> */
-
-/*<div className="tasks-table-container">
-        <Board board={filteredBoard} />
-      </div> */
-
-/*{boards && boards.length > 0 ? (
-          boards.map((board, index) => (
-            <div className="task-column" key={index}>
-              <h3 className="column-title">
-                <span
-                  className="circle"
-                  style={{
-                    backgroundColor: index % 2 === 0 ? "#49c4e5" : "#635fc7",
-                  }}
-                ></span>
-                Todo (4)
-              </h3>
-
-              <div className={`task-card`} style={style}>
-                <h3 className="task-title">{board.title}</h3>
-                <h5 className="task-count">1 of 3 subtasks</h5>
-              </div>
-            </div>
-          ))
-        ) : (
-          <h1>Create a board</h1>
-        )} */
-
-{
-  /* : (
-          <div className="intro">
-            <h3>Create a board</h3>
-          </div>
-        ) */
-}
-{
-  /*<div className="column">
-          <h3 className="column-title">Todo (4)</h3>
-
-          <div className={`task-card`} style={style}>
-            <h3 className="task-title">Build UI for onboarding flow</h3>
-            <h5 className="task-count">1 of 3 subtasks</h5>
-          </div>
-        </div>
-
-        <div className="column">
-          <h3 className="column-title">Doing (4)</h3>
-
-          <div className={`task-card`} style={style}>
-            <h3 className="task-title">Study data structures</h3>
-            <h5 className="task-count">1 of 3 subtasks</h5>
-          </div>
-        </div>
-
-        <div className="column">
-          <h3 className="column-title">Done (4)</h3>
-
-          <div className={`task-card`} style={style}>
-            <h3 className="task-title">Build UI for onboarding flow</h3>
-            <h5 className="task-count">1 of 3 subtasks</h5>
-          </div>
-        </div>
-
-        <div className={`create-new-column ${!lightMode && "darkMode"}`}>
-          <div className="create-column-btn">+ New Column</div>
-        </div> */
-}
