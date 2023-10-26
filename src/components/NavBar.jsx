@@ -38,7 +38,7 @@ function NavBar() {
       <div className="main-nav">
         <div className="logo-board-container">
           {isMobile && (
-            <NavLink to="/dashboard">
+            <NavLink to="/">
               <img src={logoImgMobile} />
             </NavLink>
           )}

@@ -27,7 +27,7 @@ function SideBar() {
         <div className={`sidebar ${lightMode ? "lightMode-sidebar" : ""}`}>
           <div className="sidebar-container">
             <div className="sidebar-nav">
-              <NavLink to="/dashboard">
+              <NavLink to="/">
                 <img
                   src={lightMode ? logoDarkImg : logoLightImg}
                   className="logo"
