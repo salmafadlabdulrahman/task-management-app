@@ -26,6 +26,18 @@ export async function dashboardAction({ request }) {
       throw new Error("There was a problem creating your board");
     }
   }
+
+  if (_action === "addTask") {
+    try {
+      createTasks({values, boardId: values.boardId})
+      return toast.dark("You added a task!", {
+        className: "toastMessage",
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } catch (err) {
+      throw new Error("There was a problem adding your task")
+    }
+  }
 }
 
 function DashBoard() {

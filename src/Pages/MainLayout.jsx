@@ -18,25 +18,6 @@ export async function mainLoader() {
   return { boards };
 }
 
-export async function mainAction({ request }) {
-  const data = await request.formData();
-  const {_action, ...values } = Object.fromEntries(data);
-
-  if (_action === "addTask") {
-    try {
-      createTasks({values, boardId: values.boardId})
-      return toast.dark("You added a task!", {
-        className: "toastMessage",
-        position: toast.POSITION.TOP_CENTER,
-      });
-    } catch (err) {
-      throw new Error("There was a problem adding your task")
-    }
-  }
-
-
-}
-
 function MainLayout() {
   const [lightMode, setLightMode] = useState(false);
   const [hidesidebarState, setHidesidebar] = useState(false);
@@ -121,3 +102,23 @@ function MainLayout() {
 }
 
 export default MainLayout;
+
+
+/*export async function mainAction({ request }) {
+  const data = await request.formData();
+  const {_action, ...values } = Object.fromEntries(data);
+
+  if (_action === "addTask") {
+    try {
+      createTasks({values, boardId: values.boardId})
+      return toast.dark("You added a task!", {
+        className: "toastMessage",
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } catch (err) {
+      throw new Error("There was a problem adding your task")
+    }
+  }
+
+
+}*/
