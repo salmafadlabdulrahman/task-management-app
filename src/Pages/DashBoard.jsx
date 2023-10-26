@@ -49,7 +49,7 @@ function DashBoard() {
         : "250px"
       : "0px",
   };
-  const currentBoard = boards.filter((board) => board.id === params.id)[0];
+  const currentBoard = boards ? boards.filter((board) => board.id === params.id)[0] : [];
   return (
     <div className="dashboard" style={dashbaordStyle}>
       <div>

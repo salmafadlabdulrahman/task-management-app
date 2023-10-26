@@ -25,7 +25,7 @@ function AddTaskForm({addTaskForm, setTaskFunction}) {
     }
   }, [isSubmitting, setTaskFunction]);
 
-  const filteredBoard = boards.filter((board) => board.id === params.id)[0];
+  const filteredBoard = boards ? boards.filter((board) => board.id === params.id)[0] : [];
 
   const style = {
     backgroundColor: lightMode ? "rgb(238, 239, 255)" : "#2b2c37",

@@ -17,9 +17,7 @@ function SideBar() {
     changeTheme,
     hidesidebarState,
     hideSidebar,
-    openModal,
     boards,
-    newBoardForm,
     setNewBoardForm
   } = useContext(AppContext);
 
@@ -42,7 +40,7 @@ function SideBar() {
                   lightMode ? "lightMode-links" : ""
                 }`}
               >
-                {boards.map((board, index) => (
+                {boards && boards.length > 0 && boards.map((board, index) => (
                   <NavLink key={index} to={`/dashboard/${board.id}`}>
                     <img src={boardImg} className="boardIcon" />
                     {board.title}

@@ -28,7 +28,7 @@ function NavBar() {
     left: isDesktopOrTablet ? (hidesidebarState ? "0px" : "250px") : "0px",
   };
 
-  const currentBoard = boards.filter((board) => board.id === params.id)[0];
+  const currentBoard = boards ? boards.filter((board) => board.id === params.id)[0] : [];
 
   return (
     <div
