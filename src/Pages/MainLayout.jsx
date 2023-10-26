@@ -6,8 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import NavBar from "../components/NavBar";
 //r imports
 import { createContext, useState } from "react";
-import { createTasks, fetchData } from "../../helper";
-import { toast } from "react-toastify";
+import { fetchData } from "../../helper";
 
 
 export const AppContext = createContext();
@@ -102,23 +101,3 @@ function MainLayout() {
 }
 
 export default MainLayout;
-
-
-/*export async function mainAction({ request }) {
-  const data = await request.formData();
-  const {_action, ...values } = Object.fromEntries(data);
-
-  if (_action === "addTask") {
-    try {
-      createTasks({values, boardId: values.boardId})
-      return toast.dark("You added a task!", {
-        className: "toastMessage",
-        position: toast.POSITION.TOP_CENTER,
-      });
-    } catch (err) {
-      throw new Error("There was a problem adding your task")
-    }
-  }
-
-
-}*/

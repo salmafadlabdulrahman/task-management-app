@@ -1,4 +1,4 @@
-import { createNewBoard, createTasks, updateTask } from "../../helper";
+import { createNewBoard, createTasks } from "../../helper";
 import { AppContext } from "./MainLayout";
 import { useContext, useState } from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
