@@ -5,7 +5,7 @@ import { AppContext } from "../Pages/MainLayout";
 import { useFetcher } from "react-router-dom";
 
 function AddBoardForm() {
-  const { lightMode, closeModal, setNewBoardForm } = useContext(AppContext);
+  const { lightMode, closeModal, newBoardForm, setNewBoardForm } = useContext(AppContext);
   const [boardTitle, setBoardTitle] = useState("");
   const [formOpen, setFormOpen] = useState(true);
   const [columnsField, setColumnsField] = useState(["Todo", "Doing"]);
@@ -16,9 +16,10 @@ function AddBoardForm() {
   useEffect(() => {
     if (isSubmitting) {
       setFormOpen(false);
+      setNewBoardForm(false);
       closeModal();
     }
-  }, [isSubmitting, closeModal]);
+  }, [isSubmitting, closeModal, setNewBoardForm]);
 
   const style = {
     backgroundColor: lightMode ? "rgb(238, 239, 255)" : "#2b2c37",
@@ -40,6 +41,7 @@ function AddBoardForm() {
   const handleOutsideClick = (event) => {
     if (event.target === event.currentTarget) {
       setNewBoardForm(false)
+      setFormOpen(false);
     }
   };
 
@@ -89,12 +91,7 @@ function AddBoardForm() {
                           placeholder={`e.g. ${
                             index % 2 === 0 ? "Todo" : "Doing"
                           }`}
-                          style={{
-                            border:
-                              columnsField.length === 1
-                                ? "1px solid #ea5555"
-                                : "1px solid #3e3f4e",
-                          }}
+                          
                         />
                         <button
                           className="cross-img"
@@ -143,3 +140,11 @@ function AddBoardForm() {
 }
 
 export default AddBoardForm;
+
+
+/*style={{
+                            border:
+                              columnsField.length === 1
+                                ? "1px solid #ea5555"
+                                : "1px solid #3e3f4e",
+                          }} */

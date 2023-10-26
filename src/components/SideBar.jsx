@@ -8,7 +8,7 @@ import hideSideBar from "../assets/icon-hide-sidebar.svg";
 
 //rrd
 import { NavLink } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AppContext } from "../Pages/MainLayout";
 
 function SideBar() {

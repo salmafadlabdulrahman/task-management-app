@@ -35,12 +35,11 @@ function DashBoard() {
     sidebarModal,
     boards,
     newBoardForm,
-    setNewBoardForm
+    setNewBoardForm,
   } = useContext(AppContext);
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
   const [boardForm, setBoardForm] = useState(false);
   const params = useParams();
-  
 
   const dashbaordStyle = {
     paddingLeft: isDesktopOrTablet
@@ -49,24 +48,27 @@ function DashBoard() {
         : "250px"
       : "0px",
   };
-  const currentBoard = boards ? boards.filter((board) => board.id === params.id)[0] : [];
+  const currentBoard = boards
+    ? boards.filter((board) => board.id === params.id)[0]
+    : [];
   return (
     <div className="dashboard" style={dashbaordStyle}>
       <div>
         {sidebarModal && <SideBarNav />}
-        {newBoardForm && <AddBoardForm setBoardForm={setBoardForm} />} 
+        {newBoardForm && <AddBoardForm setBoardForm={setBoardForm} />}
       </div>
 
       <div className="tasks-table-container">
-      {params.id ? (
+        {params.id ? (
           <Board currentBoard={currentBoard} />
         ) : (
           <div className="beginning-message">
             <h2>Hello there! Create a board</h2>
-            <button onClick={() => setNewBoardForm(true)}>Create a board</button>
+            <button onClick={() => setNewBoardForm(true)}>
+              Create a board
+            </button>
           </div>
         )}
-        
       </div>
 
       {hidesidebarState && (
@@ -82,3 +84,15 @@ function DashBoard() {
 }
 
 export default DashBoard;
+
+/*<div className="tasks-table-container">
+      {params.id ? (
+          <Board currentBoard={currentBoard} />
+        ) : (
+          <div className="beginning-message">
+            <h2>Hello there! Create a board</h2>
+            <button onClick={() => setNewBoardForm(true)}>Create a board</button>
+          </div>
+        )}
+        
+      </div> */

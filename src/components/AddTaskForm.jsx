@@ -3,8 +3,8 @@ import { useFetcher, useParams } from "react-router-dom";
 import { AppContext } from "../Pages/MainLayout";
 import crossImg from "../assets/icon-cross.svg";
 
-function AddTaskForm({addTaskForm, setTaskFunction}) {
-  const { lightMode, boards, isModalOpen } = useContext(AppContext);
+function AddTaskForm({setTaskFunction}) {
+  const { lightMode, boards } = useContext(AppContext);
   const [boardTitle, setBoardTitle] = useState("");
   const [columnsField, setColumnsField] = useState([
     "e.g. Make coffee",
