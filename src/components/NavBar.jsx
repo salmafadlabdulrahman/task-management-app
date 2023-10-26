@@ -26,7 +26,9 @@ function NavBar() {
   };
 
 
+  //const currentBoard = boards.filter(board => board.id === params.id)[0]
   const currentBoard = boards.filter(board => board.id === params.id)[0]
+  /*console.log(currentBoard)*/
 
 
   return (
@@ -37,7 +39,7 @@ function NavBar() {
       <div className="main-nav">
         <div className="logo-board-container">
           {isMobile && <img src={logoImgMobile} />}
-          <h2>{currentBoard ? currentBoard.title : boards[0].title}</h2>
+          <h2>{currentBoard ? currentBoard.title : "Overview"}</h2> {/*{currentBoard ? currentBoard.title : boards[0].title} */}
           {isMobile && (
             <button
               className="showBoards-btn"

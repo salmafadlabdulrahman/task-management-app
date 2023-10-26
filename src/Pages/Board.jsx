@@ -23,13 +23,16 @@ function Board({ board }) {
   };
 
   const tasks = getAllMatchingTasks(params.id);
+  console.log(tasks)
 
-  useEffect(() => {
+  /*useEffect(() => {
     const divElement = document.querySelector(".task-column");
     const elementsWithClassName = divElement.querySelectorAll("task-card");
     const count = elementsWithClassName.length;
     setTasksNum(count)
-  }, []);
+  }, []);*/
+
+  
   
 
   return (
@@ -50,7 +53,7 @@ function Board({ board }) {
                 backgroundColor: index % 2 === 0 ? "#49c4e5" : "#635fc7",
               }}
             ></span>
-            {column} ({tasksNum})
+            {column} {/*({tasksNum})*/}
           </h3>
 
           {tasks.map((task, index) =>

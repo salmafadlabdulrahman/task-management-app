@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../Pages/MainLayout";
 import { useFetcher } from "react-router-dom";
 import menuImg from "../assets/icon-vertical-ellipsis.svg";
+import { fetchData, updateTask } from "../../helper";
 
 function TaskCard({ task, setSelectedTask, allColumns }) {
   const { lightMode } = useContext(AppContext);
@@ -35,21 +36,45 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
     setSubtasks(columnValues);
   }, [task]);
 
+  /*function getMatchingTask(taskId) {
+    const allTasks = fetchData("tasks");
+    const foundedTask = allTasks.map(task => console.log(task));
+    //console.log()
+    //return foundedTask;
+  }
+
+  getMatchingTask(task.id)*/
+
+  //console.log(task.columnValues[0].checked)
+
+
   const boardColumns = [...allColumns];
 
+
+  const allTasks = fetchData("tasks");
+  //const foundedTask = allTasks.map(item => item.id === task.id);
+  console.log(allTasks)
+
   function handleChange(index) {
-    const updatedTasks = [...subtasks];
-    updatedTasks[index].checked = !updatedTasks[index].checked;
-    setSubtasks(updatedTasks);
+    const updatedTasks = task;
+    //console.log(updatedTasks.columnValues[index].checked)
+    updatedTasks.columnValues[index].checked = !updatedTasks.columnValues[index].checked;
+    //console.log(updatedTasks)
+    
+    //setSubtasks(updatedTasks.columnValues);
+    
 
-    const completedCount = updatedTasks.filter((task) => task.checked).length;
-
-    setCompletedTasks(completedCount);
+    //const completedCount = updatedTasks.filter((task) => task.checked).length;
+    //setCompletedTasks(completedCount);
   }
+
+  console.log(subtasks)
 
   const handleSelectChange = (event) => {
     event.preventDefault();
     setSelectedValue(event.target.value);
+    updateTask(task.id, event.target.value, subtasks.columnValues)
+    setSelectedTask(false)
   };
 
   return (
@@ -68,11 +93,11 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
             </div>
             <fetcher.Form method="post" name="display-card" id="myForm">
               <h5 className="subtasks-num">
-                Subtasks ({completedTasks} of {subtasks.length}){" "}
-                {subtasks.length === completedTasks ? "" : "left"}
+                Subtasks ({completedTasks} of {task.columnValues.length})
+                {task.columnValues.length === completedTasks ? "" : "left"}
               </h5>
               <div className="check-subtasks">
-                {subtasks.map((subtask, index) => (
+                {task.columnValues.map((subtask, index) => (
                   <div
                     className="check-field"
                     key={index}
@@ -83,10 +108,10 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                     <input
                       type="checkbox"
                       className="task-field"
+                      name={`task ${index + 1}`}
                       checked={subtask.checked}
                       onChange={() => handleChange(index)}
-                      name={`task ${index + 1}`}
-                    />
+                    /> 
                     <span className="subtask">{subtask.task}</span>
                   </div>
                 ))}
@@ -110,14 +135,14 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                   ))}
                 </select>
               </div>
-              <div className="form-btns">
+              {/*<div className="form-btns">
                 <button type="submit" className="submit-board-btn">
                   Update Task
-                </button>
-              </div>
+                  </button>
+              </div>*/}
               
-              <input type="hidden" name="taskId" value={task.id} />
-              <input type="hidden" name="_action" value="updateTaskCard" />
+              {/*<input type="hidden" name="taskId" value={task.id} />
+              <input type="hidden" name="_action" value="updateTaskCard" />*/}
             </fetcher.Form>
           </div>
         </div>

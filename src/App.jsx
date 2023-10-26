@@ -15,14 +15,14 @@ const router = createBrowserRouter([
     action: mainAction,
     children: [
       {
-        path: "/dashboard/:id",
+        path: "/dashboard",
         element: <DashBoard />, 
         action: dashboardAction
       },
-      /*{
+      {
         path: "/dashboard/:id",
         element: <Board />,
-      }*/
+      }
       
     ],
   },

@@ -27,7 +27,7 @@ export async function dashboardAction({ request }) {
     }
   }
 
-  if (_action === "updateTaskCard") {
+  {/*if (_action === "updateTaskCard") {
     try {
       console.log(values)
       updateTask(values.taskId, values.columns)
@@ -38,7 +38,7 @@ export async function dashboardAction({ request }) {
     } catch (err) {
       throw new Error("There was a problem adding your task")
     }
-  }
+  }*/}
 }
 
 
