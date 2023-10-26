@@ -5,7 +5,7 @@ import { AppContext } from "../Pages/MainLayout";
 import { useFetcher } from "react-router-dom";
 
 function AddBoardForm() {
-  const { lightMode, closeModal } = useContext(AppContext);
+  const { lightMode, closeModal, setNewBoardForm } = useContext(AppContext);
   const [boardTitle, setBoardTitle] = useState("");
   const [formOpen, setFormOpen] = useState(true);
   const [columnsField, setColumnsField] = useState(["Todo", "Doing"]);
@@ -37,8 +37,14 @@ function AddBoardForm() {
     setColumnsField(newColumns);
   }
 
+  const handleOutsideClick = (event) => {
+    if (event.target === event.currentTarget) {
+      setNewBoardForm(false)
+    }
+  };
+
   return (
-    <>
+    <div className={`${formOpen ? "modal" : ""}`} onClick={handleOutsideClick}>
       {formOpen && (
         <div className="form-container">
           <div className="form-wrapper" style={style}>
@@ -132,7 +138,7 @@ function AddBoardForm() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

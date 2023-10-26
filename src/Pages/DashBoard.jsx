@@ -1,6 +1,6 @@
 import { createNewBoard, createTasks, updateTask } from "../../helper";
 import { AppContext } from "./MainLayout";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
 import AddBoardForm from "../components/AddBoardForm";
 import SideBarNav from "../components/SideBarNav";
@@ -26,43 +26,21 @@ export async function dashboardAction({ request }) {
       throw new Error("There was a problem creating your board");
     }
   }
-
-  {/*if (_action === "updateTaskCard") {
-    try {
-      console.log(values)
-      updateTask(values.taskId, values.columns)
-      return toast.dark("You updated a task!", {
-        className: "toastMessage",
-        position: toast.POSITION.TOP_CENTER,
-      });
-    } catch (err) {
-      throw new Error("There was a problem adding your task")
-    }
-  }*/}
 }
-
 
 function DashBoard() {
   const {
     hidesidebarState,
     setHidesidebar,
-    isModalOpen,
-    closeModal,
-    closeSidebarModal,
     sidebarModal,
-    lightMode,
     boards,
+    newBoardForm,
+    setNewBoardForm
   } = useContext(AppContext);
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
-
+  const [boardForm, setBoardForm] = useState(false);
   const params = useParams();
-
-  const handleOutsideClick = (event) => {
-    if (event.target === event.currentTarget) {
-      closeModal();
-      closeSidebarModal();
-    }
-  };
+  
 
   const dashbaordStyle = {
     paddingLeft: isDesktopOrTablet
@@ -71,25 +49,23 @@ function DashBoard() {
         : "250px"
       : "0px",
   };
-  const filteredBoard = boards.filter((board) => board.id === params.id)[0];
-
-  const style = {
-    backgroundColor: lightMode ? "white" : "#2b2c37",
-    color: lightMode ? "black" : "white",
-  };
-
+  const currentBoard = boards.filter((board) => board.id === params.id)[0];
   return (
     <div className="dashboard" style={dashbaordStyle}>
-      <div
-        className={`${isModalOpen || sidebarModal ? "modal" : ""}`}
-        onClick={handleOutsideClick}
-      >
+      <div>
         {sidebarModal && <SideBarNav />}
-        {isModalOpen && <AddBoardForm />}
+        {newBoardForm && <AddBoardForm setBoardForm={setBoardForm} />} 
       </div>
 
       <div className="tasks-table-container">
-        {boards && boards.length > 0 && <Board board={filteredBoard ? filteredBoard : boards[0]}/>}
+      {params.id ? (
+          <Board currentBoard={currentBoard} />
+        ) : (
+          <div className="beginning-message">
+            <h2>Hello there! Create a board</h2>
+            <button onClick={() => setNewBoardForm(true)}>Create a board</button>
+          </div>
+        )}
         
       </div>
 

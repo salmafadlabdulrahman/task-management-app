@@ -1,19 +1,20 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "./MainLayout";
 import { getAllMatchingTasks } from "../../helper";
 import { useParams } from "react-router-dom";
 import TaskCard from "../components/TaskCard";
 
-function Board({ board }) {
+function Board({ currentBoard }) {
   const { lightMode } = useContext(AppContext);
   const [selectedTask, setSelectedTask] = useState(null);
-  const [tasksNum, setTasksNum] = useState();
   const params = useParams();
+
+
   const allColumns = [];
-  const boardKeys = Object.keys(board ? board : []);
+  const boardKeys = Object.keys(currentBoard ?? []);
   boardKeys.forEach((key) => {
     if (key.startsWith("column")) {
-      allColumns.push(board[key]);
+      allColumns.push(currentBoard[key]);
     }
   });
 
@@ -23,17 +24,6 @@ function Board({ board }) {
   };
 
   const tasks = getAllMatchingTasks(params.id);
-  console.log(tasks)
-
-  /*useEffect(() => {
-    const divElement = document.querySelector(".task-column");
-    const elementsWithClassName = divElement.querySelectorAll("task-card");
-    const count = elementsWithClassName.length;
-    setTasksNum(count)
-  }, []);*/
-
-  
-  
 
   return (
     <>
@@ -56,23 +46,25 @@ function Board({ board }) {
             {column} {/*({tasksNum})*/}
           </h3>
 
-          {tasks.map((task, index) =>
-            column === task.tasks ? (
-              <div
-                className={`task-card`}
-                style={style}
-                key={index}
-                onClick={() => {
-                  setSelectedTask(task);
-                }}
-              >
-                <h3 className="task-title">{task.taskName}</h3>
-                <h5 className="task-count">1 of 3 subtasks</h5>
-              </div>
-            ) : (
-              ""
-            )
-          )}
+          {tasks &&
+            tasks.length > 0 &&
+            tasks.map((task, index) =>
+              column === task.tasks ? (
+                <div
+                  className={`task-card`}
+                  style={style}
+                  key={index}
+                  onClick={() => {
+                    setSelectedTask(task);
+                  }}
+                >
+                  <h3 className="task-title">{task.taskName}</h3>
+                  <h5 className="task-count">1 of 3 subtasks</h5>
+                </div>
+              ) : (
+                ""
+              )
+            )}
         </div>
       ))}
       <div className={`create-new-column ${!lightMode && "darkMode"}`}>
@@ -83,3 +75,4 @@ function Board({ board }) {
 }
 
 export default Board;
+

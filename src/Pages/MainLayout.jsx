@@ -1,15 +1,15 @@
 //rrd imports
-import { Outlet, useLoaderData, useParams } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 import SideBar from "../components/SideBar";
 //rs imports
 import { useMediaQuery } from "react-responsive";
 import NavBar from "../components/NavBar";
 //r imports
 import { createContext, useState } from "react";
-import { createTasks, fetchData, updateTask } from "../../helper";
+import { createTasks, fetchData } from "../../helper";
 import { toast } from "react-toastify";
 
-//export const ThemeContext = createContext();
+
 export const AppContext = createContext();
 
 
@@ -41,12 +41,16 @@ function MainLayout() {
   const [lightMode, setLightMode] = useState(false);
   const [hidesidebarState, setHidesidebar] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [sidebarModal, setSidebarModal] = useState(false);
+
+  const [newBoardForm, setNewBoardForm] = useState(false)
 
   const {boards} = useLoaderData()
 
   //Using the media query for responsive layout
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
+
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -101,6 +105,8 @@ function MainLayout() {
             openSidebarModal,
             closeSidebarModal,
             boards,
+            newBoardForm,
+            setNewBoardForm,
           }}
         >
           {isDesktopOrTablet && <SideBar />}

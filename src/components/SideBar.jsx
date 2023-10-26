@@ -8,12 +8,20 @@ import hideSideBar from "../assets/icon-hide-sidebar.svg";
 
 //rrd
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../Pages/MainLayout";
 
 function SideBar() {
-  const { lightMode, changeTheme, hidesidebarState, hideSidebar, openModal, boards } =
-    useContext(AppContext);
+  const {
+    lightMode,
+    changeTheme,
+    hidesidebarState,
+    hideSidebar,
+    openModal,
+    boards,
+    newBoardForm,
+    setNewBoardForm
+  } = useContext(AppContext);
 
   return (
     <div className="sidebar-wrapper">
@@ -21,10 +29,12 @@ function SideBar() {
         <div className={`sidebar ${lightMode ? "lightMode-sidebar" : ""}`}>
           <div className="sidebar-container">
             <div className="sidebar-nav">
-              <img
-                src={lightMode ? logoDarkImg : logoLightImg}
-                className="logo"
-              />
+              <NavLink to="/dashboard">
+                <img
+                  src={lightMode ? logoDarkImg : logoLightImg}
+                  className="logo"
+                />
+              </NavLink>
 
               <h6>All boards (3)</h6>
               <div
@@ -34,17 +44,17 @@ function SideBar() {
               >
                 {boards.map((board, index) => (
                   <NavLink key={index} to={`/dashboard/${board.id}`}>
-                  <img src={boardImg} className="boardIcon" />
-                  {board.title}
-                </NavLink>
+                    <img src={boardImg} className="boardIcon" />
+                    {board.title}
+                  </NavLink>
                 ))}
-              </div> 
+              </div>
 
               <button
                 className={`btn create-board-btn ${
                   lightMode ? "lightMode-btn" : ""
                 }`}
-                onClick={() => openModal()}
+                onClick={() => setNewBoardForm(true)} // () => openModal()
               >
                 <img src={boardImg} className="boardIcon" />+ Create New Board
               </button>
