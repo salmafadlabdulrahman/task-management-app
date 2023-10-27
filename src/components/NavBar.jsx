@@ -42,7 +42,7 @@ function NavBar() {
               <img src={logoImgMobile} />
             </NavLink>
           )}
-          <h2>{params.id ? currentBoard.title : "Overview"}</h2>
+          <h2>{boards && boards.length > 0 ? currentBoard?.title : "Overview"}</h2>
           {isMobile && (
             <button
               className="showBoards-btn"
@@ -53,7 +53,7 @@ function NavBar() {
           )}
         </div>
 
-        {params.id ? (
+        {params.id && boards && boards.length > 0 ? (
           <div className="task-menu-container">
             <button
               className="btn btn-add-task"
