@@ -83,8 +83,9 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                             checked={subtask.checked}
                             name={`task ${index + 1}`}
                           />
+                          
 
-                          <span className="subtask">{subtask.task}</span>
+                          <span className="subtask" style={{textDecoration: subtask.checked ? "line-through #828fa3" : "", color: subtask.checked ? "#828fa3" : ""}}>{subtask.task}</span>
                         </div>
                       ))}
                     </div>

@@ -164,6 +164,7 @@ function AddTaskForm({setTaskFunction}) {
                       Status
                     </label>
                     <select name="tasks" id="tasks" className="status-field">
+                    <option value="">Select Status</option>
                       {allColumns.map((column, index) => (
                         <option value={column} key={index} className="option">
                           {column}

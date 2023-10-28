@@ -318,7 +318,7 @@ body {
 }
 
 .lightMode-input {
-  border: 1px solid #828fa3; /*rgba(130, 143, 163, 0.25)*/
+  border: 1px solid #828fa3; 
   color: black;
 }
 
@@ -393,6 +393,10 @@ body {
 .submit-task-btn:hover {
   opacity: 0.7;
   transition: all 0.3s ease-in-out;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #635fc7; 
 }
 
 .submit-board-btn:disabled {
@@ -564,7 +568,13 @@ input:checked + .slider:before {
   align-items: center;
 }
 
+.check-field:hover {
+  background-color: #636188;
+  transition: all 0.2s ease-in;
+}
+
 .task-field {
+  background-color: #2b2c37;
   margin-left: 1em;
   width: 17px;
   height: 17px;
