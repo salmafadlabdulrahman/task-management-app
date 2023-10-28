@@ -70,37 +70,3 @@ export const updateCheckBox = (taskId, index, checkedVal) => {
   localStorage.setItem("tasks", JSON.stringify(updatedTasks))
 
 }
-//updateCheckBox("d7528615-103e-4150-b8f1-19d8e94bbed6", 0, true)
-
-/*const tasks = fetchData("tasks") ?? [];
-  const task = tasks.filter(task => task.id === taskId)
-
- return localStorage.setItem("tasks", JSON.stringify([
-  {...task, {...columnValues[index].checked: checkedVal} }
- ])) */
-
-/*{taskName: 'Washing', description: '', columns 1: 'Detergant', columns 2: 'clothes', tasks: 'Bought', …}
-boardId
-: 
-"0b3a7a9b-8c71-478f-96f5-1adaa13465e4"
-columnValues
-: 
-(2) [{…}, {…}]
-columns 1
-: 
-"Detergant"
-columns 2
-: 
-"clothes"
-description
-: 
-""
-id
-: 
-"d7528615-103e-4150-b8f1-19d8e94bbed6"
-taskName
-: 
-"Washing"
-tasks
-: 
-"Bought" */
