@@ -1,14 +1,18 @@
 import { useContext, useState } from "react";
 import { AppContext } from "./MainLayout";
-import { getAllMatchingTasks } from "../../helper";
+import { fetchData, getAllMatchingTasks } from "../../helper";
 import { useParams } from "react-router-dom";
+import EditBoard from "../components/EditBoard"
 import TaskCard from "../components/TaskCard";
 
 function Board({ currentBoard }) {
   const { lightMode } = useContext(AppContext);
   const [selectedTask, setSelectedTask] = useState(null);
+  const [editBoard, setEditBoard] = useState(false)
   const params = useParams();
 
+
+  const tasks = getAllMatchingTasks(params.id);
 
   const allColumns = [];
   const boardKeys = Object.keys(currentBoard ?? []);
@@ -23,7 +27,6 @@ function Board({ currentBoard }) {
     color: lightMode ? "black" : "white",
   };
 
-  const tasks = getAllMatchingTasks(params.id);
 
   return (
     <>
@@ -43,7 +46,9 @@ function Board({ currentBoard }) {
                 backgroundColor: index % 2 === 0 ? "#49c4e5" : "#635fc7",
               }}
             ></span>
-            {column} {/*({tasksNum})*/}
+            {column} ({
+              tasks.map(task => task.tasks).reduce((acc, cur) => cur === column ? acc + 1 : acc, 0 )
+            })
           </h3>
 
           {tasks &&
@@ -59,7 +64,13 @@ function Board({ currentBoard }) {
                   }}
                 >
                   <h3 className="task-title">{task.taskName}</h3>
-                  <h5 className="task-count">1 of 3 subtasks</h5>
+                  <h5 className="task-count">
+                    {task.columnValues.reduce(
+                      (acc, cur) => (cur.checked ? acc + 1 : acc),
+                      0
+                    )}{" "}
+                    of {task.columnValues.length} subtasks
+                  </h5>
                 </div>
               ) : (
                 ""
@@ -67,12 +78,13 @@ function Board({ currentBoard }) {
             )}
         </div>
       ))}
-      <div className={`create-new-column ${!lightMode && "darkMode"}`}>
+      <div className={`create-new-column ${!lightMode && "darkMode"}`} onClick={() => setEditBoard(true)}>
         <div className="create-column-btn">+ New Column</div>
       </div>
+
+      {editBoard && <EditBoard setEditBoard={setEditBoard} editBoard={editBoard} boardInfo={currentBoard} />}
     </>
   );
 }
 
 export default Board;
-

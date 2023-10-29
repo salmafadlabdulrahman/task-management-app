@@ -38,7 +38,7 @@ export const createTasks = ({ values, boardId }) => {
 };
 
 export const getAllMatchingTasks = (boardId) => {
-  const existingTasks = fetchData("tasks");
+  const existingTasks = fetchData("tasks") || [];
   const foundedTasks = existingTasks
     ? existingTasks.filter((task) => task.boardId === boardId)
     : "";
