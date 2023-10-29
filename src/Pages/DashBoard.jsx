@@ -96,15 +96,3 @@ function DashBoard() {
 }
 
 export default DashBoard;
-
-/*<div className="tasks-table-container">
-      {params.id ? (
-          <Board currentBoard={currentBoard} />
-        ) : (
-          <div className="beginning-message">
-            <h2>Hello there! Create a board</h2>
-            <button onClick={() => setNewBoardForm(true)}>Create a board</button>
-          </div>
-        )}
-        
-      </div> */

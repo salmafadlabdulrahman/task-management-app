@@ -7,6 +7,8 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
   const { lightMode } = useContext(AppContext);
   const [selectedValue, setSelectedValue] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [uncheckedCount, setUncheckedCount] = useState(0);
+  
 
   useEffect(() => {
     const allTasks = fetchData("tasks") || [];
@@ -47,6 +49,19 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
+
+  useEffect(() => {
+    tasks.map(todo => {
+      if (todo.id === task.id) {
+        const count = todo.columnValues.reduce(
+          (accumulator, columnValue) => (columnValue.checked ? accumulator : accumulator + 1),
+          0
+        );
+        setUncheckedCount(count);
+      }
+    })
+  }, [task.id, tasks])
+  
   return (
     <div>
       {tasks.map((todo, index) => {
@@ -69,25 +84,40 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                         <img src={menuImg} className="menu-img" />
                       </span>
                     </div>
-                    <h5 className="subtasks-num">Subtasks (0 of 3)</h5>
+
+                    <p className="task-description">{todo.description}</p>
+                    <h5 className="subtasks-num">
+                      Subtasks ({uncheckedCount} of {todo.columnValues.length}) left
+                    </h5>
 
                     <div className="check-subtasks">
-                      {todo.columnValues.map((subtask, index) => (
-                        <div className="check-field" key={index}>
-                          <input
-                            type="checkbox"
-                            className="task-field"
-                            onChange={() =>
-                              updateCheckBox(todo.id, index, !subtask.checked)
-                            }
-                            checked={subtask.checked}
-                            name={`task ${index + 1}`}
-                          />
-                          
+                      {todo.columnValues.map((subtask, index) => {
+                        return (
+                          <div className="check-field" key={index}>
+                            <input
+                              type="checkbox"
+                              className="task-field"
+                              onChange={() =>
+                                updateCheckBox(todo.id, index, !subtask.checked)
+                              }
+                              checked={subtask.checked}
+                              name={`task ${index + 1}`}
+                            />
 
-                          <span className="subtask" style={{textDecoration: subtask.checked ? "line-through #828fa3" : "", color: subtask.checked ? "#828fa3" : ""}}>{subtask.task}</span>
-                        </div>
-                      ))}
+                            <span
+                              className="subtask"
+                              style={{
+                                textDecoration: subtask.checked
+                                  ? "line-through #828fa3"
+                                  : "",
+                                color: subtask.checked ? "#828fa3" : "",
+                              }}
+                            >
+                              {subtask.task}
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
 
                     <div className="select-menu">

@@ -5,7 +5,7 @@ import { AppContext } from "../Pages/MainLayout";
 import { useFetcher } from "react-router-dom";
 
 function AddBoardForm() {
-  const { lightMode, closeModal, newBoardForm, setNewBoardForm } = useContext(AppContext);
+  const { lightMode, closeModal, setNewBoardForm } = useContext(AppContext);
   const [boardTitle, setBoardTitle] = useState("");
   const [formOpen, setFormOpen] = useState(true);
   const [columnsField, setColumnsField] = useState(["Todo", "Doing"]);
@@ -40,7 +40,7 @@ function AddBoardForm() {
 
   const handleOutsideClick = (event) => {
     if (event.target === event.currentTarget) {
-      setNewBoardForm(false)
+      setNewBoardForm(false);
       setFormOpen(false);
     }
   };
@@ -91,7 +91,7 @@ function AddBoardForm() {
                           placeholder={`e.g. ${
                             index % 2 === 0 ? "Todo" : "Doing"
                           }`}
-                          
+                          required
                         />
                         <button
                           className="cross-img"
@@ -104,7 +104,15 @@ function AddBoardForm() {
                                 : "pointer",
                           }}
                         >
-                          <img src={crossImg} style={{ cursor: columnsField.length === 1 ? "not-allowed" : "pointer"}}/>
+                          <img
+                            src={crossImg}
+                            style={{
+                              cursor:
+                                columnsField.length === 1
+                                  ? "not-allowed"
+                                  : "pointer",
+                            }}
+                          />
                         </button>
                       </div>
                     ))}
@@ -140,11 +148,3 @@ function AddBoardForm() {
 }
 
 export default AddBoardForm;
-
-
-/*style={{
-                            border:
-                              columnsField.length === 1
-                                ? "1px solid #ea5555"
-                                : "1px solid #3e3f4e",
-                          }} */

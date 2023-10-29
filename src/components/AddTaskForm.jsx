@@ -116,6 +116,7 @@ function AddTaskForm({setTaskFunction}) {
                               ? "Make coffee"
                               : "Drink coffee & smile"
                           }`}
+                          required
                           style={{
                             border:
                               columnsField.length === 1
@@ -163,7 +164,7 @@ function AddTaskForm({setTaskFunction}) {
                     <label htmlFor="tasks" className="status">
                       Status
                     </label>
-                    <select name="tasks" id="tasks" className="status-field">
+                    <select name="tasks" id="tasks" className="status-field" required>
                     <option value="">Select Status</option>
                       {allColumns.map((column, index) => (
                         <option value={column} key={index} className="option">
@@ -173,7 +174,7 @@ function AddTaskForm({setTaskFunction}) {
                     </select>
                   </div>
 
-                  <button type="submit" className="submit-task-btn">
+                  <button type="submit" className="submit-task-btn" disabled={!boardTitle ? true : false}>
                     Create Task
                   </button>
                   <input type="hidden" name="boardId" value={params.id} />

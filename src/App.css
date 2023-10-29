@@ -244,7 +244,7 @@ body {
 .title-field,
 .columns-field,
 .task-name-field,
-.description,
+.description, .task-description,
 .status {
   font-size: 0.9em;
   font-weight: 600;
@@ -260,7 +260,7 @@ body {
   margin-top: 1em;
 }
 
-.description {
+.description, .task-description {
   margin-top: 2em;
 }
 
@@ -280,6 +280,10 @@ body {
 .description-field {
   margin-top: 1em;
   padding-bottom: 4em;
+}
+
+.task-description {
+  color: #828fa3;
 }
 
 .status-field {
@@ -399,7 +403,7 @@ input[type="checkbox"]:checked {
   background-color: #635fc7; 
 }
 
-.submit-board-btn:disabled {
+.submit-board-btn:disabled, .submit-task-btn:disabled {
   opacity: 0.5 !important;
   cursor: not-allowed;
 }
