@@ -82,7 +82,7 @@ function Board({ currentBoard }) {
         <div className="create-column-btn">+ New Column</div>
       </div>
 
-      {editBoard && <EditBoard setEditBoard={setEditBoard} editBoard={editBoard} boardInfo={currentBoard} />}
+      {editBoard && <EditBoard setEditBoard={setEditBoard} editBoard={editBoard} boardInfo={currentBoard} allColumns={allColumns} />}
     </>
   );
 }
