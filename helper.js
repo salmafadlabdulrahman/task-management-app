@@ -20,6 +20,7 @@ export const createTasks = ({ values, boardId }) => {
     task: values[key],
     checked: false,
   }));
+
   return localStorage.setItem(
     "tasks",
     JSON.stringify([
@@ -27,6 +28,7 @@ export const createTasks = ({ values, boardId }) => {
       { ...values, columnValues, boardId: boardId, id: crypto.randomUUID() },
     ])
   );
+  
 };
 
 export const getAllMatchingTasks = (boardId) => {
@@ -65,8 +67,10 @@ export const updateCheckBox = (taskId, index, checkedVal) => {
 };
 
 
-export const updateBoard = (newBoard, oldBoard) => {
+export const updateBoard = (newBoard) => {
   const existingBoards = fetchData("boards");
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+
   const editedBoard = existingBoards.find((board) => board.id === newBoard.id);
 
   if (editedBoard !== -1) {
@@ -79,7 +83,7 @@ export const updateBoard = (newBoard, oldBoard) => {
   }
 
   //update the tasks value within the task object
-  const oldBoardColumns = oldBoard.split(",")
+  /*const oldBoardColumns = oldBoard.split(",")
   console.log(oldBoardColumns)
   const existingTasks = fetchData("tasks");
   const editedTasks = existingTasks.find(
@@ -96,5 +100,5 @@ export const updateBoard = (newBoard, oldBoard) => {
       }
     });
   }
-  console.log(editedTasks);
+  console.log(editedTasks);*/
 };

@@ -17,6 +17,7 @@ export async function dashboardAction({ request }) {
   //Creating a new board
   if (_action === "createBoard") {
     try {
+      console.log(values)
       createNewBoard(values);
       return toast.dark("You created a new board !", {
         className: "toastMessage",
@@ -42,7 +43,7 @@ export async function dashboardAction({ request }) {
   if (_action === "editBoard") {
     try {
       console.log(values)
-      updateBoard(values, values.oldboard)
+      updateBoard(values)
       return toast.dark("Board Successfully Updated!", {
         className: "toastMessage",
         position: toast.POSITION.TOP_CENTER,

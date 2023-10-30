@@ -135,7 +135,9 @@ function AddBoardForm() {
                     >
                       Create New Board
                     </button>
+                    <input type="hidden" name="columns" value={columnsField} />
                     <input type="hidden" name="_action" value="createBoard" />
+                    
                   </div>
                 </div>
               </fetcher.Form>
