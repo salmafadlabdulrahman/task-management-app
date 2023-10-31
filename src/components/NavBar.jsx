@@ -11,6 +11,7 @@ import menuImg from "../assets/icon-vertical-ellipsis.svg";
 import { PlusSmallIcon } from "@heroicons/react/24/solid";
 import { useParams, NavLink } from "react-router-dom";
 import AddTaskForm from "./AddTaskForm";
+import EditBoard from "./EditBoard";
 
 function NavBar() {
   const isMobile = useMediaQuery({ query: "(max-width: 766px)" });
@@ -23,12 +24,22 @@ function NavBar() {
     boards,
   } = useContext(AppContext);
   const [addtaskForm, setAddTaskForm] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [editBoard, setEditBoard] = useState(false)
 
   const style = {
     left: isDesktopOrTablet ? (hidesidebarState ? "0px" : "250px") : "0px",
   };
 
   const currentBoard = boards ? boards.filter((board) => board.id === params.id)[0] : [];
+
+  const allColumns = [];
+  const boardKeys = Object.keys(currentBoard ?? []);
+  boardKeys.forEach((key) => {
+    if (key.startsWith("column")) {
+      allColumns.push(currentBoard[key]);
+    }
+  });
 
   return (
     <div
@@ -61,7 +72,17 @@ function NavBar() {
             >
               {isMobile ? <PlusSmallIcon width={25} /> : "+ Add New Task"}
             </button>
-            <img src={menuImg} />
+            <img src={menuImg} className="menu-img" onClick={() => setOpenMenu(prev => !prev)}/>
+            {openMenu && (
+              <div className="menu-container">
+                <h4 className="editboard-btn" onClick={() => {
+                  setEditBoard(true)
+                  setOpenMenu(false)
+                }}>Edit Board</h4>
+                <h4 className="deleteboard-btn">Delete Board</h4>
+              </div>
+            )}
+            {editBoard && <EditBoard setEditBoard={setEditBoard} editBoard={editBoard} boardInfo={currentBoard} allColumns={allColumns} />}
           </div>
         ) : (
           ""

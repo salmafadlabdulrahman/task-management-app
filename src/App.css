@@ -611,6 +611,31 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
+.menu-container {
+  position: fixed;
+  background-color: rgb(32, 33, 44);
+  padding: 1em;
+  width: 12%;
+  top: 12%;
+  right: 2.7%;
+  border-radius: 7px;
+}
+
+.menu-container h4 {
+  font-weight: 500;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.editboard-btn {
+  color: rgb(130, 143, 163);
+}
+
+.deleteboard-btn {
+  color: #ea5555;
+  margin-top: 1em;
+}
+
 @media (min-width: 766px) {
   /*Navbar styling*/
   .main-nav {
