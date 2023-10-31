@@ -1,10 +1,11 @@
-
 export const fetchData = (key) => {
   return JSON.parse(localStorage.getItem(key));
 };
 
 export const createNewBoard = (values) => {
   const existingBoards = fetchData("boards") ?? [];
+  //const boardKeys = Object.keys(values);
+
   return localStorage.setItem(
     "boards",
     JSON.stringify([...existingBoards, { ...values, id: crypto.randomUUID() }])
@@ -28,7 +29,6 @@ export const createTasks = ({ values, boardId }) => {
       { ...values, columnValues, boardId: boardId, id: crypto.randomUUID() },
     ])
   );
-  
 };
 
 export const getAllMatchingTasks = (boardId) => {
@@ -66,10 +66,8 @@ export const updateCheckBox = (taskId, index, checkedVal) => {
   localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 };
 
-
-export const updateBoard = (newBoard) => {
+export const updateBoard = (newBoard, oldBoard) => {
   const existingBoards = fetchData("boards");
-  const tasks = JSON.parse(localStorage.getItem('tasks'));
 
   const editedBoard = existingBoards.find((board) => board.id === newBoard.id);
 
@@ -82,23 +80,17 @@ export const updateBoard = (newBoard) => {
     localStorage.setItem("boards", JSON.stringify(updatedBoards));
   }
 
-  //update the tasks value within the task object
-  /*const oldBoardColumns = oldBoard.split(",")
-  console.log(oldBoardColumns)
+  const oldBoardColumns = oldBoard.split(",");
   const existingTasks = fetchData("tasks");
-  const editedTasks = existingTasks.find(
-    (task) => task.boardId === newBoard.id
-  );
 
-  if (editedTasks !== -1) {
-    oldBoardColumns.map((item) => {
-      if (item === editedTasks.tasks) {
-        const updatedTasks = [
-          { ...editedTasks, tasks: item }
-        ];
-        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-      }
-    });
-  }
-  console.log(editedTasks);*/
+  existingTasks.forEach((task) => {
+    if (task.boardId === newBoard.id) {
+      oldBoardColumns.map((key, index) => {
+        if (key === task.tasks) {
+          task.tasks = newBoard[`columns ${index + 1}`];
+        }
+      });
+      localStorage.setItem("tasks", JSON.stringify(existingTasks));
+    }
+  });
 };

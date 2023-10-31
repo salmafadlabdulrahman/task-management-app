@@ -12,6 +12,7 @@ function EditBoard({ setEditBoard, editBoard, boardInfo, allColumns }) {
   
   const isSubmitting = fetcher.state === "submitting";
 
+
   useEffect(() => {
     if (isSubmitting) {
       setEditBoard(false);

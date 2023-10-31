@@ -43,7 +43,7 @@ export async function dashboardAction({ request }) {
   if (_action === "editBoard") {
     try {
       console.log(values)
-      updateBoard(values)
+      updateBoard(values, values.oldboard)
       return toast.dark("Board Successfully Updated!", {
         className: "toastMessage",
         position: toast.POSITION.TOP_CENTER,
