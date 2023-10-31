@@ -65,7 +65,7 @@ function EditBoard({ setEditBoard, editBoard, boardInfo, allColumns }) {
                   placeholder="e.g. Take coffee break"
                   value={boardDetails.title}
                   onChange={(e) =>
-                    setBoardDetails({ ...boardInfo, title: e.target.value })
+                    setBoardDetails({ ...boardDetails, title: e.target.value })
                   }
                 />
 
@@ -93,7 +93,7 @@ function EditBoard({ setEditBoard, editBoard, boardInfo, allColumns }) {
                         value={boardDetails[`columns ${index + 1}`]}
                         onChange={(e) =>
                           setBoardDetails({
-                            ...boardInfo,
+                            ...boardDetails,
                             [`columns ${index + 1}`]: e.target.value,
                           })
                         }
