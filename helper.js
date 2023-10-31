@@ -93,4 +93,15 @@ export const updateBoard = (newBoard, oldBoard) => {
       localStorage.setItem("tasks", JSON.stringify(existingTasks));
     }
   });
+
+
+  //if a column got erased, delete the tasks that was in that column, by checking if the tasks prop exists or not
+  const updatedTasks = existingTasks.filter((task) => {
+    if (!task.tasks) {
+      return false;
+    }
+    return true;
+  });
+
+  localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 };
