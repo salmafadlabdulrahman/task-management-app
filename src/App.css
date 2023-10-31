@@ -31,12 +31,11 @@ body {
   background-color: #635fc7;
   color: white;
   border: none;
-  padding:1em 2em;
+  padding: 1em 2em;
   font-size: 1.2em;
   margin-top: 2em;
   border-radius: 50px;
   cursor: pointer;
-  
 }
 
 .beginning-message button:hover {
@@ -244,8 +243,10 @@ body {
 .title-field,
 .columns-field,
 .task-name-field,
-.description, .task-description,
-.status {
+.description,
+.task-description,
+.status,
+.board-name-field {
   font-size: 0.9em;
   font-weight: 600;
 }
@@ -260,7 +261,8 @@ body {
   margin-top: 1em;
 }
 
-.description, .task-description {
+.description,
+.task-description {
   margin-top: 2em;
 }
 
@@ -275,6 +277,14 @@ body {
   border-radius: 5px;
   outline: none;
   color: white;
+}
+
+.title {
+  margin-top: 1em;
+}
+
+input:hover {
+  border: 1px solid #635fc7;
 }
 
 .description-field {
@@ -322,7 +332,7 @@ body {
 }
 
 .lightMode-input {
-  border: 1px solid #828fa3; 
+  border: 1px solid #828fa3;
   color: black;
 }
 
@@ -400,10 +410,11 @@ body {
 }
 
 input[type="checkbox"]:checked {
-  background-color: #635fc7; 
+  background-color: #635fc7;
 }
 
-.submit-board-btn:disabled, .submit-task-btn:disabled {
+.submit-board-btn:disabled,
+.submit-task-btn:disabled {
   opacity: 0.5 !important;
   cursor: not-allowed;
 }
@@ -455,8 +466,6 @@ input[type="checkbox"]:checked {
   margin-top: 1em;
   cursor: pointer;
 }
-
-
 
 .boards-control-items {
   display: flex;
