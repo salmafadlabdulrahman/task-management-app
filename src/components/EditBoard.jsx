@@ -2,16 +2,25 @@ import { useContext, useEffect, useState } from "react";
 import { useFetcher } from "react-router-dom";
 import { AppContext } from "../Pages/MainLayout";
 import crossImg from "../assets/icon-cross.svg";
-//import {updateBoard } from "../../helper";
 
 function EditBoard({ setEditBoard, editBoard, boardInfo, allColumns }) {
   const { lightMode } = useContext(AppContext);
   const [boardDetails, setBoardDetails] = useState(boardInfo);
-  const [columnsField, setColumnsField] = useState(["Todo", "Doing"]);
-  const fetcher = useFetcher();
-  
-  const isSubmitting = fetcher.state === "submitting";
+  const [boardColumns, setBoardColumns] = useState([]);
 
+  useEffect(() => {
+    const boardKeys = Object.keys(boardDetails);
+    const columns = boardKeys.reduce((columnsArr, key) => {
+      if (key.startsWith("columns")) {
+        return [...columnsArr, boardDetails[key]];
+      }
+      return columnsArr;
+    }, []);
+    setBoardColumns(columns);
+  }, [boardDetails]);
+
+  const fetcher = useFetcher();
+  const isSubmitting = fetcher.state === "submitting";
 
   useEffect(() => {
     if (isSubmitting) {
@@ -27,14 +36,14 @@ function EditBoard({ setEditBoard, editBoard, boardInfo, allColumns }) {
   function addNewColumn(event) {
     event.preventDefault();
     const column = `New Column`;
-    setColumnsField([...columnsField, column]);
+    setBoardColumns([...boardColumns, column]);
   }
 
   function deleteColumn(event, index) {
     event.preventDefault();
-    const newColumns = [...columnsField];
+    const newColumns = [...boardColumns];
     newColumns.splice(index, 1);
-    setColumnsField(newColumns);
+    setBoardColumns(newColumns);
   }
 
   const style = {
@@ -78,7 +87,7 @@ function EditBoard({ setEditBoard, editBoard, boardInfo, allColumns }) {
                     Columns
                   </h4>
 
-                  {columnsField.map((column, index) => (
+                  {boardColumns.map((column, index) => (
                     <div className="column-field" key={index}>
                       <input
                         className={`column ${
@@ -101,10 +110,10 @@ function EditBoard({ setEditBoard, editBoard, boardInfo, allColumns }) {
                       <button
                         className="cross-img"
                         onClick={(event) => deleteColumn(event, index)}
-                        disabled={columnsField.length === 1}
+                        disabled={boardColumns.length === 1}
                         style={{
                           cursor:
-                            columnsField.length === 1
+                            boardColumns.length === 1
                               ? "not-allowed"
                               : "pointer",
                         }}
@@ -113,7 +122,7 @@ function EditBoard({ setEditBoard, editBoard, boardInfo, allColumns }) {
                           src={crossImg}
                           style={{
                             cursor:
-                              columnsField.length === 1
+                              boardColumns.length === 1
                                 ? "not-allowed"
                                 : "pointer",
                           }}
