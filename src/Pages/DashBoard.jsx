@@ -26,7 +26,8 @@ export async function dashboardAction({ request }) {
         position: toast.POSITION.TOP_CENTER,
       });
     } catch (err) {
-      throw new Error("There was a problem creating your board");
+      //throw new Error("There was a problem creating your board");
+      throw new Error(err)
     }
   }
 
@@ -38,7 +39,8 @@ export async function dashboardAction({ request }) {
         position: toast.POSITION.TOP_CENTER,
       });
     } catch (err) {
-      throw new Error("There was a problem adding your task");
+      //throw new Error("There was a problem adding your task");
+      throw new Error(err)
     }
   }
 
@@ -50,7 +52,8 @@ export async function dashboardAction({ request }) {
         position: toast.POSITION.TOP_CENTER,
       });
     } catch(err) {
-      throw new Error("There was a problem updating your task")
+      //throw new Error("There was a problem updating your task")
+      throw new Error(err)
     }
   }
 }
