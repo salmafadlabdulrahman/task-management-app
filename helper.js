@@ -32,13 +32,10 @@ export const createTasks = ({ values, boardId }) => {
       { ...values, columnValues, boardId: boardId, id: crypto.randomUUID() },
     ])
   );
-
-  
 };
 
 export const getAllMatchingTasks = (boardId) => {
   const existingTasks = fetchData("tasks") ?? [];
-  console.log(existingTasks)
   const foundedTasks = existingTasks ? existingTasks.filter((task) => task.boardId === boardId) : [];
   return foundedTasks;
 };
@@ -101,12 +98,7 @@ export const updateBoard = (newBoard, oldBoard) => {
 
 
   //if a column got erased, delete the tasks that was in that column, by checking if the tasks prop exists or not
-  /*const updatedTasks = existingTasks.filter((task) => {
-    if (!task.tasks) {
-      return false;
-    }
-    return true;
-  });*/
+
   const updatedTasks = existingTasks.filter((task) => {
     return task.tasks;
   });
@@ -115,6 +107,31 @@ export const updateBoard = (newBoard, oldBoard) => {
 
   return true
 };
+
+export const editTask = (taskId, values, boardId) => {
+  const existingTasks = fetchData("tasks") || [];
+  const updatedTask = existingTasks.find(task => task.id === taskId) 
+
+  const columnKeys = Object.keys(values).filter((key) =>
+    key.startsWith("column")
+  );
+  const columnValues = columnKeys?.map((key) => ({
+    task: values[key],
+    checked: false,
+  }));
+
+  if (updatedTask) {
+    const updatedTasks = [
+      ...existingTasks.slice(0, updatedTask),
+      {...values, columnValues, boardId: boardId, id: taskId },
+
+      ...existingTasks.slice(0, updatedTask + 1)
+    ]
+
+    return localStorage.setItem("tasks", JSON.stringify(updatedTasks))
+  }
+  
+}
 
 
 export const deleteBoard = (boardId) => {

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AppContext } from "./MainLayout";
-import { fetchData, getAllMatchingTasks } from "../../helper";
+import { getAllMatchingTasks } from "../../helper";
 import { useParams } from "react-router-dom";
 import EditBoard from "../components/EditBoard"
 import TaskCard from "../components/TaskCard";
@@ -26,6 +26,7 @@ function Board({ currentBoard }) {
     backgroundColor: lightMode ? "white" : "#2b2c37",
     color: lightMode ? "black" : "white",
   };
+
 
 
   return (

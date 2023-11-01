@@ -130,11 +130,12 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                         editTask={editTask}
                         taskInfo={task}
                         allColumns={allColumns}
+                        setSelectedTask={setSelectedTask}
                       />
                     )}
+                    
 
                     {deleteTask && (
-                      
                       <DeleteTask
                         setDeleteTask={setDeleteTask}
                         boardInfo={currentBoard}

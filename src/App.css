@@ -212,6 +212,10 @@ body {
   right: 0;
 }
 
+.edit-task-modal {
+  background-color: none;
+}
+
 .form-container {
   max-height: 80vh;
   overflow-y: auto;

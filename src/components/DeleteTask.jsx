@@ -30,7 +30,10 @@ function DeleteTask({ setDeleteTask, taskInfo, setSelectedTask }) {
               >
                 Delete
               </button>
-              <button className="cancel" onClick={() => setDeleteTask(false)}>
+              <button className="cancel" onClick={() => {
+                setDeleteTask(false)
+                setSelectedTask(null)
+              }}>
                 Cancel
               </button>
             </div>

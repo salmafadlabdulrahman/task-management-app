@@ -1,4 +1,4 @@
-import { createNewBoard, createTasks, updateBoard } from "../../helper";
+import { createNewBoard, createTasks, editTask, updateBoard } from "../../helper";
 import { AppContext } from "./MainLayout";
 import { useContext, useState } from "react";
 import showSideBar from "../assets/icon-show-sidebar.svg";
@@ -52,6 +52,18 @@ export async function dashboardAction({ request }) {
       });
     } catch(err) {
       //throw new Error("There was a problem updating your task")
+      throw new Error(err)
+    }
+  }
+
+  if (_action === "editTask") {
+    try {
+      editTask(values.taskId, values, values.boardId)
+      return toast.dark("Task Successfully Updated!", {
+        className: "toastMessage",
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } catch(err) {
       throw new Error(err)
     }
   }
