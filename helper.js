@@ -2,7 +2,8 @@ export const fetchData = (key) => {
   try {
     return JSON.parse(localStorage.getItem(key))
   } catch (err) {
-    console.log(err)
+    throw new Error(err)
+    //console.log(err)
   }
 
   //return JSON.parse(localStorage.getItem(key));
