@@ -13,7 +13,7 @@ export const AppContext = createContext();
 
 
 export async function mainLoader() {
-  const boards = await fetchData("boards");
+  const boards = await fetchData("boards") || [];
   return { boards };
 }
 

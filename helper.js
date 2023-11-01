@@ -1,16 +1,22 @@
 export const fetchData = (key) => {
-  return JSON.parse(localStorage.getItem(key));
+  try {
+    return JSON.parse(localStorage.getItem(key))
+  } catch (err) {
+    console.log(err)
+  }
+
+  //return JSON.parse(localStorage.getItem(key));
 };
 
 export const createNewBoard = (values) => {
   const existingBoards = fetchData("boards") ?? [];
   //const boardKeys = Object.keys(values);
 
-  const boardId = crypto.randomUUID()
+ // const boardId = crypto.randomUUID()
 
   localStorage.setItem(
     "boards",
-    JSON.stringify([...existingBoards, { ...values, id: boardId }])
+    JSON.stringify([...existingBoards, { ...values, id: crypto.randomUUID() }])
   );
   //window.location.href = `/dashboard/${boardId}`;
   
@@ -38,10 +44,9 @@ export const createTasks = ({ values, boardId }) => {
 };
 
 export const getAllMatchingTasks = (boardId) => {
-  const existingTasks = fetchData("tasks") || [];
-  const foundedTasks = existingTasks
-    ? existingTasks.filter((task) => task.boardId === boardId)
-    : "";
+  const existingTasks = fetchData("tasks") ?? [];
+  console.log(existingTasks)
+  const foundedTasks = existingTasks ? existingTasks.filter((task) => task.boardId === boardId) : [];
   return foundedTasks;
 };
 
@@ -89,7 +94,7 @@ export const updateBoard = (newBoard, oldBoard) => {
   const oldBoardColumns = oldBoard.split(",");
   const existingTasks = fetchData("tasks");
 
-  existingTasks?.map((task) => {
+  existingTasks.map((task) => {
     if (task.boardId === newBoard.id) {
       oldBoardColumns.map((key, index) => {
         if (key === task.tasks) {
@@ -102,7 +107,7 @@ export const updateBoard = (newBoard, oldBoard) => {
 
 
   //if a column got erased, delete the tasks that was in that column, by checking if the tasks prop exists or not
-  const updatedTasks = existingTasks?.filter((task) => {
+  const updatedTasks = existingTasks.filter((task) => {
     if (!task.tasks) {
       return false;
     }
@@ -117,7 +122,7 @@ export const updateBoard = (newBoard, oldBoard) => {
 
 export const deleteBoard = (boardId) => {
   const boards = fetchData("boards") || [];
-  const updatedBoards = boards?.filter(board => board.id !== boardId)
+  const updatedBoards = boards.filter(board => board.id !== boardId)
 
   localStorage.setItem("boards", JSON.stringify(updatedBoards));
 
