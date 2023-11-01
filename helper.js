@@ -102,7 +102,7 @@ export const updateBoard = (newBoard, oldBoard) => {
 
 
   //if a column got erased, delete the tasks that was in that column, by checking if the tasks prop exists or not
-  const updatedTasks = existingTasks.filter((task) => {
+  const updatedTasks = existingTasks?.filter((task) => {
     if (!task.tasks) {
       return false;
     }
