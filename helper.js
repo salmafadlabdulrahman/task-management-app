@@ -6,10 +6,14 @@ export const createNewBoard = (values) => {
   const existingBoards = fetchData("boards") ?? [];
   //const boardKeys = Object.keys(values);
 
-  return localStorage.setItem(
+  const boardId = crypto.randomUUID()
+
+  localStorage.setItem(
     "boards",
-    JSON.stringify([...existingBoards, { ...values, id: crypto.randomUUID() }])
+    JSON.stringify([...existingBoards, { ...values, id: boardId }])
   );
+  window.location.href = `/dashboard/${boardId}`;
+  
 };
 
 export const createTasks = ({ values, boardId }) => {
@@ -29,6 +33,8 @@ export const createTasks = ({ values, boardId }) => {
       { ...values, columnValues, boardId: boardId, id: crypto.randomUUID() },
     ])
   );
+
+  
 };
 
 export const getAllMatchingTasks = (boardId) => {
@@ -104,4 +110,16 @@ export const updateBoard = (newBoard, oldBoard) => {
   });
 
   localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
+  
 };
+
+
+export const deleteBoard = (boardId) => {
+  const boards = fetchData("boards");
+  const updatedBoards = boards.filter(board => board.id !== boardId)
+
+  localStorage.setItem("boards", JSON.stringify(updatedBoards));
+
+  window.location.href = "/";
+}

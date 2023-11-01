@@ -636,6 +636,54 @@ input:checked + .slider:before {
   margin-top: 1em;
 }
 
+.delete-form {
+  background-color: rgb(43, 44, 55);
+  border-radius: 10px;
+}
+
+.delete-form h3 {
+  color: #ea5555
+}
+
+.warning-message {
+  color: rgb(130, 143, 163);
+  margin-top: 1.5em;
+  font-size: 0.9em;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.warning-message span {
+  color: white
+}
+
+.delete-form-btns {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.delete-form-btns button {
+  border: none;
+  width: 47%;
+  padding: 0.9em 0;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.delete-board {
+  background-color: #ea5555;
+  color: white;
+}
+
+.cancel {
+  background-color: white;
+  color: #635fc7;
+}
+
 @media (min-width: 766px) {
   /*Navbar styling*/
   .main-nav {
