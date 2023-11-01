@@ -116,8 +116,8 @@ export const updateBoard = (newBoard, oldBoard) => {
 
 
 export const deleteBoard = (boardId) => {
-  const boards = fetchData("boards");
-  const updatedBoards = boards.filter(board => board.id !== boardId)
+  const boards = fetchData("boards") || [];
+  const updatedBoards = boards?.filter(board => board.id !== boardId)
 
   localStorage.setItem("boards", JSON.stringify(updatedBoards));
 
