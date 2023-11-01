@@ -2,8 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../Pages/MainLayout";
 import menuImg from "../assets/icon-vertical-ellipsis.svg";
 import { fetchData, updateTask } from "../../helper";
-import EditBoard from "./EditBoard";
-import DeleteBoard from "./DeleteBoard";
 import { useParams } from "react-router-dom";
 import EditTask from "./EditTask";
 import DeleteTask from "./DeleteTask";
@@ -103,7 +101,7 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                       </span>
                     </div>
                     {openMenu && (
-                      <div className="menu-container task-menu">
+                      <div className={`menu-container task-menu ${lightMode ? "menu-ligtmode" : ""}`}>
                         <h4
                           className="editboard-btn"
                           onClick={() => {
@@ -152,10 +150,10 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                     <div className="check-subtasks">
                       {todo.columnValues.map((subtask, index) => {
                         return (
-                          <div className="check-field" key={index}>
+                          <div className={`check-field ${lightMode ? "lightMode-check-field" : ""}`} key={index}>
                             <input
                               type="checkbox"
-                              className="task-field"
+                              className={`task-field`}
                               onChange={() =>
                                 updateCheckBox(todo.id, index, !subtask.checked)
                               }
@@ -180,19 +178,20 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                     </div>
 
                     <div className="select-menu">
-                      <label htmlFor="tasks" className="status">
+                      <label htmlFor="tasks" className={`status ${lightMode ? "lightMode-label" : ""}`}>
                         Current Status
                       </label>
                       <select
                         name="columns"
                         id="columns"
-                        className="status-field"
+                        
+                        className={`status-field ${lightMode ? `lightMode-input` : ""} `}
                         value={selectedValue}
                         onChange={() => handleSelectChange(event)}
                       >
-                        <option value="">Select Status</option>
+                        <option value="" className={`option ${lightMode ? `lightMode-option` : ""}`}>Select Status</option>
                         {boardColumns.map((column, index) => (
-                          <option value={column} key={index} className="option">
+                          <option value={column} key={index} className={`option ${lightMode ? `lightMode-option` : ""}`}>
                             {column}
                           </option>
                         ))}

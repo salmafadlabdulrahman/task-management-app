@@ -80,7 +80,7 @@ function NavBar() {
               onClick={() => setOpenMenu((prev) => !prev)}
             />
             {openMenu && (
-              <div className="menu-container">
+              <div className={`menu-container ${lightMode ? "menu-ligtmode" : ""}`}>
                 <h4
                   className="editboard-btn"
                   onClick={() => {

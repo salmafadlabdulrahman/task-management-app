@@ -276,7 +276,7 @@ body {
 .description-field,
 .status-field {
   background: none;
-  border: 1px solid #3e3f4e;
+  /*border: 1px solid #3e3f4e;*/
   padding: 1em;
   border-radius: 5px;
   outline: none;
@@ -285,6 +285,20 @@ body {
 
 .title {
   margin-top: 1em;
+}
+
+input, .status-field {
+  border: 1px solid #3e3f4e;
+}
+
+.lightMode-input {
+  background-color: none;
+  border: 1px solid rgba(130, 143, 163, 0.145);
+  color: black;
+}
+
+.status-field .lightMode-input option{
+  background-color: white;
 }
 
 input:hover {
@@ -309,12 +323,20 @@ input:hover {
   cursor: pointer;
 }
 
-.option {
+.option, .lightMode-option {
   background-color: #2b2c37;
   border: none;
   outline: none;
   color: #828fa3;
   font-weight: 500;
+  font-size: 1.1em;
+  text-transform: capitalize;
+  border-radius: 10px;
+}
+
+.lightMode-option {
+  background-color: white;
+  color: #828fa3;
 }
 
 .description-field::placeholder {
@@ -335,9 +357,9 @@ input:hover {
   font-size: 1.1em;
 }
 
-.lightMode-input {
-  border: 1px solid #828fa3;
-  color: black;
+.lightMode-input::placeholder {
+  color: rgba(171, 168, 168, 0.499);
+  font-weight: 300;
 }
 
 .lightMode-label {
@@ -590,12 +612,22 @@ input:checked + .slider:before {
   transition: all 0.2s ease-in;
 }
 
+.lightMode-check-field {
+  background-color: #f4f7fd;
+}
+
+.lightMode-check-field:hover {
+  background-color: #dee8f1;
+}
+
 .task-field {
   background-color: #2b2c37;
   margin-left: 1em;
   width: 17px;
   height: 17px;
 }
+
+
 
 .subtask {
   margin-left: 0.7em;
@@ -623,6 +655,10 @@ input:checked + .slider:before {
   top: 13%;
   right: 2.7%;
   border-radius: 7px;
+}
+
+.menu-ligtmode {
+  background-color: #fff;
 }
 
 .task-menu {

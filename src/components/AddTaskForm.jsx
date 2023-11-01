@@ -27,8 +27,9 @@ function AddTaskForm({setTaskFunction}) {
 
   const filteredBoard = boards ? boards.filter((board) => board.id === params.id)[0] : [];
 
+  
   const style = {
-    backgroundColor: lightMode ? "rgb(238, 239, 255)" : "#2b2c37",
+    backgroundColor: lightMode ? "#fff" : "#2b2c37",
   };
 
   function addNewColumn(event) {
@@ -83,14 +84,14 @@ function AddTaskForm({setTaskFunction}) {
                     placeholder="e.g. Take coffee break"
                     onChange={(e) => setBoardTitle(e.target.value)}
                   />
-                  <label htmlFor="description" className="description">
+                  <label htmlFor="description" className={`description ${lightMode ? "lightMode-label" : ""}`}>
                     Description
                   </label>
                   <input
                     type="text"
                     name="description"
                     id="description"
-                    className="description-field"
+                    className={`description-field ${lightMode ? `lightMode-input` : ""}`}
                     placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little"
                   />
 
@@ -121,7 +122,8 @@ function AddTaskForm({setTaskFunction}) {
                             border:
                               columnsField.length === 1
                                 ? "1px solid #ea5555"
-                                : "1px solid #3e3f4e",
+                                : "" ,
+                            
                           }}
                         />
                         <button
@@ -160,14 +162,14 @@ function AddTaskForm({setTaskFunction}) {
                     </button>
                   </div>
 
-                  <div className="select-menu">
-                    <label htmlFor="tasks" className="status">
+                  <div className={`select-menu`} >
+                    <label htmlFor="tasks" className={`status ${lightMode ? "lightMode-label" : ""}`}>
                       Status
                     </label>
-                    <select name="tasks" id="tasks" className="status-field" required>
-                    <option value="">Select Status</option>
+                    <select name="tasks" id="tasks" className={`status-field ${lightMode ? `lightMode-input` : ""} `}  required>
+                    <option value="" className={`option ${lightMode ? `lightMode-option` : ""}`}>Select Status</option>
                       {allColumns.map((column, index) => (
-                        <option value={column} key={index} className="option">
+                        <option value={column} key={index} className={`option ${lightMode ? `lightMode-option` : ""}`}>
                           {column}
                         </option>
                       ))}
