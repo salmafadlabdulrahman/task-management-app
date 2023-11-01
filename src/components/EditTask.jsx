@@ -77,6 +77,7 @@ function EditTask({ taskInfo, setEditTask, setSelectedTask, allColumns }) {
                   onChange={(e) =>
                     setTaskDetails({ ...taskDetails, taskName: e.target.value })
                   }
+                  required
                 />
 
                 <label htmlFor="description" className="description">

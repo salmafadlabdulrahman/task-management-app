@@ -1,8 +1,8 @@
 export const fetchData = (key) => {
   try {
-    return JSON.parse(localStorage.getItem(key)) ?? []
+    return JSON.parse(localStorage.getItem(key)) ?? [];
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
 };
 
@@ -36,7 +36,9 @@ export const createTasks = ({ values, boardId }) => {
 
 export const getAllMatchingTasks = (boardId) => {
   const existingTasks = fetchData("tasks") ?? [];
-  const foundedTasks = existingTasks ? existingTasks.filter((task) => task.boardId === boardId) : [];
+  const foundedTasks = existingTasks
+    ? existingTasks.filter((task) => task.boardId === boardId)
+    : [];
   return foundedTasks;
 };
 
@@ -96,21 +98,19 @@ export const updateBoard = (newBoard, oldBoard) => {
     }
   });
 
-
   //if a column got erased, delete the tasks that was in that column, by checking if the tasks prop exists or not
-
   const updatedTasks = existingTasks.filter((task) => {
     return task.tasks;
   });
 
   localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
-  return true
+  return true;
 };
 
 export const editTask = (taskId, values, boardId) => {
   const existingTasks = fetchData("tasks") || [];
-  const updatedTask = existingTasks.findIndex(task => task.id === taskId) 
+  const updatedTask = existingTasks.findIndex((task) => task.id === taskId);
 
   const columnKeys = Object.keys(values).filter((key) =>
     key.startsWith("column")
@@ -123,29 +123,27 @@ export const editTask = (taskId, values, boardId) => {
   if (updatedTask !== -1) {
     const updatedTasks = [
       ...existingTasks.slice(0, updatedTask),
-      {...values, columnValues, boardId: boardId, id: taskId },
+      { ...values, columnValues, boardId: boardId, id: taskId },
 
-      ...existingTasks.slice(updatedTask + 1)
-    ]
+      ...existingTasks.slice(updatedTask + 1),
+    ];
 
-    return localStorage.setItem("tasks", JSON.stringify(updatedTasks))
+    return localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
-  
-}
-
+};
 
 export const deleteBoard = (boardId) => {
   const boards = fetchData("boards") || [];
-  const updatedBoards = boards.filter(board => board.id !== boardId)
+  const updatedBoards = boards.filter((board) => board.id !== boardId);
 
   localStorage.setItem("boards", JSON.stringify(updatedBoards));
 
   window.location.href = "/";
-}
+};
 
 export const deleteTask = (taskId) => {
   const tasks = fetchData("tasks") || [];
-  const updateTasks = tasks.filter(task => task.id !== taskId);
+  const updateTasks = tasks.filter((task) => task.id !== taskId);
 
-  localStorage.setItem("tasks", JSON.stringify(updateTasks))
-}
+  localStorage.setItem("tasks", JSON.stringify(updateTasks));
+};

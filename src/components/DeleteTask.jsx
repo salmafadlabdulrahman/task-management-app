@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { deleteTask } from "../../helper";
+import { AppContext } from "../Pages/MainLayout";
 
 function DeleteTask({ setDeleteTask, taskInfo, setSelectedTask }) {
+  const {lightMode} = useContext(AppContext)
   const handleOutsideClick = (event) => {
     if (event.target === event.currentTarget) {
       setDeleteTask(false);
@@ -10,12 +13,12 @@ function DeleteTask({ setDeleteTask, taskInfo, setSelectedTask }) {
   return (
     <div className="modal" onClick={handleOutsideClick}>
       <div className="form-container delete-form">
-        <div className="form-wrapper">
+        <div className={`form-wrapper ${lightMode ? "menu-ligtmode" : ""}`}>
           <div className="form">
             <h3>Delete this task?</h3>
             <p className="warning-message">
               Are you sure you want to delete the{" "}
-              <span>{taskInfo.taskName}</span> Task? This action will remove all
+              <span className={`${lightMode ? "lightmode-title" : "darkmode-title"}`}>{taskInfo.taskName}</span> Task? This action will remove all
               columns and tasks and cannot be reversed.
             </p>
 

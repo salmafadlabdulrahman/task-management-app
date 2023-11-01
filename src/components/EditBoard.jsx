@@ -76,6 +76,7 @@ function EditBoard({ setEditBoard, editBoard, boardInfo, allColumns }) {
                   onChange={(e) =>
                     setBoardDetails({ ...boardDetails, title: e.target.value })
                   }
+                  required
                 />
 
                 <div className="subtask-columns">

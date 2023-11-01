@@ -27,8 +27,6 @@ function Board({ currentBoard }) {
     color: lightMode ? "black" : "white",
   };
 
-
-
   return (
     <>
       {selectedTask && (
