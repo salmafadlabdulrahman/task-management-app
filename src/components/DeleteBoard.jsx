@@ -7,7 +7,6 @@ function DeleteBoard({ boardInfo, setDeleteBoard }) {
         setDeleteBoard(false);
     }
   };
-  console.log(boardInfo.id)
 
   return (
     <div className="modal" onClick={handleOutsideClick}>

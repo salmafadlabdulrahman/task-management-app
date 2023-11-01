@@ -2,9 +2,9 @@ export const fetchData = (key) => {
   try {
     return JSON.parse(localStorage.getItem(key)) ?? []
   } catch (err) {
-    //throw new Error(err)
+    throw new Error(err)
     
-    console.log(err)
+    //console.log(err)
   }
 
   //return JSON.parse(localStorage.getItem(key));
@@ -134,5 +134,5 @@ export const deleteBoard = (boardId) => {
 
   localStorage.setItem("boards", JSON.stringify(updatedBoards));
 
-  //window.location.href = "/";
+  window.location.href = "/";
 }
