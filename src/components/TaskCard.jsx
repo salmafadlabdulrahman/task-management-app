@@ -2,12 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../Pages/MainLayout";
 import menuImg from "../assets/icon-vertical-ellipsis.svg";
 import { fetchData, updateTask } from "../../helper";
+import EditBoard from "./EditBoard";
+import DeleteBoard from "./DeleteBoard";
+import { useParams } from "react-router-dom";
+import EditTask from "./EditTask";
+import DeleteTask from "./DeleteTask";
 
 function TaskCard({ task, setSelectedTask, allColumns }) {
-  const { lightMode } = useContext(AppContext);
+  const { lightMode, boards } = useContext(AppContext);
   const [selectedValue, setSelectedValue] = useState("");
   const [tasks, setTasks] = useState([]);
   const [uncheckedCount, setUncheckedCount] = useState(0);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [editTask, setEditTask] = useState(false);
+  const [deleteTask, setDeleteTask] = useState(false);
+  const params = useParams()
 
   useEffect(() => {
     const allTasks = fetchData("tasks") || [];
@@ -21,6 +30,10 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
   };
 
   const boardColumns = [...allColumns];
+
+  const currentBoard = boards
+    ? boards.filter((board) => board.id === params.id)[0]
+    : [];
 
   const handleSelectChange = (event) => {
     event.preventDefault();
@@ -61,6 +74,8 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
     });
   }, [task.id, tasks]);
 
+
+
   return (
     <div>
       {tasks.map((todo, index) => {
@@ -80,9 +95,53 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                     <div className="header">
                       <h2>{todo.taskName}</h2>
                       <span>
-                        <img src={menuImg} className="menu-img" />
+                        <img
+                          src={menuImg}
+                          className="menu-img"
+                          onClick={() => setOpenMenu((prev) => !prev)}
+                        />
                       </span>
                     </div>
+                    {openMenu && (
+                      <div className="menu-container task-menu">
+                        <h4
+                          className="editboard-btn"
+                          onClick={() => {
+                            setEditTask(true);
+                            setOpenMenu(false);
+                          }}
+                        >
+                          Edit Task
+                        </h4>
+                        <h4
+                          className="deleteboard-btn"
+                          onClick={() => {
+                            setDeleteTask(true);
+                            setOpenMenu(false);
+                          }}
+                        >
+                          Delete Task
+                        </h4>
+                      </div>
+                    )}
+                    {editTask && (
+                      <EditTask
+                        setEditTask={setEditTask}
+                        editTask={editTask}
+                        taskInfo={task}
+                        allColumns={allColumns}
+                      />
+                    )}
+
+                    {deleteTask && (
+                      
+                      <DeleteTask
+                        setDeleteTask={setDeleteTask}
+                        boardInfo={currentBoard}
+                        taskInfo={task}
+                        setSelectedTask={setSelectedTask}
+                      />
+                    )}
 
                     <p className="task-description">{todo.description}</p>
                     <h5 className="subtasks-num">

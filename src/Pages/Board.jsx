@@ -8,7 +8,7 @@ import TaskCard from "../components/TaskCard";
 function Board({ currentBoard }) {
   const { lightMode } = useContext(AppContext);
   const [selectedTask, setSelectedTask] = useState(null);
-  const [editBoard, setEditBoard] = useState(false)
+  const [editBoard, setEditBoard] = useState(false);
   const params = useParams();
 
 

@@ -3,25 +3,16 @@ export const fetchData = (key) => {
     return JSON.parse(localStorage.getItem(key)) ?? []
   } catch (err) {
     throw new Error(err)
-    
-    //console.log(err)
   }
-
-  //return JSON.parse(localStorage.getItem(key));
 };
 
 export const createNewBoard = (values) => {
   const existingBoards = fetchData("boards") ?? [];
-  //const boardKeys = Object.keys(values);
-
-  //const boardId = crypto.randomUUID()
 
   localStorage.setItem(
     "boards",
     JSON.stringify([...existingBoards, { ...values, id: crypto.randomUUID() }])
   );
-  //window.location.href = `/dashboard/${boardId}`;
-  
 };
 
 export const createTasks = ({ values, boardId }) => {
@@ -47,6 +38,7 @@ export const createTasks = ({ values, boardId }) => {
 
 export const getAllMatchingTasks = (boardId) => {
   const existingTasks = fetchData("tasks") ?? [];
+  console.log(existingTasks)
   const foundedTasks = existingTasks ? existingTasks.filter((task) => task.boardId === boardId) : [];
   return foundedTasks;
 };
@@ -92,9 +84,6 @@ export const updateBoard = (newBoard, oldBoard) => {
 
     localStorage.setItem("boards", JSON.stringify(updatedBoards));
   }
-  
-    
-  
 
   const oldBoardColumns = oldBoard.split(",");
   const existingTasks = fetchData("tasks") ?? [];
@@ -135,4 +124,11 @@ export const deleteBoard = (boardId) => {
   localStorage.setItem("boards", JSON.stringify(updatedBoards));
 
   window.location.href = "/";
+}
+
+export const deleteTask = (taskId) => {
+  const tasks = fetchData("tasks") || [];
+  const updateTasks = tasks.filter(task => task.id !== taskId);
+
+  localStorage.setItem("tasks", JSON.stringify(updateTasks))
 }

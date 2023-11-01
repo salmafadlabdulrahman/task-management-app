@@ -1,4 +1,3 @@
-import { redirect } from "react-router-dom";
 import { deleteBoard } from "../../helper";
 
 function DeleteBoard({ boardInfo, setDeleteBoard }) {
@@ -23,9 +22,8 @@ function DeleteBoard({ boardInfo, setDeleteBoard }) {
               <button className="delete-board" onClick={() => {
                 deleteBoard(boardInfo.id);
                 setDeleteBoard(false);
-                //redirect("/")
               }}>Delete</button>
-              <button className="cancel">Cancel</button>
+              <button className="cancel" onClick={() => setDeleteBoard(false)}>Cancel</button>
             </div>
           </div>
         </div>

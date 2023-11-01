@@ -621,6 +621,11 @@ input:checked + .slider:before {
   border-radius: 7px;
 }
 
+.task-menu {
+  top: 35%;
+  left: 57%;
+}
+
 .menu-container h4 {
   font-weight: 500;
   font-size: 0.9em;
