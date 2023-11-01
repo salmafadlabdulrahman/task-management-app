@@ -13,8 +13,6 @@ function Board({ currentBoard }) {
 
 
   const tasks = getAllMatchingTasks(params.id);
-  console.log(currentBoard)
-  console.log(tasks)
 
   const allColumns = [];
   const boardKeys = Object.keys(currentBoard ?? []);

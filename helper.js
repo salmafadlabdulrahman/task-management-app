@@ -1,9 +1,10 @@
 export const fetchData = (key) => {
   try {
-    return JSON.parse(localStorage.getItem(key))
+    return JSON.parse(localStorage.getItem(key)) ?? []
   } catch (err) {
-    throw new Error(err)
-    //console.log(err)
+    //throw new Error(err)
+    
+    console.log(err)
   }
 
   //return JSON.parse(localStorage.getItem(key));
@@ -46,7 +47,6 @@ export const createTasks = ({ values, boardId }) => {
 
 export const getAllMatchingTasks = (boardId) => {
   const existingTasks = fetchData("tasks") ?? [];
-  console.log(existingTasks)
   const foundedTasks = existingTasks ? existingTasks.filter((task) => task.boardId === boardId) : [];
   return foundedTasks;
 };
@@ -83,19 +83,23 @@ export const updateBoard = (newBoard, oldBoard) => {
 
   const editedBoard = existingBoards.find((board) => board.id === newBoard.id);
 
-  if (editedBoard !== -1) {
+  if (editedBoard) {
     const updatedBoards = [
       ...existingBoards.slice(0, editedBoard),
       newBoard,
       ...existingBoards.slice(0, editedBoard + 1),
     ];
+
     localStorage.setItem("boards", JSON.stringify(updatedBoards));
   }
+  
+    
+  
 
   const oldBoardColumns = oldBoard.split(",");
-  const existingTasks = fetchData("tasks");
+  const existingTasks = fetchData("tasks") ?? [];
 
-  existingTasks.map((task) => {
+  existingTasks.forEach((task) => {
     if (task.boardId === newBoard.id) {
       oldBoardColumns.map((key, index) => {
         if (key === task.tasks) {
@@ -108,16 +112,19 @@ export const updateBoard = (newBoard, oldBoard) => {
 
 
   //if a column got erased, delete the tasks that was in that column, by checking if the tasks prop exists or not
-  const updatedTasks = existingTasks.filter((task) => {
+  /*const updatedTasks = existingTasks.filter((task) => {
     if (!task.tasks) {
       return false;
     }
     return true;
+  });*/
+  const updatedTasks = existingTasks.filter((task) => {
+    return task.tasks;
   });
 
   localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
-  
+  return true
 };
 
 
