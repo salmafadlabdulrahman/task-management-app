@@ -68,7 +68,7 @@ function DashBoard() {
   const [boardForm, setBoardForm] = useState(false);
   const params = useParams();
 
-  localStorage.clear()
+  //localStorage.clear()
 
   const dashbaordStyle = {
     paddingLeft: isDesktopOrTablet
