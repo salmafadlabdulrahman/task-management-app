@@ -20,7 +20,7 @@ export const createNewBoard = (values) => {
     "boards",
     JSON.stringify([...existingBoards, { ...values, id: crypto.randomUUID() }])
   );
-  //window.location.href = `/dashboard/${boardId}`;
+  window.location.href = `/dashboard/${boardId}`;
   
 };
 
