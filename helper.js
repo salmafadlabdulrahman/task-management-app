@@ -89,7 +89,7 @@ export const updateBoard = (newBoard, oldBoard) => {
   const oldBoardColumns = oldBoard.split(",");
   const existingTasks = fetchData("tasks");
 
-  existingTasks.map((task) => {
+  existingTasks?.map((task) => {
     if (task.boardId === newBoard.id) {
       oldBoardColumns.map((key, index) => {
         if (key === task.tasks) {
