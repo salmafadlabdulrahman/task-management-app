@@ -110,7 +110,7 @@ export const updateBoard = (newBoard, oldBoard) => {
 
 export const editTask = (taskId, values, boardId) => {
   const existingTasks = fetchData("tasks") || [];
-  const updatedTask = existingTasks.find(task => task.id === taskId) 
+  const updatedTask = existingTasks.findIndex(task => task.id === taskId) 
 
   const columnKeys = Object.keys(values).filter((key) =>
     key.startsWith("column")
@@ -120,12 +120,12 @@ export const editTask = (taskId, values, boardId) => {
     checked: false,
   }));
 
-  if (updatedTask) {
+  if (updatedTask !== -1) {
     const updatedTasks = [
       ...existingTasks.slice(0, updatedTask),
       {...values, columnValues, boardId: boardId, id: taskId },
 
-      ...existingTasks.slice(0, updatedTask + 1)
+      ...existingTasks.slice(updatedTask + 1)
     ]
 
     return localStorage.setItem("tasks", JSON.stringify(updatedTasks))
