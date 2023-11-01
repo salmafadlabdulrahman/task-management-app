@@ -12,7 +12,7 @@ export const createNewBoard = (values) => {
     "boards",
     JSON.stringify([...existingBoards, { ...values, id: boardId }])
   );
-  window.location.href = `/dashboard/${boardId}`;
+  //window.location.href = `/dashboard/${boardId}`;
   
 };
 
@@ -121,5 +121,5 @@ export const deleteBoard = (boardId) => {
 
   localStorage.setItem("boards", JSON.stringify(updatedBoards));
 
-  window.location.href = "/";
+  //window.location.href = "/";
 }

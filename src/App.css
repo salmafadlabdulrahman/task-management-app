@@ -615,8 +615,8 @@ input:checked + .slider:before {
   position: fixed;
   background-color: rgb(32, 33, 44);
   padding: 1em;
-  width: 12%;
-  top: 12%;
+  width: 180px;
+  top: 13%;
   right: 2.7%;
   border-radius: 7px;
 }
