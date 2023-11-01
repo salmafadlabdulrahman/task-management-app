@@ -14,11 +14,11 @@ export const createNewBoard = (values) => {
   const existingBoards = fetchData("boards") ?? [];
   //const boardKeys = Object.keys(values);
 
- // const boardId = crypto.randomUUID()
+  const boardId = crypto.randomUUID()
 
   localStorage.setItem(
     "boards",
-    JSON.stringify([...existingBoards, { ...values, id: crypto.randomUUID() }])
+    JSON.stringify([...existingBoards, { ...values, id: boardId }])
   );
   window.location.href = `/dashboard/${boardId}`;
   
