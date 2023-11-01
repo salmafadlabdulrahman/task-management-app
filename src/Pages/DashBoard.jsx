@@ -14,6 +14,8 @@ export async function dashboardAction({ request }) {
   const data = await request.formData();
   const { _action, ...values } = Object.fromEntries(data);
 
+  
+
   //Creating a new board
   if (_action === "createBoard") {
     try {
@@ -65,6 +67,8 @@ function DashBoard() {
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 767px)" });
   const [boardForm, setBoardForm] = useState(false);
   const params = useParams();
+
+  localStorage.clear()
 
   const dashbaordStyle = {
     paddingLeft: isDesktopOrTablet
