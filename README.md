@@ -3,11 +3,11 @@
 ## Table of contents
 
 - [Overview](#overview)
-  -[Features](#features)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
+-[Features](#features)
+- [Screenshot](#screenshot)
+- [Links](#links)
 - [My process](#my-process)
-  - [Built with](#built-with)
+- [Built with](#built-with)
 
 ## Overview
 
@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Add solution URL here](https://github.com/salmafadlabdulrahman/task-management-app)
 - Live Site URL: [Add live site URL here](https://task-management-app-nsaw.vercel.app/)
 
 ## My process
