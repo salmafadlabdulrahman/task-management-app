@@ -1,19 +1,43 @@
-# Kanban Task Management App
+# Task Management App 
 
-### Table of contents
+## Table of contents
 
-- Boards
+- [Overview](#overview)
+  -[Features](#features)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
 
-  - Clicking different boards in the sidebar will change to the selected board.
-  - Clicking "Create New Board" in the sidebar opens the "Add New Board" modal.
-  - Clicking in the dropdown menu "Edit Board" opens up the "Edit Board" modal where details can be changed.
-  - Columns are added and removed for the Add/Edit Board modals.
-  - Deleting a board deletes all columns and tasks and requires confirmation.
+## Overview
 
-  --lines-color: #3e3f4e;
-  --add-column-background: linear-gradient(180deg,rgba(43,44,55,.25),rgba(43,44,55,.13));
-  --loader-primary: #fff;
-  --loader-secondary: #fff2;
-  --primary-color: #635fc7;
-  --primary-color-hover: #a8a4ff;
-  --medium-grey-text: #828fa3;
+### Features
+Users should be able to:
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Create, read, update, and delete boards and tasks
+- Receive form validations when trying to create/edit boards and tasks
+- Mark subtasks as complete and move tasks between columns
+- Hide/show the board sidebar
+- Toggle light and dark mode
+
+### Screenshot
+
+![preview](https://github.com/salmafadlabdulrahman/task-management-app/assets/88597694/d3cbb67f-bf00-455f-b6e7-00c17949fdd2)
+
+### Links
+
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://task-management-app-nsaw.vercel.app/)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
+- JavaScript
+- React - JS library
+
