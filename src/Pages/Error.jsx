@@ -22,12 +22,3 @@ const Error = () => {
   )
 }
 export default Error
-
-
-/*<button
-          className="button go-back-btn"
-          onClick={() => navigate(-1)}
-        >
-          <ArrowUturnLeftIcon width={20} />
-          <span>Go Back</span>
-        </button> */
