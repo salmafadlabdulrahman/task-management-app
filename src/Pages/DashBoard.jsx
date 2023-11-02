@@ -14,9 +14,7 @@ export async function dashboardAction({ request }) {
   const data = await request.formData();
   const { _action, ...values } = Object.fromEntries(data);
 
-  
 
-  //Creating a new board
   if (_action === "createBoard") {
     try {
       createNewBoard(values);

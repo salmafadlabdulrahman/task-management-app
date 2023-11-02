@@ -7,7 +7,7 @@ import moonImg from "../assets/icon-dark-theme.svg";
 import hideSideBar from "../assets/icon-hide-sidebar.svg";
 
 //rrd
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../Pages/MainLayout";
 
@@ -18,8 +18,10 @@ function SideBar() {
     hidesidebarState,
     hideSidebar,
     boards,
-    setNewBoardForm
+    setNewBoardForm,
   } = useContext(AppContext);
+  const params = useParams();
+  console.log(params.id);
 
   return (
     <div className="sidebar-wrapper">
@@ -40,19 +42,29 @@ function SideBar() {
                   lightMode ? "lightMode-links" : ""
                 }`}
               >
-                {boards && boards.length > 0 && boards.map((board, index) => (
-                  <NavLink key={index} to={`/dashboard/${board.id}`}>
-                    <img src={boardImg} className="boardIcon" />
-                    {board.title}
-                  </NavLink>
-                ))}
+                {boards &&
+                  boards.length > 0 &&
+                  boards.map((board, index) => (
+                    <NavLink
+                      key={index}
+                      to={`/dashboard/${board.id}`}
+                      style={{
+                        backgroundColor: params.id === board.id ? "#635fc7" : "",
+                        color: params.id === board.id ? "#fff" : "",
+                        borderRadius: params.id === board.id ? "0px 30px 30px 0px" : ""
+                      }}
+                    >
+                      <img src={boardImg} className="boardIcon"/>
+                      {board.title}
+                    </NavLink>
+                  ))}
               </div>
 
               <button
                 className={`btn create-board-btn ${
                   lightMode ? "lightMode-btn" : ""
                 }`}
-                onClick={() => setNewBoardForm(true)} // () => openModal()
+                onClick={() => setNewBoardForm(true)}
               >
                 <img src={boardImg} className="boardIcon" />+ Create New Board
               </button>
