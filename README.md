@@ -1,30 +1,43 @@
-### Expected Behaviour
+# Task Management App 
 
-- Boards
+## Table of contents
 
-  - Clicking different boards in the sidebar will change to the selected board.
-  - Clicking "Create New Board" in the sidebar opens the "Add New Board" modal.
-  - Clicking in the dropdown menu "Edit Board" opens up the "Edit Board" modal where details can be changed.
-  - Columns are added and removed for the Add/Edit Board modals.
-  - Deleting a board deletes all columns and tasks and requires confirmation.
+- [Overview](#overview)
+- [Features](#features)
+- [Screenshot](#screenshot)
+- [Links](#links)
+- [My process](#my-process)
+- [Built with](#built-with)
 
-- Columns
-  - A board needs at least one column before tasks can be added. If no columns exist, the "Add New Task" button in the header is disabled.
-  - Clicking "Add New Column" opens the "Edit Board" modal where columns are added.
-- Tasks
+## Overview
 
-  - Adding a new task adds it to the bottom of the relevant column.
-  - Updating a task's status will move the task to the relevant column. If you're taking on the drag and drop bonus, dragging a task to a different column will also update the status.
+### Features
+Users should be able to:
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Create, read, update, and delete boards and tasks
+- Receive form validations when trying to create/edit boards and tasks
+- Mark subtasks as complete and move tasks between columns
+- Hide/show the board sidebar
+- Toggle light and dark mode
 
-  colors:
-  --white-background: #20212c
-  --body-background: #2b2c37
-  --light-grey-background: #20212c;
-  --sidebar-background: #2b2c37;
-  --lines-color: #3e3f4e;
-  --add-column-background: linear-gradient(180deg,rgba(43,44,55,.25),rgba(43,44,55,.13));
-  --loader-primary: #fff;
-  --loader-secondary: #fff2;
-  --primary-color: #635fc7;
-  --primary-color-hover: #a8a4ff;
-  --medium-grey-text: #828fa3;
+### Screenshot
+
+![preview](https://github.com/salmafadlabdulrahman/task-management-app/assets/88597694/d3cbb67f-bf00-455f-b6e7-00c17949fdd2)
+
+### Links
+
+- Solution URL: [solution URL here](https://github.com/salmafadlabdulrahman/task-management-app)
+- Live Site URL: [live site URL here](https://task-management-app-nsaw.vercel.app/)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
+- JavaScript
+- React - JS library
+
