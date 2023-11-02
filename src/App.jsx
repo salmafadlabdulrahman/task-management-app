@@ -2,9 +2,11 @@ import "./App.css";
 import Board from "./Pages/Board";
 import DashBoard, { dashboardAction } from "./Pages/DashBoard";
 import MainLayout, { mainLoader } from "./Pages/MainLayout";
+import Error from "./Pages/Error";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
+import NotFoundPage from "./components/NotFoundPage";
 
 
 const router = createBrowserRouter([
@@ -12,6 +14,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <MainLayout />,
     loader: mainLoader,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -24,11 +27,12 @@ const router = createBrowserRouter([
           }
         ]
       },
-      
-      
-      
     ],
   },
+  {
+    path: "*",
+    element: <NotFoundPage />
+  }
 ]);
 
 function App() {  
@@ -41,13 +45,3 @@ function App() {
 }
 
 export default App;
-
-
-/*{
-        path: "/about",
-        element: <h1>This is the about page</h1>,
-      },
-      {
-        path: "/contact",
-        element: <h1>This is the contact page</h1>,
-      }, */

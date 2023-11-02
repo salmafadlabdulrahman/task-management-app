@@ -2,8 +2,9 @@ import { useContext, useState } from "react";
 import { AppContext } from "./MainLayout";
 import { getAllMatchingTasks } from "../../helper";
 import { useParams } from "react-router-dom";
-import EditBoard from "../components/EditBoard"
+import EditBoard from "../components/EditBoard";
 import TaskCard from "../components/TaskCard";
+
 
 function Board({ currentBoard }) {
   const { lightMode } = useContext(AppContext);
@@ -11,14 +12,14 @@ function Board({ currentBoard }) {
   const [editBoard, setEditBoard] = useState(false);
   const params = useParams();
 
-
   const tasks = getAllMatchingTasks(params.id);
+
 
   const allColumns = [];
   const boardKeys = Object.keys(currentBoard ?? []);
   boardKeys.forEach((key) => {
     if (key.startsWith("column")) {
-      allColumns.push(currentBoard[key]);
+      allColumns.push({ name: currentBoard[key], id: crypto.randomUUID() });
     }
   });
 
@@ -45,15 +46,15 @@ function Board({ currentBoard }) {
                 backgroundColor: index % 2 === 0 ? "#49c4e5" : "#635fc7",
               }}
             ></span>
-            {column} ({
-              tasks.map(task => task.tasks).reduce((acc, cur) => cur === column ? acc + 1 : acc, 0 )
+            {column.name} ({
+              tasks.map(task => task.tasks).reduce((acc, cur) => cur === column.name ? acc + 1 : acc, 0 )
             })
           </h3>
 
           {tasks &&
             tasks.length > 0 &&
             tasks.map((task, index) =>
-              column === task.tasks ? (
+              column.name === task.tasks ? (
                 <div
                   className={`task-card`}
                   style={style}

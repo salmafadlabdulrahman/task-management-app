@@ -168,10 +168,10 @@ function EditTask({ taskInfo, setEditTask, setSelectedTask, allColumns }) {
                       Status
                     </label>
                     <select name="tasks" id="tasks" className="status-field" required>
-                    
+                    <option value="" className={`option ${lightMode ? `lightMode-option` : ""}`}>Select Status</option>
                       {allColumns.map((column, index) => (
-                        <option value={column} key={index} className="option">
-                          {column}
+                        <option value={column.name} key={index} className="option">
+                          {column.name}
                         </option>
                       ))}
                     </select>

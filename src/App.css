@@ -278,7 +278,6 @@ body {
 .description-field,
 .status-field {
   background: none;
-  /*border: 1px solid #3e3f4e;*/
   padding: 1em;
   border-radius: 5px;
   outline: none;
@@ -289,7 +288,8 @@ body {
   margin-top: 1em;
 }
 
-input, .status-field {
+input,
+.status-field {
   border: 1px solid #3e3f4e;
 }
 
@@ -299,7 +299,7 @@ input, .status-field {
   color: black;
 }
 
-.status-field .lightMode-input option{
+.status-field .lightMode-input option {
   background-color: white;
 }
 
@@ -325,7 +325,8 @@ input:hover {
   cursor: pointer;
 }
 
-.option, .lightMode-option {
+.option,
+.lightMode-option {
   background-color: #2b2c37;
   border: none;
   outline: none;
@@ -629,8 +630,6 @@ input:checked + .slider:before {
   height: 17px;
 }
 
-
-
 .subtask {
   margin-left: 0.7em;
   font-size: 0.8em;
@@ -689,7 +688,7 @@ input:checked + .slider:before {
 }
 
 .delete-form h3 {
-  color: #ea5555
+  color: #ea5555;
 }
 
 .warning-message {
@@ -733,6 +732,81 @@ input:checked + .slider:before {
 .cancel {
   background-color: white;
   color: #635fc7;
+}
+
+.error {
+  text-align: center;
+  margin-top: 5em;
+}
+
+.error-message {
+  margin-top: 1em;
+  font-size: 1.2em;
+}
+
+.flex-md {
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.button {
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8em 1em;
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.go-back-btn {
+  background-color: #635fc7;
+}
+
+.go-home {
+  background-color: #000;
+}
+
+.page-not-found {
+  background-color: #20212c;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.message-wrapper h1 {
+  font-size: 13em;
+}
+
+.message-wrapper span {
+  color: #635fc7;
+}
+
+.message-wrapper p {
+  font-size: 2.5em;
+  font-weight: 500;
+}
+
+.home-btn {
+  background-color: #635fc7;
+  border: none;
+  padding: 1.2em 1.7em;
+  margin-top: 1em;
+  border-radius: 4px;
+}
+
+.home-btn a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.3em;
 }
 
 @media (min-width: 766px) {

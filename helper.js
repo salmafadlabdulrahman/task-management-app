@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const fetchData = (key) => {
   try {
     return JSON.parse(localStorage.getItem(key)) ?? [];
@@ -146,4 +148,9 @@ export const deleteTask = (taskId) => {
   const updateTasks = tasks.filter((task) => task.id !== taskId);
 
   localStorage.setItem("tasks", JSON.stringify(updateTasks));
+
+  return toast.dark("Task Deleted Successfully !", {
+    className: "toastMessage",
+    position: toast.POSITION.TOP_CENTER,
+  });
 };

@@ -191,8 +191,8 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                       >
                         <option value="" className={`option ${lightMode ? `lightMode-option` : ""}`}>Select Status</option>
                         {boardColumns.map((column, index) => (
-                          <option value={column} key={index} className={`option ${lightMode ? `lightMode-option` : ""}`}>
-                            {column}
+                          <option value={column.name} key={index} className={`option ${lightMode ? `lightMode-option` : ""}`}>
+                            {column.name}
                           </option>
                         ))}
                       </select>
