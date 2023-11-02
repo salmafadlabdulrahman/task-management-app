@@ -166,10 +166,10 @@ function AddTaskForm({setTaskFunction}) {
                     <label htmlFor="tasks" className={`status ${lightMode ? "lightMode-label" : ""}`}>
                       Status
                     </label>
-                    <select name="tasks" id="tasks" className={`status-field ${lightMode ? `lightMode-input` : ""} `}  required>
-                    <option value="" className={`option ${lightMode ? `lightMode-option` : ""}`}>Select Status</option>
+                    <select name="tasks" id="tasks" required className={`status-field ${lightMode ? `lightMode-input` : ""}`} style={{backgroundColor: lightMode ? "#fff" : "", color: lightMode ? "#000" : ""}}>
+                    <option value="" className={`option ${lightMode ? `lightMode-input` : ""}`}>Select Status</option>
                       {allColumns.map((column, index) => (
-                        <option value={column} key={index} className={`option ${lightMode ? `lightMode-option` : ""}`}>
+                        <option value={column} key={index} className={`option`}>
                           {column}
                         </option>
                       ))}

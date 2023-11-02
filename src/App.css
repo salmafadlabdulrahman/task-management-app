@@ -275,13 +275,20 @@ body {
 .title,
 .column,
 .task-column,
-.description-field,
-.status-field {
+.description-field {
   background: none;
   padding: 1em;
   border-radius: 5px;
   outline: none;
   color: white;
+}
+
+.status-field {
+  padding: 1em;
+  border-radius: 5px;
+  outline: none;
+  color: white;
+  background-color: #2b2c37;
 }
 
 .title {
@@ -297,10 +304,6 @@ input,
   background-color: none;
   border: 1px solid rgba(130, 143, 163, 0.145);
   color: black;
-}
-
-.status-field .lightMode-input option {
-  background-color: white;
 }
 
 input:hover {
@@ -320,14 +323,16 @@ input:hover {
   margin-top: 1em;
 }
 
+.darkMode-input {
+  background-color: #3e3f4e;
+}
+
 .status-field:hover {
   border: 1px solid #635fc7;
   cursor: pointer;
 }
 
-.option,
-.lightMode-option {
-  background-color: #2b2c37;
+.option {
   border: none;
   outline: none;
   color: #828fa3;
@@ -335,11 +340,6 @@ input:hover {
   font-size: 1.1em;
   text-transform: capitalize;
   border-radius: 10px;
-}
-
-.lightMode-option {
-  background-color: white;
-  color: #828fa3;
 }
 
 .description-field::placeholder {

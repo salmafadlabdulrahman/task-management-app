@@ -49,8 +49,10 @@ function EditTask({ taskInfo, setEditTask, setSelectedTask, allColumns }) {
   }
 
   const style = {
-    backgroundColor: lightMode ? "rgb(238, 239, 255)" : "#2b2c37",
+    backgroundColor: lightMode ? "#fff" : "#2b2c37",
   };
+
+  
   return (
     <div className="modal edit-task-modal" onClick={handleOutsideClick}>
       <div className="form-container">
@@ -80,14 +82,14 @@ function EditTask({ taskInfo, setEditTask, setSelectedTask, allColumns }) {
                   required
                 />
 
-                <label htmlFor="description" className="description">
+                <label htmlFor="description" className={`description ${lightMode ? "lightMode-label" : ""}`}>
                   Description
                 </label>
                 <input
                   type="text"
                   name="description"
                   id="description"
-                  className="description-field"
+                  className={`description-field ${lightMode ? `lightMode-input` : ""}`}
                   placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little"
                   value={taskDetails.description}
                   onChange={(e) =>
@@ -164,13 +166,13 @@ function EditTask({ taskInfo, setEditTask, setSelectedTask, allColumns }) {
                 </div>
 
                 <div className="select-menu">
-                    <label htmlFor="tasks" className="status">
+                    <label htmlFor="tasks" className={`status ${lightMode ? "lightMode-label" : ""}`}>
                       Status
                     </label>
-                    <select name="tasks" id="tasks" className="status-field" required>
-                    <option value="" className={`option ${lightMode ? `lightMode-option` : ""}`}>Select Status</option>
+                    <select name="tasks" id="tasks" className={`status-field ${lightMode ? `lightMode-input` : ""}`} style={style} required>
+                    <option value="" className={`option ${lightMode ? `lightMode-option` : ""}`} style={style}>Select Status</option>
                       {allColumns.map((column, index) => (
-                        <option value={column.name} key={index} className="option">
+                        <option value={column.name} key={index} className="option" style={style}>
                           {column.name}
                         </option>
                       ))}

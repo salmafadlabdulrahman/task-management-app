@@ -184,10 +184,10 @@ function TaskCard({ task, setSelectedTask, allColumns }) {
                       <select
                         name="columns"
                         id="columns"
-                        
-                        className={`status-field ${lightMode ? `lightMode-input` : ""} `}
+                        className={`status-field ${lightMode ? `lightMode-input` : ""}`}
                         value={selectedValue}
                         onChange={() => handleSelectChange(event)}
+                        style={{backgroundColor: lightMode ? "#fff" : "", color: lightMode ? "#000" : ""}}
                       >
                         <option value="" className={`option ${lightMode ? `lightMode-option` : ""}`}>Select Status</option>
                         {boardColumns.map((column, index) => (
